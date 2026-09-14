@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Systems &amp; architecture | SpookCo</title><meta name="description" content="Runtime responsibilities, network state, inventory transactions, and save boundaries."><meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://spookco.kittyn.cat/internal/systems/"><meta name="theme-color" content="#0b1918">
+<meta property="og:title" content="Systems &amp; architecture"><meta property="og:description" content="Runtime responsibilities, network state, inventory transactions, and save boundaries."><meta property="og:type" content="website"><meta property="og:url" content="https://spookco.kittyn.cat/internal/systems/">
+<link rel="icon" href="/assets/lantern.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css"><script defer src="/assets/site.js"></script></head>
+<body class="docs internal" data-search-index="/internal/search.json">
+<a class="skip" href="#main">Skip to content</a>
+<header class="header"><div class="header-inner"><a class="brand" href="/" aria-label="SpookCo home"><img src="/assets/lantern.svg" alt="" width="34" height="40"><span>SPOOKCO<small>LAST STOP</small></span></a><nav aria-label="Main"><a href="/guide/">Player guide</a><a href="/guide/controls/">Controls</a><a href="/internal/">Development notes</a></nav><span class="build-tag"><i aria-hidden="true"></i> IN DEVELOPMENT</span></div></header>
+<div class="notice"><span>FIELD TEST NOTICE</span> Work in progress. Art, balance, and features may change. Spectator radar &amp; AI diagnostics may not ship.</div>
+<div class="doc-layout"><aside class="sidebar"><p class="eyebrow">Development notes</p><nav aria-label="Section"><a href="/internal/">Current status</a><a href="/internal/systems/" aria-current="page">Systems &amp; architecture</a><a href="/internal/ai/">Killer baseline</a><a href="/internal/art/">Environment &amp; art</a><a href="/internal/roadmap/">Roadmap &amp; decisions</a><a href="/internal/testing/">Testing &amp; release gates</a><a href="/internal/publishing/">Updating this site</a></nav></aside><details class="mobile-sections"><summary>Development notes · pages</summary><nav aria-label="Section mobile"><a href="/internal/">Current status</a><a href="/internal/systems/" aria-current="page">Systems &amp; architecture</a><a href="/internal/ai/">Killer baseline</a><a href="/internal/art/">Environment &amp; art</a><a href="/internal/roadmap/">Roadmap &amp; decisions</a><a href="/internal/testing/">Testing &amp; release gates</a><a href="/internal/publishing/">Updating this site</a></nav></details><main id="main" tabindex="-1"><div class="page-bar"><a href="/internal/">Development notes</a><span>WORKING BUILD / SEPT 2026</span></div><div class="search"><label for="search">Search these notes</label><input id="search" type="search" placeholder="Try: acceptance" autocomplete="off" aria-controls="search-results"><div id="search-results" role="region" aria-label="Search results" aria-live="polite" hidden></div></div><article class="prose"><p class="eyebrow">Development field notes · Systems</p><h1 id="systems-architecture">Systems &amp; architecture</h1>
+<p>The game-host role and simulation ownership are independent. Passing Host changes who can operate the lobby/round controls; the simulation owner keeps advancing gameplay without waiting for host input.</p>
+<h2 id="runtime-boundaries">Runtime boundaries</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table"><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SpookRules</td>
+<td>Stable catalogue IDs, tuning, XP curve, pouch packing, quota and movement rules</td>
+</tr>
+<tr>
+<td>SpookSession</td>
+<td>Phases, deadlines, crew state, host offers/claims, health/recovery, trip choices</td>
+</tr>
+<tr>
+<td>SpookLedger</td>
+<td>Inventory/shop transactions, loot manifests and claims, rewards, cooldowns</td>
+</tr>
+<tr>
+<td>SpookProfile</td>
+<td>Restoration gate, permanent profile, bounded session wallets, accepted revision saves</td>
+</tr>
+<tr>
+<td>SpookObjectives</td>
+<td>Cargo reservation/carry/delivery, retained repairs, rescue work</td>
+</tr>
+<tr>
+<td>SpookKiller</td>
+<td>One native NavMesh agent, sensing, evidence/search, attacks, durable AI checkpoint</td>
+</tr>
+<tr>
+<td>SpookMapFeed</td>
+<td>Always-active shared killer/crew tracking and remote presentation snapshot</td>
+</tr>
+<tr>
+<td>SpookSpectatorMap</td>
+<td>Local spectator map, vision/hearing presentation and tracking age</td>
+</tr>
+<tr>
+<td>SpookControls</td>
+<td>Unified action routing, input priorities, saved device profiles</td>
+</tr>
+<tr>
+<td>SpookLoot</td>
+<td>At most 12 pooled shared supply objects; no per-pickup Update</td>
+</tr>
+<tr>
+<td>SpookPanel / SpookFeedback</td>
+<td>Throttled UI, markers, interaction targets, alerts</td>
+</tr>
+<tr>
+<td>SpookTransition</td>
+<td>Local fade/teleport sequencing and replacement of obsolete destinations</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="authority-and-transactions">Authority and transactions</h2>
+<p>Network entry points validate the actual caller, eligibility, and relevant revisions. A local click never grants an item. The ledger owner commits pouch changes and the shared claim in one synchronized object, with claimant/grant identity and duplicate protection. Full capacity rejects collection without claiming the pickup.</p>
+<p>Loot is rolled once per trip/stop. Restart Current Stop reuses the area, killer, manifest, and claims. Reset Trip rewinds flow while retaining cached history. Normal trip completion allows new rolls. Objective and result reward masks prevent repeated reset awards; once-per-stop abilities and equipment cooldowns are also preserved.</p>
+<p>Initial quotas and loot counts use the participating-player snapshot. Joins do not increase active quotas or supplies. Departures, withdrawal, and sustained suspension may lower outstanding requirements without erasing finished work. If nobody remains active, return to the lobby without completion rewards.</p>
+<h2 id="persistence">Persistence</h2>
+<p>Wait for <code>OnPlayerRestored</code> before writes, purchases, and grants. The permanent profile holds XP, survival points, perk selection, reusable gear, and player identity token. Separate VR/desktop/touch keys hold controls.</p>
+<p>A synchronized random live-session key survives trips, resets, role changes, and ordinary ownership migration. A bounded 128-record history stores session cash, pouch, cooldowns, inventory revisions, grant identity, and reward masks. The current wallet is updated during play; the history index changes only on session entry/eviction. Old prototype wallet data has a migration path.</p>
+<p>The implemented goal is same-session rejoin and A → B → A restoration without duplicated loot or refunded consumption. Actual cloud timing, interrupted writes, and concurrent-client race behavior remain uploaded acceptance work. No departure callback can guarantee a final cloud write after an abrupt crash.</p>
+<h2 id="stable-content-ids">Stable content IDs</h2>
+<ul>
+<li>Areas: 0 Camp Deadwood, 1 Last Chance Service Station.</li>
+<li>Killers: 0 Groundskeeper, 1 Rattletrap, 2 Roadkill, 3 Hitchhiker, 4 Usher, 5 Switchboard.</li>
+<li>Consumables: 0 empty, 1 ration, 2 soda, 3 flare, 4 tape.</li>
+<li>Reusable gear: 0 decoy, 1 camera, 2 EMF pager, 3 track shoes.</li>
+<li>Perk bits: Spotter, Courier, Mechanic, Field Medic, Scrapper, Soft Soles, Adrenaline, Quickdraw, Hardhat, Second Wind.</li>
+</ul>
+<p>Preserve IDs when replacing art or changing display names. Three consumable slots use three bits each and allow duplicates. XP to the next level is <code>150 + 35 × (current level − 1)</code> through level 40; 31,785 total XP. Final reward pacing has not been measured.</p>
+<h2 id="capacity-and-transport-limits">Capacity and transport limits</h2>
+<p>Runtime admission is still 16 despite several storage/feed arrays having 32 slots. The accepted 18-person overflow requirement is <strong>not complete just because arrays are larger</strong>. Define admission, participants, and spectators explicitly before changing the cap.</p>
+<p>The AI checkpoint and presentation stream are separate. The always-active manual feed requests updates at 4 Hz; matching trip/stop/area/revision is required. A new owner can recover from a fresher presentation pose under a recovery interval. Local decoding/interpolation tests do not prove Photon delivery or suspension recovery.</p></article><a class="next-page" href="/internal/ai/"><span>Continue reading</span><strong>Killer baseline →</strong></a></main><aside class="toc"><p class="eyebrow">On this page</p><div class="toc">
+<ul>
+<li><a href="#runtime-boundaries">Runtime boundaries</a></li>
+<li><a href="#authority-and-transactions">Authority and transactions</a></li>
+<li><a href="#persistence">Persistence</a></li>
+<li><a href="#stable-content-ids">Stable content IDs</a></li>
+<li><a href="#capacity-and-transport-limits">Capacity and transport limits</a></li>
+</ul>
+</div>
+</aside></div>
+<footer><a class="footer-wordmark" href="/">SPOOKCO / LAST STOP</a><p>Unlisted public notes · no sensitive information.<br>Prototype information. No release date is promised here.</p><a href="/guide/faq/">Questions? Visit dispatch →</a></footer>
+</body></html>

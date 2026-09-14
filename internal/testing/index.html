@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Testing &amp; release gates | SpookCo</title><meta name="description" content="Local regression evidence, successful bundles, human confirmations, and outstanding device tests."><meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://spookco.kittyn.cat/internal/testing/"><meta name="theme-color" content="#0b1918">
+<meta property="og:title" content="Testing &amp; release gates"><meta property="og:description" content="Local regression evidence, successful bundles, human confirmations, and outstanding device tests."><meta property="og:type" content="website"><meta property="og:url" content="https://spookco.kittyn.cat/internal/testing/">
+<link rel="icon" href="/assets/lantern.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css"><script defer src="/assets/site.js"></script></head>
+<body class="docs internal" data-search-index="/internal/search.json">
+<a class="skip" href="#main">Skip to content</a>
+<header class="header"><div class="header-inner"><a class="brand" href="/" aria-label="SpookCo home"><img src="/assets/lantern.svg" alt="" width="34" height="40"><span>SPOOKCO<small>LAST STOP</small></span></a><nav aria-label="Main"><a href="/guide/">Player guide</a><a href="/guide/controls/">Controls</a><a href="/internal/">Development notes</a></nav><span class="build-tag"><i aria-hidden="true"></i> IN DEVELOPMENT</span></div></header>
+<div class="notice"><span>FIELD TEST NOTICE</span> Work in progress. Art, balance, and features may change. Spectator radar &amp; AI diagnostics may not ship.</div>
+<div class="doc-layout"><aside class="sidebar"><p class="eyebrow">Development notes</p><nav aria-label="Section"><a href="/internal/">Current status</a><a href="/internal/systems/">Systems &amp; architecture</a><a href="/internal/ai/">Killer baseline</a><a href="/internal/art/">Environment &amp; art</a><a href="/internal/roadmap/">Roadmap &amp; decisions</a><a href="/internal/testing/" aria-current="page">Testing &amp; release gates</a><a href="/internal/publishing/">Updating this site</a></nav></aside><details class="mobile-sections"><summary>Development notes · pages</summary><nav aria-label="Section mobile"><a href="/internal/">Current status</a><a href="/internal/systems/">Systems &amp; architecture</a><a href="/internal/ai/">Killer baseline</a><a href="/internal/art/">Environment &amp; art</a><a href="/internal/roadmap/">Roadmap &amp; decisions</a><a href="/internal/testing/" aria-current="page">Testing &amp; release gates</a><a href="/internal/publishing/">Updating this site</a></nav></details><main id="main" tabindex="-1"><div class="page-bar"><a href="/internal/">Development notes</a><span>WORKING BUILD / SEPT 2026</span></div><div class="search"><label for="search">Search these notes</label><input id="search" type="search" placeholder="Try: acceptance" autocomplete="off" aria-controls="search-results"><div id="search-results" role="region" aria-label="Search results" aria-live="polite" hidden></div></div><article class="prose"><p class="eyebrow">Development field notes · Evidence</p><h1 id="testing-release-gates">Testing &amp; release gates</h1>
+<p><strong>Evidence cutoff:</strong> September 13, 2026 Pacific (build/test timestamps below use September 14 UTC). No new game-code changes were made for the website. The baseline was built and tested before its checkpoint commit.</p>
+<h2 id="human-reports">Human reports</h2>
+<p>The creator reports that the basic loop works and the current killers are a useful baseline. <strong>Pass Host and AFK timeout / Claim Host have been tested in uploaded play.</strong> Desktop and iPhone have been tried. Earlier reports drove fixes for stalled pursuit, non-owner registration/tracking, desktop pointer/menu behavior, and sensing-outline visibility.</p>
+<p>These reports do not close every killer, device, and networking case. The held-W issue was attributed by the creator to the KVM setup and does not occur with the physical keyboard; no game-side keyboard workaround is required for that report.</p>
+<h2 id="latest-local-lanes">Latest local lanes</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table"><table>
+<thead>
+<tr>
+<th>Lane</th>
+<th>Started UTC</th>
+<th style="text-align: right;">Passing assertions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scene/rules validation</td>
+<td>2026-09-14 02:43:24</td>
+<td style="text-align: right;">277</td>
+</tr>
+<tr>
+<td>Killer replica/movement</td>
+<td>2026-09-14 02:35:37</td>
+<td style="text-align: right;">87</td>
+</tr>
+<tr>
+<td>Extended local integration</td>
+<td>2026-09-14 02:40:22</td>
+<td style="text-align: right;">108</td>
+</tr>
+<tr>
+<td>Non-owner tracking receiver</td>
+<td>2026-09-14 02:30:13</td>
+<td style="text-align: right;">104</td>
+</tr>
+<tr>
+<td>Spectator map / negative clock</td>
+<td>2026-09-14 02:29:01</td>
+<td style="text-align: right;">143</td>
+</tr>
+<tr>
+<td>Movement hearing / search</td>
+<td>2026-09-14 02:26:21</td>
+<td style="text-align: right;">99</td>
+</tr>
+<tr>
+<td>AI review / diagnostics</td>
+<td>2026-09-14 02:32:26</td>
+<td style="text-align: right;">37</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>855 assertions; all seven lanes passed.</strong> Structural checks, explicit SDK delegates, and single-VM ClientSim fixtures cover actual Udon paths where possible. Receiver decoding tests and rendering tests are useful but are not real Photon transport, cloud restoration, or physical input proof.</p>
+<p>Earlier local lanes also passed: registration 23, gameplay 35, pursuit 4, and presentation 46 assertions. Those are older evidence and were not rerun after every later change. Raw logs remain local/ignored; this public site publishes summaries only.</p>
+<h2 id="successful-sdk-bundles">Successful SDK bundles</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table"><table>
+<thead>
+<tr>
+<th>Platform</th>
+<th style="text-align: right;">Bytes</th>
+<th>Written UTC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PC</td>
+<td style="text-align: right;">3,516,298</td>
+<td>2026-09-14 02:43:38</td>
+</tr>
+<tr>
+<td>Android / Quest</td>
+<td style="text-align: right;">2,310,266</td>
+<td>2026-09-14 02:46:23</td>
+</tr>
+<tr>
+<td>iOS</td>
+<td style="text-align: right;">2,248,548</td>
+<td>2026-09-14 02:48:28</td>
+</tr>
+</tbody>
+</table></div>
+<p>These are VRChat world asset bundles, not standalone executables or exact client download/memory measurements. The recorded scene has three lightmaps and 171/171 static renderers assigned baked lightmaps. The count of 653 Udon behaviours includes static handlers and an editor-only fixture; it is not a CPU-cost measurement.</p>
+<p>Reviewed non-blocking warnings include the mobile quality profile allowing multiple pixel lights (authored lights are baked), and an inapplicable iPhone C++ compiler option for this bundle workflow. Profile actual mobile lighting rather than dismissing the warning permanently.</p>
+<h2 id="uploaded-test-matrix-still-needed">Uploaded test matrix still needed</h2>
+<ul>
+<li>Complete normal trips with 1, 2, 4, 8, 12, and 16 participants; every killer, both areas, starter solo loadout.</li>
+<li>Ready/unready cancellation, Force Start, simultaneous departure, late entry, and 8 → 2 / 2 → 1 / 1 → 8 scaling without raised quotas or rerolled loot.</li>
+<li>Solo/all-down recovery, rescues, interrupted repairs, Second Wind, and safe refuge behavior.</li>
+<li>Several clients claiming one supply; full pouch; concurrent purchases; duplicate requests/grants; accessible and native cargo contention.</li>
+<li>Rejoin after earning, purchasing, scavenging, swapping, consuming, and using cooldowns; A → B → A; crashes during grants/saves.</li>
+<li>Host offer expiry/decline, Keep Hosting, meaningful activity cancellation, claimant/host departure, and ownership suspension in every phase.</li>
+<li>Non-owner map/model agreement, late snapshots, owner migration during charge/warp/stun, and effects/hits under latency.</li>
+<li>Every direct/button alternative, both hands/wrists, seated/scale differences, menu interruptions, rebinding, profile persistence, and no unintended consumption or cargo drops.</li>
+</ul>
+<h2 id="hardware-and-performance">Hardware and performance</h2>
+<p>Available: Linux PCVR with RTX 3090; Windows AMD Radeon AI PRO R9700; Quest 3; iPhone 16 Pro. Other testers can cover standalone Android phones. Confirm the exact PC headset and refresh rate when scheduling performance acceptance.</p>
+<p>Run 30-minute sessions with one and sixteen controlled lightweight avatars. Targets: <strong>PCVR 90 FPS, Quest 3 72 FPS, iPhone 16 Pro 60 FPS</strong>. Capture CPU/Udon and GPU frame time, batches, memory, textures/lightmaps, and bundle/download cost. Report public-avatar overhead separately. No current count or build result certifies these targets.</p>
+<h2 id="local-commands">Local commands</h2>
+<p>Use the existing Unity editor and fixed-command bridge; do not launch a second editor for the same project. <code>Tools/SpookCo.ps1</code> exposes <code>status</code>, <code>compile</code>, <code>validate</code>, <code>clientsim</code>, <code>stop</code>, <code>hearing</code>, <code>ai-review</code>, <code>replica</code>, <code>remote-map</code>, <code>map-clock</code>, <code>extended</code>, and platform build commands.</p>
+<p>Use a fresh ClientSim run per test lane. An asynchronous command acknowledgment is not completion: require a fresh result log ending in SUCCESS. Do not modify scripts during a build/test. World uploads and contest submission remain manual.</p></article><a class="next-page" href="/internal/publishing/"><span>Continue reading</span><strong>Updating this site →</strong></a></main><aside class="toc"><p class="eyebrow">On this page</p><div class="toc">
+<ul>
+<li><a href="#human-reports">Human reports</a></li>
+<li><a href="#latest-local-lanes">Latest local lanes</a></li>
+<li><a href="#successful-sdk-bundles">Successful SDK bundles</a></li>
+<li><a href="#uploaded-test-matrix-still-needed">Uploaded test matrix still needed</a></li>
+<li><a href="#hardware-and-performance">Hardware and performance</a></li>
+<li><a href="#local-commands">Local commands</a></li>
+</ul>
+</div>
+</aside></div>
+<footer><a class="footer-wordmark" href="/">SPOOKCO / LAST STOP</a><p>Unlisted public notes · no sensitive information.<br>Prototype information. No release date is promised here.</p><a href="/guide/faq/">Questions? Visit dispatch →</a></footer>
+</body></html>

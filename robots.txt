@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://spookco.kittyn.cat/sitemap.xml

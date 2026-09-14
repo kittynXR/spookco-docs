@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Environment &amp; art direction | SpookCo</title><meta name="description" content="Where the next design effort goes, what the grayboxes contain, and what art must preserve."><meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://spookco.kittyn.cat/internal/art/"><meta name="theme-color" content="#0b1918">
+<meta property="og:title" content="Environment &amp; art direction"><meta property="og:description" content="Where the next design effort goes, what the grayboxes contain, and what art must preserve."><meta property="og:type" content="website"><meta property="og:url" content="https://spookco.kittyn.cat/internal/art/">
+<link rel="icon" href="/assets/lantern.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css"><script defer src="/assets/site.js"></script></head>
+<body class="docs internal" data-search-index="/internal/search.json">
+<a class="skip" href="#main">Skip to content</a>
+<header class="header"><div class="header-inner"><a class="brand" href="/" aria-label="SpookCo home"><img src="/assets/lantern.svg" alt="" width="34" height="40"><span>SPOOKCO<small>LAST STOP</small></span></a><nav aria-label="Main"><a href="/guide/">Player guide</a><a href="/guide/controls/">Controls</a><a href="/internal/">Development notes</a></nav><span class="build-tag"><i aria-hidden="true"></i> IN DEVELOPMENT</span></div></header>
+<div class="notice"><span>FIELD TEST NOTICE</span> Work in progress. Art, balance, and features may change. Spectator radar &amp; AI diagnostics may not ship.</div>
+<div class="doc-layout"><aside class="sidebar"><p class="eyebrow">Development notes</p><nav aria-label="Section"><a href="/internal/">Current status</a><a href="/internal/systems/">Systems &amp; architecture</a><a href="/internal/ai/">Killer baseline</a><a href="/internal/art/" aria-current="page">Environment &amp; art</a><a href="/internal/roadmap/">Roadmap &amp; decisions</a><a href="/internal/testing/">Testing &amp; release gates</a><a href="/internal/publishing/">Updating this site</a></nav></aside><details class="mobile-sections"><summary>Development notes · pages</summary><nav aria-label="Section mobile"><a href="/internal/">Current status</a><a href="/internal/systems/">Systems &amp; architecture</a><a href="/internal/ai/">Killer baseline</a><a href="/internal/art/" aria-current="page">Environment &amp; art</a><a href="/internal/roadmap/">Roadmap &amp; decisions</a><a href="/internal/testing/">Testing &amp; release gates</a><a href="/internal/publishing/">Updating this site</a></nav></details><main id="main" tabindex="-1"><div class="page-bar"><a href="/internal/">Development notes</a><span>WORKING BUILD / SEPT 2026</span></div><div class="search"><label for="search">Search these notes</label><input id="search" type="search" placeholder="Try: acceptance" autocomplete="off" aria-controls="search-results"><div id="search-results" role="region" aria-label="Search results" aria-live="polite" hidden></div></div><article class="prose"><p class="eyebrow">Development field notes · Design</p><h1 id="environment-art-direction">Environment &amp; art direction</h1>
+<p>The current worlds are functional grayboxes with original placeholder geometry and synthesized sounds. The next pass should make the trip worth playing repeatedly before investing in fine AI tuning.</p>
+<h2 id="campfire-as-a-gameplay-anchor">Campfire as a gameplay anchor</h2>
+<p>The protective lantern and covered van refuge are the dependable destination in every stop. Make their warm silhouette readable from escape routes. Preserve generous access and standing room for the crew; do not turn the entrance into a narrow collision trap.</p>
+<p>The van body is currently <strong>solid</strong> and the protected play space is its covered exterior. A walkable interior is an art/layout decision still to make. Keep exterior capacity even if an interior is added.</p>
+<h2 id="two-locations-to-develop">Two locations to develop</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table"><table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Existing foundation</th>
+<th>Next design questions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Camp Deadwood</td>
+<td>Cabin/shed/shelter shapes and wooded routes</td>
+<td>Which loops create a second escape option? Where can the van lantern be glimpsed? Which shelters allow readable corner searches?</td>
+</tr>
+<tr>
+<td>Last Chance Service Station</td>
+<td>Pumps, canopy/garage/store and vehicle cover</td>
+<td>How do open forecourt risk and close service corridors differ? Can every job be approached from more than one direction?</td>
+</tr>
+</tbody>
+</table></div>
+<p>Aim for roughly 15–25 seconds of travel from the van to ordinary work sites. This is a design target to measure, not a claim that every current route meets it. Compact solo routes should remain interesting; larger crews need additional useful work sites, not just more repeated walking.</p>
+<h2 id="objective-and-round-design">Objective and round design</h2>
+<ul>
+<li>Make cargo destinations, repair states, shared supplies, and extraction unmistakable through shape and feedback, not color alone.</li>
+<li>Retain interrupted repair progress and a soloable path through every mandatory task.</li>
+<li>Give leaving the refuge a reason: visible jobs, optional supplies, and short risk/reward decisions.</li>
+<li>Measure the 20/150/30/10-second phase rhythm with real players before changing timers.</li>
+<li>Test whether three stops produce variety through placement and killer combinations rather than repetitive chores.</li>
+<li>Preserve at least two plausible responses to ordinary pursuit; avoid compulsory dead ends and unavoidable spawn attacks.</li>
+</ul>
+<h2 id="art-sessions">Art sessions</h2>
+<p><strong>1 — Van and campfire:</strong> distressed company paint, protective lantern, awning, broad access, warm safe silhouette. Preserve zone, arrival, interaction, and navigation transforms.</p>
+<p><strong>2 — Killer identities:</strong> six strong silhouettes on a shared modest rig foundation. Keep visual weapon reach consistent with the simulation. Current procedural limb animation expects named arms/boots; replace deliberately if adding Animator rigs. Preserve attack warnings and hazard readability.</p>
+<p><strong>3 — Environment and sound:</strong> a modular cabin/garage kit, canopy, low-poly trees, shared atlas, and clear objective props. Replace synthesized warnings and decoy clicks with short original sounds; add restrained ambience and fire. Check voice-chat intelligibility and phone speakers.</p>
+<h2 id="asset-budgets-and-authoring-guardrails">Asset budgets and authoring guardrails</h2>
+<p>Current recorded geometry is <strong>46,438 triangles across all loaded meshes</strong>. Initial mobile targets are below 70 MB download and about 250,000 visible world triangles; these are provisional, not frame-rate evidence.</p>
+<p>Start with a shared 1024-pixel atlas and simple materials. Prefer baked lighting, few transparent layers, limited particles/rigs/physics, and pooled supplies. There are 24 authored supply anchors per area; preserve compact solo eligibility and distinct reachable locations.</p>
+<p>Do not move protected zones, objective anchors, supply anchors, killer spawn points, or patrol routes accidentally when replacing meshes. Structural changes require navigation/lighting rebakes, scene validation, and all three platform builds. Add authors/licenses to credits when importing outside assets.</p></article><a class="next-page" href="/internal/roadmap/"><span>Continue reading</span><strong>Roadmap &amp; decisions →</strong></a></main><aside class="toc"><p class="eyebrow">On this page</p><div class="toc">
+<ul>
+<li><a href="#campfire-as-a-gameplay-anchor">Campfire as a gameplay anchor</a></li>
+<li><a href="#two-locations-to-develop">Two locations to develop</a></li>
+<li><a href="#objective-and-round-design">Objective and round design</a></li>
+<li><a href="#art-sessions">Art sessions</a></li>
+<li><a href="#asset-budgets-and-authoring-guardrails">Asset budgets and authoring guardrails</a></li>
+</ul>
+</div>
+</aside></div>
+<footer><a class="footer-wordmark" href="/">SPOOKCO / LAST STOP</a><p>Unlisted public notes · no sensitive information.<br>Prototype information. No release date is promised here.</p><a href="/guide/faq/">Questions? Visit dispatch →</a></footer>
+</body></html>

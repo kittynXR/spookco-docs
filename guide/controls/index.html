@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Controls &amp; accessibility | SpookCo</title><meta name="description" content="Desktop shortcuts, VR wrist inventory, and touch controls for the current build.">
+<link rel="canonical" href="https://spookco.kittyn.cat/guide/controls/"><meta name="theme-color" content="#0b1918">
+<meta property="og:title" content="Controls &amp; accessibility"><meta property="og:description" content="Desktop shortcuts, VR wrist inventory, and touch controls for the current build."><meta property="og:type" content="website"><meta property="og:url" content="https://spookco.kittyn.cat/guide/controls/">
+<link rel="icon" href="/assets/lantern.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css"><script defer src="/assets/site.js"></script></head>
+<body class="docs" data-search-index="/search.json">
+<a class="skip" href="#main">Skip to content</a>
+<header class="header"><div class="header-inner"><a class="brand" href="/" aria-label="SpookCo home"><img src="/assets/lantern.svg" alt="" width="34" height="40"><span>SPOOKCO<small>LAST STOP</small></span></a><nav aria-label="Main"><a href="/guide/">Player guide</a><a href="/guide/controls/">Controls</a></nav><span class="build-tag"><i aria-hidden="true"></i> IN DEVELOPMENT</span></div></header>
+<div class="notice"><span>FIELD TEST NOTICE</span> Work in progress. Art, balance, and features may change. Spectator radar &amp; AI diagnostics may not ship.</div>
+<div class="doc-layout"><aside class="sidebar"><p class="eyebrow">Employee field guide</p><nav aria-label="Section"><a href="/guide/">Your first shift</a><a href="/guide/controls/" aria-current="page">Controls &amp; accessibility</a><a href="/guide/equipment/">Equipment &amp; supplies</a><a href="/guide/progression/">Progression &amp; saving</a><a href="/guide/threats/">Know the threats</a><a href="/guide/faq/">Dispatch FAQ</a></nav></aside><details class="mobile-sections"><summary>Employee field guide · pages</summary><nav aria-label="Section mobile"><a href="/guide/">Your first shift</a><a href="/guide/controls/" aria-current="page">Controls &amp; accessibility</a><a href="/guide/equipment/">Equipment &amp; supplies</a><a href="/guide/progression/">Progression &amp; saving</a><a href="/guide/threats/">Know the threats</a><a href="/guide/faq/">Dispatch FAQ</a></nav></details><main id="main" tabindex="-1"><div class="page-bar"><a href="/guide/">Player guide</a><span>WORKING BUILD / SEPT 2026</span></div><div class="search"><label for="search">Search these guides</label><input id="search" type="search" placeholder="Try: cargo" autocomplete="off" aria-controls="search-results"><div id="search-results" role="region" aria-label="Search results" aria-live="polite" hidden></div></div><article class="prose"><p class="eyebrow">Employee field guide · 02</p><h1 id="controls-accessibility">Controls &amp; accessibility</h1>
+<p>Use the <strong>Controls &amp; Accessibility</strong> panel beside dispatch’s ready board. You can also reach it from the van and personal inventory. Preferences are saved separately for desktop, VR, and touch.</p>
+<h2 id="desktop-keep-chase-actions-on-keys">Desktop: keep chase actions on keys</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table"><table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Temporary cursor menu</td>
+<td>Hold <strong>Tab</strong>; release to close the entire menu</td>
+</tr>
+<tr>
+<td>Keep menu open for reading</td>
+<td><strong>I</strong>; press again to close</td>
+</tr>
+<tr>
+<td>Draw reusable equipment</td>
+<td><strong>1</strong></td>
+</tr>
+<tr>
+<td>Draw equipped consumable</td>
+<td><strong>2</strong></td>
+</tr>
+<tr>
+<td>Stow personal item</td>
+<td><strong>3</strong></td>
+</tr>
+<tr>
+<td>Select reserve 1 / 2</td>
+<td><strong>4 / 5</strong></td>
+</tr>
+<tr>
+<td>Drop task cargo</td>
+<td><strong>6</strong></td>
+</tr>
+<tr>
+<td>Use drawn item</td>
+<td>Native Use action / Use button</td>
+</tr>
+<tr>
+<td>Collect or work</td>
+<td>Targeted world interaction / context action</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>On the tested desktop client, Tab stops movement.</strong> This also happened in another world. Plan cursor interaction while stationary, preferably in the refuge. Shift+Tab may not open the menu while sprinting; release sprint first. I keeps a reading panel visible but does not unlock the mouse: hold Tab to click.</p>
+<p>The six numbered shortcuts work without Tab, including with Shift held. They can be rebound, and conflicting bindings are reported. Reserve selection swaps the chosen reserve into the equipped slot; it does not draw or consume it. Press 2 to draw, then make a fresh Use input. A saved Tab Hold / Stay open preference is available.</p>
+<h2 id="vr-wrist-or-floating-panel">VR: wrist or floating panel</h2>
+<p>Select the wrist launcher to open the inventory and tap a slot. Choose either wrist and either equipment hand. A floating panel alternative has adjustable position and size for seated play and different avatar scales. Opening the default inventory does not freeze movement.</p>
+<p>Personal items follow the chosen hand. Cargo uses normal pickup controls, or the accessible Carry / Drop actions. If a native pickup occupies the equipment hand, stow or move it deliberately; personal equipment must not forcibly release it.</p>
+<h2 id="phone-and-tablet">Phone and tablet</h2>
+<p>Use the screen’s <strong>INVENTORY</strong>, <strong>USE ITEM</strong>, and <strong>COLLECT / WORK</strong> buttons. The world-space lobby boards are also present, but the screen controls are the intended touch shortcut. Inside inventory, select equipment, consumables, or reserves; use the separate Use action to activate the selected item.</p>
+<p>The iPhone build has been tried by the creator. Final touch layout and ergonomics still need broader device testing.</p>
+<h2 id="preferences-and-practice">Preferences and practice</h2>
+<ul>
+<li>Hold or toggle repair/rescue interactions.</li>
+<li>Accessible cargo carrying with the same reservation, penalty, delivery, and drop rules.</li>
+<li>Wrist/equipment handedness and floating panel placement/size.</li>
+<li>Desktop key rebinding with conflict feedback and reset defaults.</li>
+<li>Separate persisted control profiles for each input family.</li>
+<li>Optional inventory stick navigation, <strong>off by default</strong>: neutral deadzone 0.25, activation threshold 0.70, dwell 150 ms. Return to neutral before another step; selection requires confirmation.</li>
+</ul>
+<p>These settings control SpookCo actions, not VRChat’s native movement bindings. Use the free practice station to check your setup. Selecting or collecting an item never activates it automatically.</p></article><a class="next-page" href="/guide/equipment/"><span>Continue reading</span><strong>Equipment &amp; supplies →</strong></a></main><aside class="toc"><p class="eyebrow">On this page</p><div class="toc">
+<ul>
+<li><a href="#desktop-keep-chase-actions-on-keys">Desktop: keep chase actions on keys</a></li>
+<li><a href="#vr-wrist-or-floating-panel">VR: wrist or floating panel</a></li>
+<li><a href="#phone-and-tablet">Phone and tablet</a></li>
+<li><a href="#preferences-and-practice">Preferences and practice</a></li>
+</ul>
+</div>
+</aside></div>
+<footer><a class="footer-wordmark" href="/">SPOOKCO / LAST STOP</a><p>An independent VRChat world by kittynXR.<br>Prototype information. No release date is promised here.</p><a href="/guide/faq/">Questions? Visit dispatch →</a></footer>
+</body></html>

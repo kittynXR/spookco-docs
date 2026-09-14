@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dispatch FAQ | SpookCo</title><meta name="description" content="Hosting, late joins, spectators, and practical answers for playtests.">
+<link rel="canonical" href="https://spookco.kittyn.cat/guide/faq/"><meta name="theme-color" content="#0b1918">
+<meta property="og:title" content="Dispatch FAQ"><meta property="og:description" content="Hosting, late joins, spectators, and practical answers for playtests."><meta property="og:type" content="website"><meta property="og:url" content="https://spookco.kittyn.cat/guide/faq/">
+<link rel="icon" href="/assets/lantern.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css"><script defer src="/assets/site.js"></script></head>
+<body class="docs" data-search-index="/search.json">
+<a class="skip" href="#main">Skip to content</a>
+<header class="header"><div class="header-inner"><a class="brand" href="/" aria-label="SpookCo home"><img src="/assets/lantern.svg" alt="" width="34" height="40"><span>SPOOKCO<small>LAST STOP</small></span></a><nav aria-label="Main"><a href="/guide/">Player guide</a><a href="/guide/controls/">Controls</a></nav><span class="build-tag"><i aria-hidden="true"></i> IN DEVELOPMENT</span></div></header>
+<div class="notice"><span>FIELD TEST NOTICE</span> Work in progress. Art, balance, and features may change. Spectator radar &amp; AI diagnostics may not ship.</div>
+<div class="doc-layout"><aside class="sidebar"><p class="eyebrow">Employee field guide</p><nav aria-label="Section"><a href="/guide/">Your first shift</a><a href="/guide/controls/">Controls &amp; accessibility</a><a href="/guide/equipment/">Equipment &amp; supplies</a><a href="/guide/progression/">Progression &amp; saving</a><a href="/guide/threats/">Know the threats</a><a href="/guide/faq/" aria-current="page">Dispatch FAQ</a></nav></aside><details class="mobile-sections"><summary>Employee field guide · pages</summary><nav aria-label="Section mobile"><a href="/guide/">Your first shift</a><a href="/guide/controls/">Controls &amp; accessibility</a><a href="/guide/equipment/">Equipment &amp; supplies</a><a href="/guide/progression/">Progression &amp; saving</a><a href="/guide/threats/">Know the threats</a><a href="/guide/faq/" aria-current="page">Dispatch FAQ</a></nav></details><main id="main" tabindex="-1"><div class="page-bar"><a href="/guide/">Player guide</a><span>WORKING BUILD / SEPT 2026</span></div><div class="search"><label for="search">Search these guides</label><input id="search" type="search" placeholder="Try: cargo" autocomplete="off" aria-controls="search-results"><div id="search-results" role="region" aria-label="Search results" aria-live="polite" hidden></div></div><article class="prose"><p class="eyebrow">Employee field guide · 06</p><h1 id="dispatch-faq">Dispatch FAQ</h1>
+<h2 id="is-this-the-finished-game">Is this the finished game?</h2>
+<p>No. This is a playable graybox under active development. Expect placeholder art and sound, changing balance, and unfinished edge cases. Spectator radar and AI diagnostics are development tools that may be removed. PC, Android/Quest, and iOS bundles have been built; broad device and multiplayer acceptance is still in progress.</p>
+<h2 id="how-many-people-can-play">How many people can play?</h2>
+<p>The implemented participant limit is <strong>16</strong>, and solo play is supported. Handling the creator/instance-creator overflow case of <strong>18 people in an instance</strong> is accepted work but is not implemented yet. Do not rely on overflow admission for a playtest.</p>
+<h2 id="can-i-pass-control-of-the-game-to-someone-else">Can I pass control of the game to someone else?</h2>
+<p>Yes. Open <strong>Host</strong>, select a player, and offer <strong>Pass Host</strong>. They have 20 seconds to accept; the current host stays in control until acceptance. This transfers the game-host role, not VRChat’s instance ownership or master role.</p>
+<h2 id="what-if-the-host-goes-afk">What if the host goes AFK?</h2>
+<p>After five minutes without meaningful activity, another player can <strong>Claim Host</strong>. A visible/audible 20-second warning gives the host time to use <strong>Keep Hosting</strong> or resume meaningful input. If the host leaves, claiming becomes available immediately. Only one claim can be pending.</p>
+<p>The creator has tested Pass Host and AFK Claim Host in uploaded play. Less common cases such as claimant departure and simulation-owner suspension still need expanded testing.</p>
+<h2 id="what-else-can-the-host-do">What else can the host do?</h2>
+<p>Force Start the ready players, Stop After This Stop, Restart Current Stop, or Reset Trip. Restart/reset require hold confirmation and preserve legitimate rewards, purchases, and cached loot claims. Repeated resets are not a way to generate free supplies.</p>
+<h2 id="why-did-the-round-start-without-me">Why did the round start without me?</h2>
+<p>Force Start departs with players who are ready. Loading players and spectators are excluded from the ready denominator. You can opt in later under the <a href="/guide/#joining-a-trip-already-in-progress">joining rules</a>.</p>
+<h2 id="why-cant-i-see-the-live-field-map">Why can’t I see the live field map?</h2>
+<p>The map is for eligible spectators at dispatch. Joining the crew, being downed, or waiting to enter as a participant removes live tracking. A missing or delayed network snapshot displays a waiting/tracking-age message.</p>
+<h2 id="why-does-tab-stop-me-on-desktop">Why does Tab stop me on desktop?</h2>
+<p>That happened in the tested VRChat client, including another world. Use the <a href="/guide/controls/">direct keyboard shortcuts</a> during movement. I can pin the menu for reading, but Tab is still needed for clicking.</p>
+<h2 id="what-makes-a-useful-bug-report">What makes a useful bug report?</h2>
+<p>Tell the playtest organizer the platform, approximate time, number of players, area, killer, and what happened before the issue. Include whether you were host or spectator, a screenshot if useful, and the build being tested. Avoid posting raw client logs publicly; they can contain account or session details.</p></article></main><aside class="toc"><p class="eyebrow">On this page</p><div class="toc">
+<ul>
+<li><a href="#is-this-the-finished-game">Is this the finished game?</a></li>
+<li><a href="#how-many-people-can-play">How many people can play?</a></li>
+<li><a href="#can-i-pass-control-of-the-game-to-someone-else">Can I pass control of the game to someone else?</a></li>
+<li><a href="#what-if-the-host-goes-afk">What if the host goes AFK?</a></li>
+<li><a href="#what-else-can-the-host-do">What else can the host do?</a></li>
+<li><a href="#why-did-the-round-start-without-me">Why did the round start without me?</a></li>
+<li><a href="#why-cant-i-see-the-live-field-map">Why can’t I see the live field map?</a></li>
+<li><a href="#why-does-tab-stop-me-on-desktop">Why does Tab stop me on desktop?</a></li>
+<li><a href="#what-makes-a-useful-bug-report">What makes a useful bug report?</a></li>
+</ul>
+</div>
+</aside></div>
+<footer><a class="footer-wordmark" href="/">SPOOKCO / LAST STOP</a><p>An independent VRChat world by kittynXR.<br>Prototype information. No release date is promised here.</p><a href="/guide/faq/">Questions? Visit dispatch →</a></footer>
+</body></html>

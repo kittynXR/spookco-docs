@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Development status | SpookCo</title><meta name="description" content="The current baseline, evidence levels, remaining work, and the next design focus."><meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://spookco.kittyn.cat/internal/"><meta name="theme-color" content="#0b1918">
+<meta property="og:title" content="Development status"><meta property="og:description" content="The current baseline, evidence levels, remaining work, and the next design focus."><meta property="og:type" content="website"><meta property="og:url" content="https://spookco.kittyn.cat/internal/">
+<link rel="icon" href="/assets/lantern.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css"><script defer src="/assets/site.js"></script></head>
+<body class="docs internal" data-search-index="/internal/search.json">
+<a class="skip" href="#main">Skip to content</a>
+<header class="header"><div class="header-inner"><a class="brand" href="/" aria-label="SpookCo home"><img src="/assets/lantern.svg" alt="" width="34" height="40"><span>SPOOKCO<small>LAST STOP</small></span></a><nav aria-label="Main"><a href="/guide/">Player guide</a><a href="/guide/controls/">Controls</a><a href="/internal/">Development notes</a></nav><span class="build-tag"><i aria-hidden="true"></i> IN DEVELOPMENT</span></div></header>
+<div class="notice"><span>FIELD TEST NOTICE</span> Work in progress. Art, balance, and features may change. Spectator radar &amp; AI diagnostics may not ship.</div>
+<div class="doc-layout"><aside class="sidebar"><p class="eyebrow">Development notes</p><nav aria-label="Section"><a href="/internal/" aria-current="page">Current status</a><a href="/internal/systems/">Systems &amp; architecture</a><a href="/internal/ai/">Killer baseline</a><a href="/internal/art/">Environment &amp; art</a><a href="/internal/roadmap/">Roadmap &amp; decisions</a><a href="/internal/testing/">Testing &amp; release gates</a><a href="/internal/publishing/">Updating this site</a></nav></aside><details class="mobile-sections"><summary>Development notes · pages</summary><nav aria-label="Section mobile"><a href="/internal/" aria-current="page">Current status</a><a href="/internal/systems/">Systems &amp; architecture</a><a href="/internal/ai/">Killer baseline</a><a href="/internal/art/">Environment &amp; art</a><a href="/internal/roadmap/">Roadmap &amp; decisions</a><a href="/internal/testing/">Testing &amp; release gates</a><a href="/internal/publishing/">Updating this site</a></nav></details><main id="main" tabindex="-1"><div class="page-bar"><a href="/internal/">Development notes</a><span>WORKING BUILD / SEPT 2026</span></div><div class="search"><label for="search">Search these notes</label><input id="search" type="search" placeholder="Try: acceptance" autocomplete="off" aria-controls="search-results"><div id="search-results" role="region" aria-label="Search results" aria-live="polite" hidden></div></div><article class="prose"><p class="eyebrow">Development field notes · September 13, 2026</p><h1 id="current-project-status">Current project status</h1>
+<p><strong>Playable baseline accepted. Not a release candidate.</strong> The creator reports that the basic game works, killers now provide a useful baseline, and Pass Host plus AFK Claim Host have been tested. The next priority is game and environment design; fine AI tuning is deferred until those decisions are clearer.</p>
+<p>These notes are <strong>unlisted, public documentation</strong>. They are not linked from the player navigation or public search index. Do not put credentials, private playtester details, or raw logs here. Development-only spectator radar and AI diagnostics may change or be removed.</p>
+<h2 id="how-to-read-the-status">How to read the status</h2>
+<p><strong>Implemented</strong> means the code and scene contain the feature. <strong>Locally checked</strong> means editor/static/ClientSim evidence exists. <strong>User confirmed</strong> identifies a reported uploaded playtest. <strong>Open</strong> means unfinished work or missing acceptance. These labels are deliberately not interchangeable.</p>
+<h2 id="system-register">System register</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table"><table>
+<thead>
+<tr>
+<th>System</th>
+<th>Current state</th>
+<th>Remaining acceptance / work</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Three-stop trip and phase flow</td>
+<td>Implemented; basic loop user confirmed</td>
+<td>Full 1/2/4/8/12/16-player trips and pace measurements</td>
+</tr>
+<tr>
+<td>Two locations and campfire refuge</td>
+<td>Playable grayboxes</td>
+<td>Route design, atmosphere, readable silhouettes, van art/interior decision</td>
+</tr>
+<tr>
+<td>Cargo, repairs, quotas, late entry</td>
+<td>Implemented; local checks</td>
+<td>Real concurrent work, disconnects, scaling transitions</td>
+</tr>
+<tr>
+<td>Damage, rescue, all-down recovery</td>
+<td>Implemented; local checks; capture observed in uploaded play</td>
+<td>Group/solo fairness and interrupted recovery cases</td>
+</tr>
+<tr>
+<td>Six killers and navigation</td>
+<td>Working baseline user accepted; local regression checks</td>
+<td>Fairness, pressure allocation, charge/warp/hazard presentation</td>
+</tr>
+<tr>
+<td>Movement hearing and multi-point search</td>
+<td>Implemented; local hearing/replication/render checks</td>
+<td>Natural human evasion and different party sizes</td>
+</tr>
+<tr>
+<td>Spectator map and remote killer model</td>
+<td>Shared feed and fixes implemented; local receiver/render checks</td>
+<td>Fresh non-owner and migration matrix; final radar policy</td>
+</tr>
+<tr>
+<td>Inventory, shop, shared loot</td>
+<td>Implemented; local transaction checks</td>
+<td>Real-client collection/purchase races and interrupted grants</td>
+</tr>
+<tr>
+<td>XP, survival milestones, ten perks</td>
+<td>Implemented; local rule checks</td>
+<td>Reward economy, early upgrade timing, 20+ hour progression target</td>
+</tr>
+<tr>
+<td>Persistence and session wallets</td>
+<td>Restore/save paths implemented</td>
+<td>Uploaded reconnect, A → B → A, crash/save boundaries</td>
+</tr>
+<tr>
+<td>Ready/Watch and Force Start</td>
+<td>Implemented; local integration checks</td>
+<td>Simultaneous ready/cancel/departure and late join matrix</td>
+</tr>
+<tr>
+<td>Pass Host and AFK Claim Host</td>
+<td>User confirmed in uploaded play</td>
+<td>Offer decline/expiry, Keep Hosting, claimant departure, phase matrix</td>
+</tr>
+<tr>
+<td>Simulation ownership recovery</td>
+<td>Implemented; local fixtures</td>
+<td>Real suspension/departure during every transaction and AI mode</td>
+</tr>
+<tr>
+<td>Desktop controls and accessibility</td>
+<td>Implemented; creator has tested desktop</td>
+<td>Full shortcut/rebind/menu-interruption acceptance</td>
+</tr>
+<tr>
+<td>VR wrist/floating controls</td>
+<td>Implemented</td>
+<td>Physical VR, handedness, seated and avatar-scale testing</td>
+</tr>
+<tr>
+<td>Touch controls</td>
+<td>Implemented; iPhone tried</td>
+<td>Discoverability, layout, touch ergonomics and Android phone tests</td>
+</tr>
+<tr>
+<td>18-person instance overflow</td>
+<td>Accepted requirement; not implemented</td>
+<td>Admission and spectator/participant capacity policy and tests</td>
+</tr>
+<tr>
+<td>Art, animation, sound, lighting</td>
+<td>Original placeholders; baked lighting exists</td>
+<td>Final asset pass, readable cues, ambience, mix and credits</td>
+</tr>
+<tr>
+<td>Platform builds</td>
+<td>PC, Android, iOS SDK bundles successful</td>
+<td>Matching final uploads and physical platform verification</td>
+</tr>
+<tr>
+<td>Performance</td>
+<td>Small baseline assets; structural counts recorded</td>
+<td>30-minute 1/16-player frame-time and memory captures</td>
+</tr>
+<tr>
+<td>Contest/release</td>
+<td>Planned</td>
+<td>Final rules/credits review, RC and manual submission</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="baseline-snapshot">Baseline snapshot</h2>
+<p>Game checkpoint: <strong>7e74a00 — Establish playable killer hearing and search baseline</strong>. Unity <strong>2022.3.22f1</strong>, VRChat SDK <strong>3.10.5</strong>, AI Navigation <strong>1.1.5</strong>. Do not upgrade the project to obtain Unity 6 tooling.</p>
+<p>The seven latest local lanes contain <strong>855 passing assertions</strong>, spanning structural checks and explicit single-VM fixtures. That is useful regression evidence, not 855 real multiplayer scenarios. See <a href="/internal/testing/">testing and release gates</a> for exact lanes, dates, build sizes, and limits.</p>
+<h2 id="design-work-comes-next">Design work comes next</h2>
+<ol>
+<li>Establish the rhythm of a stop: safe planning, uncertain search, readable pursuit, escape, and a short breather.</li>
+<li>Redesign the two graybox layouts around that rhythm, especially solo routes and the approach to the refuge.</li>
+<li>Define the van/campfire and six killer silhouettes before investing in detailed props.</li>
+<li>Play the core objectives repeatedly with small and large groups before changing AI numbers again.</li>
+<li>Keep regression coverage and record every new uploaded test with build, devices, party size, and result.</li>
+</ol>
+<p>Detailed <a href="/internal/systems/">systems</a>, <a href="/internal/ai/">AI</a>, <a href="/internal/art/">environment/art</a>, <a href="/internal/roadmap/">roadmap</a>, and <a href="/internal/publishing/">publishing instructions</a> are maintained separately.</p></article><a class="next-page" href="/internal/systems/"><span>Continue reading</span><strong>Systems &amp; architecture →</strong></a></main><aside class="toc"><p class="eyebrow">On this page</p><div class="toc">
+<ul>
+<li><a href="#how-to-read-the-status">How to read the status</a></li>
+<li><a href="#system-register">System register</a></li>
+<li><a href="#baseline-snapshot">Baseline snapshot</a></li>
+<li><a href="#design-work-comes-next">Design work comes next</a></li>
+</ul>
+</div>
+</aside></div>
+<footer><a class="footer-wordmark" href="/">SPOOKCO / LAST STOP</a><p>Unlisted public notes · no sensitive information.<br>Prototype information. No release date is promised here.</p><a href="/guide/faq/">Questions? Visit dispatch →</a></footer>
+</body></html>

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Progression &amp; saving | SpookCo</title><meta name="description" content="What carries between visits, what belongs to a live session, and how perks work.">
+<link rel="canonical" href="https://spookco.kittyn.cat/guide/progression/"><meta name="theme-color" content="#0b1918">
+<meta property="og:title" content="Progression &amp; saving"><meta property="og:description" content="What carries between visits, what belongs to a live session, and how perks work."><meta property="og:type" content="website"><meta property="og:url" content="https://spookco.kittyn.cat/guide/progression/">
+<link rel="icon" href="/assets/lantern.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css"><script defer src="/assets/site.js"></script></head>
+<body class="docs" data-search-index="/search.json">
+<a class="skip" href="#main">Skip to content</a>
+<header class="header"><div class="header-inner"><a class="brand" href="/" aria-label="SpookCo home"><img src="/assets/lantern.svg" alt="" width="34" height="40"><span>SPOOKCO<small>LAST STOP</small></span></a><nav aria-label="Main"><a href="/guide/">Player guide</a><a href="/guide/controls/">Controls</a></nav><span class="build-tag"><i aria-hidden="true"></i> IN DEVELOPMENT</span></div></header>
+<div class="notice"><span>FIELD TEST NOTICE</span> Work in progress. Art, balance, and features may change. Spectator radar &amp; AI diagnostics may not ship.</div>
+<div class="doc-layout"><aside class="sidebar"><p class="eyebrow">Employee field guide</p><nav aria-label="Section"><a href="/guide/">Your first shift</a><a href="/guide/controls/">Controls &amp; accessibility</a><a href="/guide/equipment/">Equipment &amp; supplies</a><a href="/guide/progression/" aria-current="page">Progression &amp; saving</a><a href="/guide/threats/">Know the threats</a><a href="/guide/faq/">Dispatch FAQ</a></nav></aside><details class="mobile-sections"><summary>Employee field guide · pages</summary><nav aria-label="Section mobile"><a href="/guide/">Your first shift</a><a href="/guide/controls/">Controls &amp; accessibility</a><a href="/guide/equipment/">Equipment &amp; supplies</a><a href="/guide/progression/" aria-current="page">Progression &amp; saving</a><a href="/guide/threats/">Know the threats</a><a href="/guide/faq/">Dispatch FAQ</a></nav></details><main id="main" tabindex="-1"><div class="page-bar"><a href="/guide/">Player guide</a><span>WORKING BUILD / SEPT 2026</span></div><div class="search"><label for="search">Search these guides</label><input id="search" type="search" placeholder="Try: cargo" autocomplete="off" aria-controls="search-results"><div id="search-results" role="region" aria-label="Search results" aria-live="polite" hidden></div></div><article class="prose"><p class="eyebrow">Employee field guide · 04</p><h1 id="progression-saving">Progression &amp; saving</h1>
+<p>The save system is implemented, but reconnect and multi-instance edge cases still need expanded uploaded testing. Do not treat a development build as a permanent economy guarantee.</p>
+<h2 id="what-stays-with-you">What stays with you</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table"><table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Purpose</th>
+<th>Intended lifetime</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>XP</td>
+<td>Levels and perk-point capacity</td>
+<td>Permanent across visits</td>
+</tr>
+<tr>
+<td>Survival points</td>
+<td>Lifetime equipment milestones; never spent</td>
+<td>Permanent across visits</td>
+</tr>
+<tr>
+<td>Cash</td>
+<td>Buy consumables</td>
+<td>The live instance session</td>
+</tr>
+<tr>
+<td>Consumable pouch</td>
+<td>Purchased and scavenged supplies</td>
+<td>The live instance session</td>
+</tr>
+<tr>
+<td>Build and controls</td>
+<td>Perk/equipment choices and device preferences</td>
+<td>Saved across visits</td>
+</tr>
+</tbody>
+</table></div>
+<p>Rejoining the same live session is designed to restore cash, pouch contents, and relevant equipment state. A → B → A uses separate records while A remains live. Up to 128 recent sessions are retained. When everyone leaves, that session ends; a later fresh session begins with fresh cash and supplies.</p>
+<p>Wait for restoration before shopping or collecting. Accepted changes are saved during play, not just on departure. A sudden crash can lose the most recent cloud write. Capture does not remove banked XP or survival points.</p>
+<h2 id="levels-and-perk-points">Levels and perk points</h2>
+<p>Start at <strong>level 1 with 2 points</strong>. Gain one point every three levels, reaching <strong>15 points at level 40</strong>. Choose any combination of unique perks within your budget and respec freely during briefings.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table"><table>
+<thead>
+<tr>
+<th>Perk</th>
+<th style="text-align: right;">Cost</th>
+<th>Current effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Spotter</td>
+<td style="text-align: right;">1</td>
+<td>Objective markers visible 50% farther away</td>
+</tr>
+<tr>
+<td>Courier</td>
+<td style="text-align: right;">2</td>
+<td>Removes the cargo movement penalty</td>
+</tr>
+<tr>
+<td>Mechanic</td>
+<td style="text-align: right;">2</td>
+<td>Repairs 25% faster</td>
+</tr>
+<tr>
+<td>Field Medic</td>
+<td style="text-align: right;">2</td>
+<td>Rescue interaction takes two seconds</td>
+</tr>
+<tr>
+<td>Scrapper</td>
+<td style="text-align: right;">2</td>
+<td>20% more objective cash</td>
+</tr>
+<tr>
+<td>Soft Soles</td>
+<td style="text-align: right;">3</td>
+<td>Movement hearing range reduced by 25%</td>
+</tr>
+<tr>
+<td>Adrenaline</td>
+<td style="text-align: right;">3</td>
+<td>Extraction movement bonus</td>
+</tr>
+<tr>
+<td>Quickdraw</td>
+<td style="text-align: right;">3</td>
+<td>Active equipment cooldowns reduced by 20%</td>
+</tr>
+<tr>
+<td>Hardhat</td>
+<td style="text-align: right;">4</td>
+<td>One extra maximum health</td>
+</tr>
+<tr>
+<td>Second Wind</td>
+<td style="text-align: right;">4</td>
+<td>Six-second field recovery on first down each stop</td>
+</tr>
+</tbody>
+</table></div>
+<p>Combined positive movement bonuses are capped at 20%. Perks support different roles; required tasks remain possible with the starter loadout.</p>
+<p>XP comes from objectives, bounded rescue participation, participated contract/extraction results, and trip results. Idle waiting and supply collection do not generate XP. The level curve totals <strong>31,785 XP</strong> to level 40. A 20+ hour route to full capacity is a <strong>design target</strong>, not a measured result yet.</p></article><a class="next-page" href="/guide/threats/"><span>Continue reading</span><strong>Know the threats →</strong></a></main><aside class="toc"><p class="eyebrow">On this page</p><div class="toc">
+<ul>
+<li><a href="#what-stays-with-you">What stays with you</a></li>
+<li><a href="#levels-and-perk-points">Levels and perk points</a></li>
+</ul>
+</div>
+</aside></div>
+<footer><a class="footer-wordmark" href="/">SPOOKCO / LAST STOP</a><p>An independent VRChat world by kittynXR.<br>Prototype information. No release date is promised here.</p><a href="/guide/faq/">Questions? Visit dispatch →</a></footer>
+</body></html>

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Killer baseline | SpookCo</title><meta name="description" content="Current sensing, search personalities, spectator presentation, and deferred AI work."><meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://spookco.kittyn.cat/internal/ai/"><meta name="theme-color" content="#0b1918">
+<meta property="og:title" content="Killer baseline"><meta property="og:description" content="Current sensing, search personalities, spectator presentation, and deferred AI work."><meta property="og:type" content="website"><meta property="og:url" content="https://spookco.kittyn.cat/internal/ai/">
+<link rel="icon" href="/assets/lantern.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css"><script defer src="/assets/site.js"></script></head>
+<body class="docs internal" data-search-index="/internal/search.json">
+<a class="skip" href="#main">Skip to content</a>
+<header class="header"><div class="header-inner"><a class="brand" href="/" aria-label="SpookCo home"><img src="/assets/lantern.svg" alt="" width="34" height="40"><span>SPOOKCO<small>LAST STOP</small></span></a><nav aria-label="Main"><a href="/guide/">Player guide</a><a href="/guide/controls/">Controls</a><a href="/internal/">Development notes</a></nav><span class="build-tag"><i aria-hidden="true"></i> IN DEVELOPMENT</span></div></header>
+<div class="notice"><span>FIELD TEST NOTICE</span> Work in progress. Art, balance, and features may change. Spectator radar &amp; AI diagnostics may not ship.</div>
+<div class="doc-layout"><aside class="sidebar"><p class="eyebrow">Development notes</p><nav aria-label="Section"><a href="/internal/">Current status</a><a href="/internal/systems/">Systems &amp; architecture</a><a href="/internal/ai/" aria-current="page">Killer baseline</a><a href="/internal/art/">Environment &amp; art</a><a href="/internal/roadmap/">Roadmap &amp; decisions</a><a href="/internal/testing/">Testing &amp; release gates</a><a href="/internal/publishing/">Updating this site</a></nav></aside><details class="mobile-sections"><summary>Development notes · pages</summary><nav aria-label="Section mobile"><a href="/internal/">Current status</a><a href="/internal/systems/">Systems &amp; architecture</a><a href="/internal/ai/" aria-current="page">Killer baseline</a><a href="/internal/art/">Environment &amp; art</a><a href="/internal/roadmap/">Roadmap &amp; decisions</a><a href="/internal/testing/">Testing &amp; release gates</a><a href="/internal/publishing/">Updating this site</a></nav></details><main id="main" tabindex="-1"><div class="page-bar"><a href="/internal/">Development notes</a><span>WORKING BUILD / SEPT 2026</span></div><div class="search"><label for="search">Search these notes</label><input id="search" type="search" placeholder="Try: acceptance" autocomplete="off" aria-controls="search-results"><div id="search-results" role="region" aria-label="Search results" aria-live="polite" hidden></div></div><article class="prose"><p class="eyebrow">Development field notes · AI</p><h1 id="killer-baseline">Killer baseline</h1>
+<p>The creator accepts this as a useful working foundation. Fine tuning is deliberately paused while game and environment design improve. Do not mistake that decision for final AI or difficulty acceptance.</p>
+<h2 id="sensing-and-search-tuning">Sensing and search tuning</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table"><table>
+<thead>
+<tr>
+<th>Killer</th>
+<th style="text-align: right;">Walk hearing</th>
+<th style="text-align: right;">Run hearing</th>
+<th style="text-align: right;">Search budget</th>
+<th style="text-align: right;">Search points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Groundskeeper</td>
+<td style="text-align: right;">10 m</td>
+<td style="text-align: right;">20 m</td>
+<td style="text-align: right;">18 s</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td>Rattletrap</td>
+<td style="text-align: right;">14 m</td>
+<td style="text-align: right;">26 m</td>
+<td style="text-align: right;">22 s</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td>Roadkill</td>
+<td style="text-align: right;">8 m</td>
+<td style="text-align: right;">18 m</td>
+<td style="text-align: right;">14 s</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>Hitchhiker</td>
+<td style="text-align: right;">8 m</td>
+<td style="text-align: right;">16 m</td>
+<td style="text-align: right;">12 s</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>Usher</td>
+<td style="text-align: right;">9 m</td>
+<td style="text-align: right;">18 m</td>
+<td style="text-align: right;">18 s</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td>Switchboard</td>
+<td style="text-align: right;">10 m</td>
+<td style="text-align: right;">22 m</td>
+<td style="text-align: right;">20 s</td>
+<td style="text-align: right;">4</td>
+</tr>
+</tbody>
+</table></div>
+<p>Movement sensing uses horizontal player speed: greater than 0.6 m/s starts walking noise, greater than 3 m/s uses running range. Detection distance is spherical. Soft Soles multiplies movement ranges by 0.75. Safe, downed/ineligible, and suspended players are excluded. This does not inspect microphone input.</p>
+<p>Visible and audible candidates are distinct. Vision takes priority; sound behind cover starts investigation without granting sight-only warnings/attacks. New sound evidence refreshes at most every 0.8 seconds. When a player becomes quiet or leaves hearing range, the last evidence and deadline stop following them.</p>
+<p>Rattletrap remains blind, with the largest movement ranges and separate task-noise investigation. Usher investigates after a broken warning and must warn afresh when it visually reacquires.</p>
+<h2 id="turning-corners-and-searching">Turning corners and searching</h2>
+<p>Observed movement can project a short continuation, bounded to five metres. Mode 6 searches alternate nearby reachable NavMesh probes with authored route anchors. Missing route anchors no longer cause instant abandonment. Searches have both time and point budgets, so the configured duration is a ceiling rather than a guaranteed wait.</p>
+<p>Search pauses sweep left/right for 2.2 seconds through a ±100° range. Moving patrol/search adds bounded lateral scanning (±28° patrol, ±45° search) without stopping navigation. Actual facing drives vision and presentation. Synced checkpoint fields preserve probe position, progress, reference heading, and sensing state.</p>
+<p>The hearing pass did not increase speeds. The baseline uses roughly 3.25 m/s pursuit, 3.1 for Rattletrap and 3.65 for a Hitchhiker burst; player walk/run are 2.7/4.3 before modifiers. There is no claim that these values produce fair pressure for every party size.</p>
+<h2 id="presentation-and-debug-surfaces">Presentation and debug surfaces</h2>
+<p>The world killer model and spectator map use the same always-active feed. Non-owners wait for a matching pose, snap on the first valid sample/round change, then interpolate nearby updates. Feed data includes warning/hazard/decoy state and hearing ranges.</p>
+<p>The map’s gold vision outline is clipped against cover; blue rings show walking/running hearing. Explicit sorting keeps them above terrain. Only eligible dispatch spectators can view tracking. The map is a horizontal projection, so vertical cover and actual head visibility can differ.</p>
+<p>Host → AI diagnostics is an optional independent reader for owner IDs, heartbeat age, path state, feed receipt, presentation readiness, and movement information. <strong>Radar visibility and diagnostics are development features; decide whether to remove or restrict them before release.</strong></p>
+<h2 id="deferred-work-and-acceptance">Deferred work and acceptance</h2>
+<ul>
+<li>Fair search persistence and pressure distribution for solo through 16 participants.</li>
+<li>Human evasion across multiple corners, noisy work, decoys, and changing routes.</li>
+<li>Roadkill charge visibility versus actual hits under latency.</li>
+<li>Hitchhiker warp presentation and safe relocation tells.</li>
+<li>Switchboard hazard cover rules, warning/active distinction, and alternate escape routes.</li>
+<li>Unreachable targets with reachable alternatives and owner changes in every mode.</li>
+<li>Cooldown/stun immunity and strong-perk builds without unavoidable chains.</li>
+</ul>
+<p>The local lanes cover navigation, frozen evidence, hearing boundaries/perks, search expiry, synced metadata, and rendered rings/cones. The fresh uploaded fairness and migration matrix remains open.</p></article><a class="next-page" href="/internal/art/"><span>Continue reading</span><strong>Environment &amp; art →</strong></a></main><aside class="toc"><p class="eyebrow">On this page</p><div class="toc">
+<ul>
+<li><a href="#sensing-and-search-tuning">Sensing and search tuning</a></li>
+<li><a href="#turning-corners-and-searching">Turning corners and searching</a></li>
+<li><a href="#presentation-and-debug-surfaces">Presentation and debug surfaces</a></li>
+<li><a href="#deferred-work-and-acceptance">Deferred work and acceptance</a></li>
+</ul>
+</div>
+</aside></div>
+<footer><a class="footer-wordmark" href="/">SPOOKCO / LAST STOP</a><p>Unlisted public notes · no sensitive information.<br>Prototype information. No release date is promised here.</p><a href="/guide/faq/">Questions? Visit dispatch →</a></footer>
+</body></html>

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Updating this site | SpookCo</title><meta name="description" content="Markdown editing, the separate deployment repository, and automatic GitHub Pages publishing."><meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://spookco.kittyn.cat/internal/publishing/"><meta name="theme-color" content="#0b1918">
+<meta property="og:title" content="Updating this site"><meta property="og:description" content="Markdown editing, the separate deployment repository, and automatic GitHub Pages publishing."><meta property="og:type" content="website"><meta property="og:url" content="https://spookco.kittyn.cat/internal/publishing/">
+<link rel="icon" href="/assets/lantern.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css"><script defer src="/assets/site.js"></script></head>
+<body class="docs internal" data-search-index="/internal/search.json">
+<a class="skip" href="#main">Skip to content</a>
+<header class="header"><div class="header-inner"><a class="brand" href="/" aria-label="SpookCo home"><img src="/assets/lantern.svg" alt="" width="34" height="40"><span>SPOOKCO<small>LAST STOP</small></span></a><nav aria-label="Main"><a href="/guide/">Player guide</a><a href="/guide/controls/">Controls</a><a href="/internal/">Development notes</a></nav><span class="build-tag"><i aria-hidden="true"></i> IN DEVELOPMENT</span></div></header>
+<div class="notice"><span>FIELD TEST NOTICE</span> Work in progress. Art, balance, and features may change. Spectator radar &amp; AI diagnostics may not ship.</div>
+<div class="doc-layout"><aside class="sidebar"><p class="eyebrow">Development notes</p><nav aria-label="Section"><a href="/internal/">Current status</a><a href="/internal/systems/">Systems &amp; architecture</a><a href="/internal/ai/">Killer baseline</a><a href="/internal/art/">Environment &amp; art</a><a href="/internal/roadmap/">Roadmap &amp; decisions</a><a href="/internal/testing/">Testing &amp; release gates</a><a href="/internal/publishing/" aria-current="page">Updating this site</a></nav></aside><details class="mobile-sections"><summary>Development notes · pages</summary><nav aria-label="Section mobile"><a href="/internal/">Current status</a><a href="/internal/systems/">Systems &amp; architecture</a><a href="/internal/ai/">Killer baseline</a><a href="/internal/art/">Environment &amp; art</a><a href="/internal/roadmap/">Roadmap &amp; decisions</a><a href="/internal/testing/">Testing &amp; release gates</a><a href="/internal/publishing/" aria-current="page">Updating this site</a></nav></details><main id="main" tabindex="-1"><div class="page-bar"><a href="/internal/">Development notes</a><span>WORKING BUILD / SEPT 2026</span></div><div class="search"><label for="search">Search these notes</label><input id="search" type="search" placeholder="Try: acceptance" autocomplete="off" aria-controls="search-results"><div id="search-results" role="region" aria-label="Search results" aria-live="polite" hidden></div></div><article class="prose"><p class="eyebrow">Development field notes · Publishing</p><h1 id="updating-this-site">Updating this site</h1>
+<h2 id="one-normal-project-push">One normal project push</h2>
+<p>The canonical website source lives at <strong>Docs/site/</strong> in the main SpookCo repository. Edit the Markdown in <code>Docs/site/content/</code>, commit it with the rest of the project, and push <code>main</code>. The <strong>Publish documentation</strong> GitHub Action builds and checks the site, then copies only the generated website into the separate <strong>kittynXR/spookco-docs</strong> repository. GitHub Pages serves that repository at <strong>spookco.kittyn.cat</strong>.</p>
+<p>There is an ignored local checkout at <code>Docs/site-repo/</code> for inspecting the deployment repository. It is not a submodule and does not need to be committed from the game repo. Do not author content there: the next publish replaces generated pages. No Unity assets, client logs, player data, or game source are copied to the public docs repository.</p>
+<h2 id="editing-map">Editing map</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table"><table>
+<thead>
+<tr>
+<th>File or folder</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>content/index.md</td>
+<td>Player landing-page copy</td>
+</tr>
+<tr>
+<td>content/guide/</td>
+<td>Quick start, controls, equipment, progression, threats, FAQ</td>
+</tr>
+<tr>
+<td>content/internal/</td>
+<td>Current status, systems, AI, art/design, roadmap, testing, publishing</td>
+</tr>
+<tr>
+<td>assets/site.css</td>
+<td>Shared responsive visual design</td>
+</tr>
+<tr>
+<td>assets/site.js</td>
+<td>Navigation/search enhancement</td>
+</tr>
+<tr>
+<td>assets/night-shift.svg</td>
+<td>Original decorative illustration, not a screenshot</td>
+</tr>
+<tr>
+<td>build.py</td>
+<td>Markdown rendering, templates, separate search indexes, sitemap</td>
+</tr>
+<tr>
+<td>check.py</td>
+<td>Broken links/anchors and public/internal separation checks</td>
+</tr>
+<tr>
+<td>requirements.txt</td>
+<td>Pinned Markdown dependency</td>
+</tr>
+</tbody>
+</table></div>
+<p>The existing engineering reports outside <code>Docs/site/</code> remain project documentation. They are not blindly mirrored to the public site. Update the curated status/testing pages when a new result supersedes an older one. Label results as implemented, locally checked, user confirmed, or open; include the tested build and date when available.</p>
+<h2 id="preview-locally">Preview locally</h2>
+<p>From <code>Docs/site/</code>, create a Python 3.12+ virtual environment, install requirements, then run:</p>
+<pre><code class="language-sh">python -m pip install -r requirements.txt
+python build.py
+python check.py
+python -m http.server 8765 --directory _build --bind 127.0.0.1
+</code></pre>
+<p>Open <code>http://127.0.0.1:8765/</code> and <code>/internal/</code>. The build output and local environment are ignored by Git. The Action uses the same build/check commands before publication.</p>
+<h2 id="publishing-and-credentials">Publishing and credentials</h2>
+<p>The publishing Action runs for changes under <code>Docs/site/**</code> or its workflow, and can be run manually. It has read-only access to the main repo and uses a dedicated SSH deploy key with write access only to the docs repository. The private key is stored in the main repo’s <strong>SPOOKCO_DOCS_DEPLOY_KEY</strong> Actions secret. Never put its contents into source, Markdown, or logs. SSH host verification uses GitHub’s pinned Ed25519 host key.</p>
+<p>The docs repository publishes generated files from <code>main</code> at the repository root, with a <code>.nojekyll</code> file and <code>CNAME</code> containing <code>spookco.kittyn.cat</code>. Each deployment records the source revision in <code>build-info.json</code>. A failed build/check stops before replacing the deployed site; pushes are normal fast-forward updates with no force push.</p>
+<p>If publication fails, inspect the main repo’s Action first, then the docs repo’s Pages build/deployment. Confirm the deploy key still exists and the custom domain points to GitHub Pages. Cloudflare proxy/certificate changes can affect HTTPS independently of a successful site build.</p>
+<h2 id="public-versus-internal">Public versus internal</h2>
+<p>Player pages, player navigation, the public search index, and sitemap contain no links to <code>/internal/</code>. Internal pages have their own navigation/search and <code>noindex, nofollow</code> metadata. This is discoverability separation, <strong>not authentication</strong>. Someone with the URL can read or share the pages, and the generated docs repository is public.</p>
+<p>Do not publish secrets or sensitive operational details here. If actual private team documentation becomes necessary, put it behind authentication instead of relying on an unlisted path.</p>
+<h2 id="platform-references">Platform references</h2>
+<p>Publishing follows GitHub’s <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site">Pages publishing-source documentation</a>, <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site">custom-domain setup</a>, and <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/managing-deploy-keys">deploy-key documentation</a>.</p></article></main><aside class="toc"><p class="eyebrow">On this page</p><div class="toc">
+<ul>
+<li><a href="#one-normal-project-push">One normal project push</a></li>
+<li><a href="#editing-map">Editing map</a></li>
+<li><a href="#preview-locally">Preview locally</a></li>
+<li><a href="#publishing-and-credentials">Publishing and credentials</a></li>
+<li><a href="#public-versus-internal">Public versus internal</a></li>
+<li><a href="#platform-references">Platform references</a></li>
+</ul>
+</div>
+</aside></div>
+<footer><a class="footer-wordmark" href="/">SPOOKCO / LAST STOP</a><p>Unlisted public notes · no sensitive information.<br>Prototype information. No release date is promised here.</p><a href="/guide/faq/">Questions? Visit dispatch →</a></footer>
+</body></html>

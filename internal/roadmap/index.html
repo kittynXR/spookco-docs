@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roadmap &amp; open decisions | SpookCo</title><meta name="description" content="A design-first next pass and the remaining release work."><meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://spookco.kittyn.cat/internal/roadmap/"><meta name="theme-color" content="#0b1918">
+<meta property="og:title" content="Roadmap &amp; open decisions"><meta property="og:description" content="A design-first next pass and the remaining release work."><meta property="og:type" content="website"><meta property="og:url" content="https://spookco.kittyn.cat/internal/roadmap/">
+<link rel="icon" href="/assets/lantern.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css"><script defer src="/assets/site.js"></script></head>
+<body class="docs internal" data-search-index="/internal/search.json">
+<a class="skip" href="#main">Skip to content</a>
+<header class="header"><div class="header-inner"><a class="brand" href="/" aria-label="SpookCo home"><img src="/assets/lantern.svg" alt="" width="34" height="40"><span>SPOOKCO<small>LAST STOP</small></span></a><nav aria-label="Main"><a href="/guide/">Player guide</a><a href="/guide/controls/">Controls</a><a href="/internal/">Development notes</a></nav><span class="build-tag"><i aria-hidden="true"></i> IN DEVELOPMENT</span></div></header>
+<div class="notice"><span>FIELD TEST NOTICE</span> Work in progress. Art, balance, and features may change. Spectator radar &amp; AI diagnostics may not ship.</div>
+<div class="doc-layout"><aside class="sidebar"><p class="eyebrow">Development notes</p><nav aria-label="Section"><a href="/internal/">Current status</a><a href="/internal/systems/">Systems &amp; architecture</a><a href="/internal/ai/">Killer baseline</a><a href="/internal/art/">Environment &amp; art</a><a href="/internal/roadmap/" aria-current="page">Roadmap &amp; decisions</a><a href="/internal/testing/">Testing &amp; release gates</a><a href="/internal/publishing/">Updating this site</a></nav></aside><details class="mobile-sections"><summary>Development notes · pages</summary><nav aria-label="Section mobile"><a href="/internal/">Current status</a><a href="/internal/systems/">Systems &amp; architecture</a><a href="/internal/ai/">Killer baseline</a><a href="/internal/art/">Environment &amp; art</a><a href="/internal/roadmap/" aria-current="page">Roadmap &amp; decisions</a><a href="/internal/testing/">Testing &amp; release gates</a><a href="/internal/publishing/">Updating this site</a></nav></details><main id="main" tabindex="-1"><div class="page-bar"><a href="/internal/">Development notes</a><span>WORKING BUILD / SEPT 2026</span></div><div class="search"><label for="search">Search these notes</label><input id="search" type="search" placeholder="Try: acceptance" autocomplete="off" aria-controls="search-results"><div id="search-results" role="region" aria-label="Search results" aria-live="polite" hidden></div></div><article class="prose"><p class="eyebrow">Development field notes · Planning</p><h1 id="roadmap-open-decisions">Roadmap &amp; open decisions</h1>
+<p>The original two-week plan remains a delivery framework. The current implementation moved ahead of final content, but not all acceptance gates are closed. The next pass prioritizes <strong>game and environment design</strong> while preserving the working killer baseline.</p>
+<h2 id="next-make-the-stops-distinct">Next: make the stops distinct</h2>
+<ul>
+<li>Review solo and group routes in both areas and the readability of safe refuge access.</li>
+<li>Define the van/campfire visual identity and decide whether the van needs a walkable interior.</li>
+<li>Improve objective feedback and meaningful scavenging decisions.</li>
+<li>Choose a cohesive palette, lighting mood, modular environment kit, and six killer silhouettes.</li>
+<li>Measure short-loop fun and pacing with ordinary players before further AI tuning.</li>
+</ul>
+<h2 id="then-finish-integration-and-scale">Then: finish integration and scale</h2>
+<ul>
+<li>Implement the accepted 18-person instance overflow policy while keeping gameplay tuned for 1–16 participants.</li>
+<li>Complete actual concurrent loot/purchase/cargo tests and reconnect A → B → A testing.</li>
+<li>Exercise ready countdown races, late entry, withdrawal, and quota reductions.</li>
+<li>Extend host-control testing beyond the user-confirmed Pass Host/AFK claim path to departures, cancellation, and suspension.</li>
+<li>Verify VR wrist/floating inventory, touch ergonomics, desktop direct shortcuts, and all accessibility alternatives.</li>
+</ul>
+<h2 id="then-balance-content-freeze-and-profiling">Then: balance, content freeze, and profiling</h2>
+<ul>
+<li>Tune rewards toward a meaningful upgrade around the first half-hour and 20+ hours to full perk capacity; neither timing is yet measured.</li>
+<li>Test all six killers with starter solo loadouts in both areas and with larger groups.</li>
+<li>Review charge/warp/hazard fairness, repeated stuns, and strong perk combinations.</li>
+<li>Complete art/audio, warning clarity, credits, dawn report polish, and the final status of spectator radar/AI diagnostics.</li>
+<li>Run 30-minute 1/16-player performance sessions, report world and public-avatar costs separately, and fix measured bottlenecks.</li>
+</ul>
+<h2 id="release-targets">Release targets</h2>
+<p>The working plan targets a <strong>September 27, 2026 release candidate</strong> with a buffer before the planned <strong>October 1, 2026, 11:59:59 p.m. Pacific</strong> submission deadline. These are planning dates. Recheck the official contest rules, content requirements, and submission instructions before release; this site is not an eligibility ruling.</p>
+<p>Produce matching PC, Android, and iOS builds, review SDK warnings and credits, upload manually, and submit manually. Do not equate successful asset-bundle compilation with a released world or contest submission.</p>
+<h2 id="decisions-still-open">Decisions still open</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table"><table>
+<thead>
+<tr>
+<th>Decision</th>
+<th>Why it matters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>18-person overflow behavior</td>
+<td>Creator exceptions can exceed a 16-person instance cap; runtime admission still needs handling.</td>
+</tr>
+<tr>
+<td>Final spectator information</td>
+<td>Full sensing radar may undermine mystery; current display is useful for testing.</td>
+</tr>
+<tr>
+<td>Debug controls in release</td>
+<td>Determine whether to strip, gate, or retain diagnostics.</td>
+</tr>
+<tr>
+<td>Van interior versus exterior refuge</td>
+<td>Changes art effort, collision, capacity, and navigation.</td>
+</tr>
+<tr>
+<td>Solo/group pressure and economy</td>
+<td>Current numbers are initial tuning; measure fun and progression.</td>
+</tr>
+<tr>
+<td>Final art/audio scope</td>
+<td>Keep two areas and six identities achievable without increasing mobile cost excessively.</td>
+</tr>
+</tbody>
+</table></div></article><a class="next-page" href="/internal/testing/"><span>Continue reading</span><strong>Testing &amp; release gates →</strong></a></main><aside class="toc"><p class="eyebrow">On this page</p><div class="toc">
+<ul>
+<li><a href="#next-make-the-stops-distinct">Next: make the stops distinct</a></li>
+<li><a href="#then-finish-integration-and-scale">Then: finish integration and scale</a></li>
+<li><a href="#then-balance-content-freeze-and-profiling">Then: balance, content freeze, and profiling</a></li>
+<li><a href="#release-targets">Release targets</a></li>
+<li><a href="#decisions-still-open">Decisions still open</a></li>
+</ul>
+</div>
+</aside></div>
+<footer><a class="footer-wordmark" href="/">SPOOKCO / LAST STOP</a><p>Unlisted public notes · no sensitive information.<br>Prototype information. No release date is promised here.</p><a href="/guide/faq/">Questions? Visit dispatch →</a></footer>
+</body></html>
