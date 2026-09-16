@@ -9,14 +9,15 @@
 <header class="header"><div class="header-inner"><a class="brand" href="/" aria-label="SpookCo home"><img src="/assets/lantern.svg" alt="" width="34" height="40"><span>SPOOKCO<small>LAST STOP</small></span></a><nav aria-label="Main"><a href="/guide/">Player guide</a><a href="/guide/controls/">Controls</a><a href="/internal/">Development notes</a></nav><span class="build-tag"><i aria-hidden="true"></i> IN DEVELOPMENT</span></div></header>
 <div class="notice"><span>FIELD TEST NOTICE</span> Work in progress. Art, balance, and features may change. Spectator radar &amp; AI diagnostics may not ship.</div>
 <div class="doc-layout"><aside class="sidebar"><p class="eyebrow">Development notes</p><nav aria-label="Section"><a href="/internal/">Current status</a><a href="/internal/systems/">Systems &amp; architecture</a><a href="/internal/ai/">Killer baseline</a><a href="/internal/art/">Environment &amp; art</a><a href="/internal/roadmap/" aria-current="page">Roadmap &amp; decisions</a><a href="/internal/testing/">Testing &amp; release gates</a><a href="/internal/publishing/">Updating this site</a></nav></aside><details class="mobile-sections"><summary>Development notes · pages</summary><nav aria-label="Section mobile"><a href="/internal/">Current status</a><a href="/internal/systems/">Systems &amp; architecture</a><a href="/internal/ai/">Killer baseline</a><a href="/internal/art/">Environment &amp; art</a><a href="/internal/roadmap/" aria-current="page">Roadmap &amp; decisions</a><a href="/internal/testing/">Testing &amp; release gates</a><a href="/internal/publishing/">Updating this site</a></nav></details><main id="main" tabindex="-1"><div class="page-bar"><a href="/internal/">Development notes</a><span>WORKING BUILD / SEPT 2026</span></div><div class="search"><label for="search">Search these notes</label><input id="search" type="search" placeholder="Try: acceptance" autocomplete="off" aria-controls="search-results"><div id="search-results" role="region" aria-label="Search results" aria-live="polite" hidden></div></div><article class="prose"><p class="eyebrow">Development field notes · Planning</p><h1 id="roadmap-open-decisions">Roadmap &amp; open decisions</h1>
-<p>The original two-week plan remains a delivery framework. The current implementation moved ahead of final content, but not all acceptance gates are closed. The next pass prioritizes <strong>game and environment design</strong> while preserving the working killer baseline.</p>
+<p>The original two-week plan remains a delivery framework. The current implementation moved ahead of final content, but not all acceptance gates are closed. September 15 raised killer pressure, gave the map per-stop obstacles and interactive doors, and added the briefing van hold with spread spawn spots. What all of it needs now is play data, not another local pass.</p>
 <h2 id="next-make-the-stops-distinct">Next: make the stops distinct</h2>
 <ul>
 <li>Review solo and group routes in both areas and the readability of safe refuge access.</li>
 <li>Define the van/campfire visual identity and decide whether the van needs a walkable interior.</li>
 <li>Improve objective feedback and meaningful scavenging decisions.</li>
+<li>Watch whether the ten-second briefing hold actually produces shared planning or just reads as a cage, and whether the spread spawn spots land people somewhere useful.</li>
 <li>Choose a cohesive palette, lighting mood, modular environment kit, and six killer silhouettes.</li>
-<li>Measure short-loop fun and pacing with ordinary players before further AI tuning.</li>
+<li>Measure short-loop fun and pacing with ordinary players. Killers now match a running player and reach +20% at eight or more crew, with cover, doors and re-rolled field obstacles as the counterplay; tune from that play data rather than from another local pass.</li>
 </ul>
 <h2 id="then-finish-integration-and-scale">Then: finish integration and scale</h2>
 <ul>
@@ -64,7 +65,15 @@
 </tr>
 <tr>
 <td>Solo/group pressure and economy</td>
-<td>Current numbers are initial tuning; measure fun and progression.</td>
+<td>Current numbers are initial tuning; measure fun and progression. The accepted chase values (player run speed solo, +20% at 8+, a 130% lunge inside 3 m, a 1.5 s pause after a landed hit) are unmeasured against human evasion.</td>
+</tr>
+<tr>
+<td>End trip reward policy</td>
+<td>End trip deliberately ships unguarded for testing: play stop 1, return to dispatch, End trip, depart again, and that stop's objective, contract, extraction and rescue rewards pay again with freshly rolled supplies. The per-stop rate resembles a full run, so the gain is skipping stops 2–3 and the trip bonus rather than a rate exploit. Options: carry the ended trip's paid and claim masks forward for visited stops, put a cooldown on End trip, or accept it. Decide before release, and do not read progression pacing from sessions that used it.</td>
+</tr>
+<tr>
+<td>Briefing hold strength</td>
+<td>It is a courtesy constraint with no authority: a station, playspace drift or a modified client bypasses it, and roomscale walking against the barrier is still untested in a headset. Decide whether that is enough or whether the briefing needs a real gate.</td>
 </tr>
 <tr>
 <td>Final art/audio scope</td>

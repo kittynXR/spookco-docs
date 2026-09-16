@@ -8,8 +8,9 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="header"><div class="header-inner"><a class="brand" href="/" aria-label="SpookCo home"><img src="/assets/lantern.svg" alt="" width="34" height="40"><span>SPOOKCO<small>LAST STOP</small></span></a><nav aria-label="Main"><a href="/guide/">Player guide</a><a href="/guide/controls/">Controls</a><a href="/internal/">Development notes</a></nav><span class="build-tag"><i aria-hidden="true"></i> IN DEVELOPMENT</span></div></header>
 <div class="notice"><span>FIELD TEST NOTICE</span> Work in progress. Art, balance, and features may change. Spectator radar &amp; AI diagnostics may not ship.</div>
-<div class="doc-layout"><aside class="sidebar"><p class="eyebrow">Development notes</p><nav aria-label="Section"><a href="/internal/" aria-current="page">Current status</a><a href="/internal/systems/">Systems &amp; architecture</a><a href="/internal/ai/">Killer baseline</a><a href="/internal/art/">Environment &amp; art</a><a href="/internal/roadmap/">Roadmap &amp; decisions</a><a href="/internal/testing/">Testing &amp; release gates</a><a href="/internal/publishing/">Updating this site</a></nav></aside><details class="mobile-sections"><summary>Development notes · pages</summary><nav aria-label="Section mobile"><a href="/internal/" aria-current="page">Current status</a><a href="/internal/systems/">Systems &amp; architecture</a><a href="/internal/ai/">Killer baseline</a><a href="/internal/art/">Environment &amp; art</a><a href="/internal/roadmap/">Roadmap &amp; decisions</a><a href="/internal/testing/">Testing &amp; release gates</a><a href="/internal/publishing/">Updating this site</a></nav></details><main id="main" tabindex="-1"><div class="page-bar"><a href="/internal/">Development notes</a><span>WORKING BUILD / SEPT 2026</span></div><div class="search"><label for="search">Search these notes</label><input id="search" type="search" placeholder="Try: acceptance" autocomplete="off" aria-controls="search-results"><div id="search-results" role="region" aria-label="Search results" aria-live="polite" hidden></div></div><article class="prose"><p class="eyebrow">Development field notes · September 13, 2026</p><h1 id="current-project-status">Current project status</h1>
+<div class="doc-layout"><aside class="sidebar"><p class="eyebrow">Development notes</p><nav aria-label="Section"><a href="/internal/" aria-current="page">Current status</a><a href="/internal/systems/">Systems &amp; architecture</a><a href="/internal/ai/">Killer baseline</a><a href="/internal/art/">Environment &amp; art</a><a href="/internal/roadmap/">Roadmap &amp; decisions</a><a href="/internal/testing/">Testing &amp; release gates</a><a href="/internal/publishing/">Updating this site</a></nav></aside><details class="mobile-sections"><summary>Development notes · pages</summary><nav aria-label="Section mobile"><a href="/internal/" aria-current="page">Current status</a><a href="/internal/systems/">Systems &amp; architecture</a><a href="/internal/ai/">Killer baseline</a><a href="/internal/art/">Environment &amp; art</a><a href="/internal/roadmap/">Roadmap &amp; decisions</a><a href="/internal/testing/">Testing &amp; release gates</a><a href="/internal/publishing/">Updating this site</a></nav></details><main id="main" tabindex="-1"><div class="page-bar"><a href="/internal/">Development notes</a><span>WORKING BUILD / SEPT 2026</span></div><div class="search"><label for="search">Search these notes</label><input id="search" type="search" placeholder="Try: acceptance" autocomplete="off" aria-controls="search-results"><div id="search-results" role="region" aria-label="Search results" aria-live="polite" hidden></div></div><article class="prose"><p class="eyebrow">Development field notes · September 15, 2026</p><h1 id="current-project-status">Current project status</h1>
 <p><strong>Playable baseline accepted. Not a release candidate.</strong> The creator reports that the basic game works, killers now provide a useful baseline, and Pass Host plus AFK Claim Host have been tested. The next priority is game and environment design; fine AI tuning is deferred until those decisions are clearer.</p>
+<p>Three passes landed on September 15, all of them from the September 14 near-full-lobby playtest: the VR playtest fixes (trip resume, dark transit, upright cargo, selling, a reworked VR panel), the killer pressure pass (crew-scaled pursuit, a close lunge, interactive worksite doors, per-stop field obstacles), and the briefing van hold with spread spawn spots. Everything in them is locally checked and <strong>none of it has been played by more than one real client yet</strong> — the chase now has to be judged by people, not fixtures.</p>
 <p>These notes are <strong>unlisted, public documentation</strong>. They are not linked from the player navigation or public search index. Do not put credentials, private playtester details, or raw logs here. Development-only spectator radar and AI diagnostics may change or be removed.</p>
 <h2 id="how-to-read-the-status">How to read the status</h2>
 <p><strong>Implemented</strong> means the code and scene contain the feature. <strong>Locally checked</strong> means editor/static/ClientSim evidence exists. <strong>User confirmed</strong> identifies a reported uploaded playtest. <strong>Open</strong> means unfinished work or missing acceptance. These labels are deliberately not interchangeable.</p>
@@ -25,8 +26,8 @@
 <tbody>
 <tr>
 <td>Three-stop trip and phase flow</td>
-<td>Implemented; basic loop user confirmed</td>
-<td>Full 1/2/4/8/12/16-player trips and pace measurements</td>
+<td>Implemented; basic loop user confirmed. Returning to dispatch keeps the trip open and the next departure resumes that stop; host End trip starts fresh</td>
+<td>Full 1/2/4/8/12/16-player trips, pace measurements, and the End trip reward policy</td>
 </tr>
 <tr>
 <td>Two locations and campfire refuge</td>
@@ -45,8 +46,18 @@
 </tr>
 <tr>
 <td>Six killers and navigation</td>
-<td>Working baseline user accepted; local regression checks</td>
-<td>Fairness, pressure allocation, charge/warp/hazard presentation</td>
+<td>Working baseline user accepted; local regression checks. Pursuit is now a ratio of the players' own run speed, +20% at eight or more crew, with a close lunge and a pause after a landed hit</td>
+<td>Whether a chase reads as hard rather than unavoidable at 1–16 crew; pressure allocation; charge/warp/hazard presentation</td>
+</tr>
+<tr>
+<td>Per-stop layouts and interactive doors</td>
+<td>Implemented; local layout/door lane with reachability verification</td>
+<td>Two-client door agreement, owner migration mid-stop, obstacles never trapping a player, the stop-start carve cost on Quest and iPhone</td>
+</tr>
+<tr>
+<td>Briefing van hold and spread spawn spots</td>
+<td>Implemented; local barrier geometry, layer isolation and spawn-ranking checks</td>
+<td>Roomscale walking against the barrier in a headset, the VR shop pointer passing through it, and spot spread with 2–8 real crew</td>
 </tr>
 <tr>
 <td>Movement hearing and multi-point search</td>
@@ -60,8 +71,8 @@
 </tr>
 <tr>
 <td>Inventory, shop, shared loot</td>
-<td>Implemented; local transaction checks</td>
-<td>Real-client collection/purchase races and interrupted grants</td>
+<td>Implemented; local transaction checks. Selling the equipped consumable refunds 50% bought / 25% found</td>
+<td>Real-client collection/purchase/sale races and interrupted grants</td>
 </tr>
 <tr>
 <td>XP, survival milestones, ten perks</td>
@@ -95,7 +106,7 @@
 </tr>
 <tr>
 <td>VR wrist/floating controls</td>
-<td>Implemented</td>
+<td>Implemented; the September 15 panel pass places the floating panel once, auto-closes it, and hides buttons that duplicate native controls</td>
 <td>Physical VR, handedness, seated and avatar-scale testing</td>
 </tr>
 <tr>
@@ -131,11 +142,12 @@
 </tbody>
 </table></div>
 <h2 id="baseline-snapshot">Baseline snapshot</h2>
-<p>Game checkpoint: <strong>7e74a00 — Establish playable killer hearing and search baseline</strong>. Unity <strong>2022.3.22f1</strong>, VRChat SDK <strong>3.10.5</strong>, AI Navigation <strong>1.1.5</strong>. Do not upgrade the project to obtain Unity 6 tooling.</p>
-<p>The seven latest local lanes contain <strong>855 passing assertions</strong>, spanning structural checks and explicit single-VM fixtures. That is useful regression evidence, not 855 real multiplayer scenarios. See <a href="/internal/testing/">testing and release gates</a> for exact lanes, dates, build sizes, and limits.</p>
+<p>Game checkpoint: <strong>9a52009 — Merge briefing hold and spread spawns with the killer pressure pass</strong>. Unity <strong>2022.3.22f1</strong>, VRChat SDK <strong>3.10.5</strong>, AI Navigation <strong>1.1.5</strong>. Do not upgrade the project to obtain Unity 6 tooling.</p>
+<p>The latest local run contains <strong>1,519 passing assertions</strong> across structural scene validation and thirteen ClientSim lanes, each lane in its own fresh session on the merged tree that carries both September 15 passes together. That is useful regression evidence, not 1,519 real multiplayer scenarios. See <a href="/internal/testing/">testing and release gates</a> for exact lanes, dates, build sizes, and limits.</p>
 <h2 id="design-work-comes-next">Design work comes next</h2>
 <ol>
-<li>Establish the rhythm of a stop: safe planning, uncertain search, readable pursuit, escape, and a short breather.</li>
+<li>Play the new pressure with real crews before touching its numbers again. If a chase reads as unavoidable rather than hard, the crew speed bonus and the per-killer chase ratios are the first inspector values to lower.</li>
+<li>Establish the rhythm of a stop: safe planning, uncertain search, readable pursuit, escape, and a short breather. The briefing hold and the per-stop obstacle roll are first attempts at the planning and search halves of that.</li>
 <li>Redesign the two graybox layouts around that rhythm, especially solo routes and the approach to the refuge.</li>
 <li>Define the van/campfire and six killer silhouettes before investing in detailed props.</li>
 <li>Play the core objectives repeatedly with small and large groups before changing AI numbers again.</li>

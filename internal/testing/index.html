@@ -9,7 +9,7 @@
 <header class="header"><div class="header-inner"><a class="brand" href="/" aria-label="SpookCo home"><img src="/assets/lantern.svg" alt="" width="34" height="40"><span>SPOOKCO<small>LAST STOP</small></span></a><nav aria-label="Main"><a href="/guide/">Player guide</a><a href="/guide/controls/">Controls</a><a href="/internal/">Development notes</a></nav><span class="build-tag"><i aria-hidden="true"></i> IN DEVELOPMENT</span></div></header>
 <div class="notice"><span>FIELD TEST NOTICE</span> Work in progress. Art, balance, and features may change. Spectator radar &amp; AI diagnostics may not ship.</div>
 <div class="doc-layout"><aside class="sidebar"><p class="eyebrow">Development notes</p><nav aria-label="Section"><a href="/internal/">Current status</a><a href="/internal/systems/">Systems &amp; architecture</a><a href="/internal/ai/">Killer baseline</a><a href="/internal/art/">Environment &amp; art</a><a href="/internal/roadmap/">Roadmap &amp; decisions</a><a href="/internal/testing/" aria-current="page">Testing &amp; release gates</a><a href="/internal/publishing/">Updating this site</a></nav></aside><details class="mobile-sections"><summary>Development notes · pages</summary><nav aria-label="Section mobile"><a href="/internal/">Current status</a><a href="/internal/systems/">Systems &amp; architecture</a><a href="/internal/ai/">Killer baseline</a><a href="/internal/art/">Environment &amp; art</a><a href="/internal/roadmap/">Roadmap &amp; decisions</a><a href="/internal/testing/" aria-current="page">Testing &amp; release gates</a><a href="/internal/publishing/">Updating this site</a></nav></details><main id="main" tabindex="-1"><div class="page-bar"><a href="/internal/">Development notes</a><span>WORKING BUILD / SEPT 2026</span></div><div class="search"><label for="search">Search these notes</label><input id="search" type="search" placeholder="Try: acceptance" autocomplete="off" aria-controls="search-results"><div id="search-results" role="region" aria-label="Search results" aria-live="polite" hidden></div></div><article class="prose"><p class="eyebrow">Development field notes · Evidence</p><h1 id="testing-release-gates">Testing &amp; release gates</h1>
-<p><strong>Evidence cutoff:</strong> September 13, 2026 Pacific (build/test timestamps below use September 14 UTC). No new game-code changes were made for the website. The baseline was built and tested before its checkpoint commit.</p>
+<p><strong>Evidence cutoff:</strong> September 15, 2026 Pacific (timestamps below use UTC). Every lane was rerun on the merged tree that carries both September 15 passes — killer pressure with per-stop layouts and doors, and the briefing van hold with spread spawns — one fresh ClientSim session per lane. Each pass also passed separately beforehand. The platform bundle table below is older than the lanes; see its own note.</p>
 <h2 id="human-reports">Human reports</h2>
 <p>The creator reports that the basic loop works and the current killers are a useful baseline. <strong>Pass Host and AFK timeout / Claim Host have been tested in uploaded play.</strong> Desktop and iPhone have been tried. Earlier reports drove fixes for stalled pursuit, non-owner registration/tracking, desktop pointer/menu behavior, and sensing-outline visibility.</p>
 <p>These reports do not close every killer, device, and networking case. The held-W issue was attributed by the creator to the KVM setup and does not occur with the physical keyboard; no game-side keyboard workaround is required for that report.</p>
@@ -25,43 +25,81 @@
 <tbody>
 <tr>
 <td>Scene/rules validation</td>
-<td>2026-09-14 02:43:24</td>
-<td style="text-align: right;">277</td>
+<td>2026-09-16 00:09:47</td>
+<td style="text-align: right;">554</td>
 </tr>
 <tr>
-<td>Killer replica/movement</td>
-<td>2026-09-14 02:35:37</td>
-<td style="text-align: right;">87</td>
+<td>Local gameplay</td>
+<td>2026-09-16 00:10:46</td>
+<td style="text-align: right;">68</td>
 </tr>
 <tr>
 <td>Extended local integration</td>
-<td>2026-09-14 02:40:22</td>
-<td style="text-align: right;">108</td>
+<td>2026-09-16 00:12:18</td>
+<td style="text-align: right;">220</td>
 </tr>
 <tr>
-<td>Non-owner tracking receiver</td>
-<td>2026-09-14 02:30:13</td>
-<td style="text-align: right;">104</td>
+<td>Menu and travel presentation</td>
+<td>2026-09-16 00:15:16</td>
+<td style="text-align: right;">76</td>
 </tr>
 <tr>
-<td>Spectator map / negative clock</td>
-<td>2026-09-14 02:29:01</td>
-<td style="text-align: right;">143</td>
+<td>Killer pressure, layouts, doors</td>
+<td>2026-09-16 00:15:48</td>
+<td style="text-align: right;">79</td>
+</tr>
+<tr>
+<td>Killer movement watchdog</td>
+<td>2026-09-16 00:17:30</td>
+<td style="text-align: right;">13</td>
+</tr>
+<tr>
+<td>Warning-to-pursuit</td>
+<td>2026-09-16 00:19:32</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td>Crew registration</td>
+<td>2026-09-16 00:20:13</td>
+<td style="text-align: right;">23</td>
 </tr>
 <tr>
 <td>Movement hearing / search</td>
-<td>2026-09-14 02:26:21</td>
+<td>2026-09-16 00:20:40</td>
 <td style="text-align: right;">99</td>
 </tr>
 <tr>
 <td>AI review / diagnostics</td>
-<td>2026-09-14 02:32:26</td>
+<td>2026-09-16 00:22:17</td>
 <td style="text-align: right;">37</td>
+</tr>
+<tr>
+<td>Corner pursuit</td>
+<td>2026-09-16 00:24:19</td>
+<td style="text-align: right;">12</td>
+</tr>
+<tr>
+<td>Spectator map / negative clock</td>
+<td>2026-09-16 00:24:56</td>
+<td style="text-align: right;">143</td>
+</tr>
+<tr>
+<td>Non-owner tracking receiver</td>
+<td>2026-09-16 00:25:23</td>
+<td style="text-align: right;">104</td>
+</tr>
+<tr>
+<td>Killer replica/movement</td>
+<td>2026-09-16 00:25:44</td>
+<td style="text-align: right;">87</td>
 </tr>
 </tbody>
 </table></div>
-<p><strong>855 assertions; all seven lanes passed.</strong> Structural checks, explicit SDK delegates, and single-VM ClientSim fixtures cover actual Udon paths where possible. Receiver decoding tests and rendering tests are useful but are not real Photon transport, cloud restoration, or physical input proof.</p>
-<p>Earlier local lanes also passed: registration 23, gameplay 35, pursuit 4, and presentation 46 assertions. Those are older evidence and were not rerun after every later change. Raw logs remain local/ignored; this public site publishes summaries only.</p>
+<p><strong>1,519 assertions across structural scene validation and thirteen ClientSim lanes, every lane passing.</strong> Structural checks, explicit SDK delegates, and single-VM ClientSim fixtures cover actual Udon paths where possible. Receiver decoding tests and rendering tests are useful but are not real Photon transport, cloud restoration, or physical input proof.</p>
+<p>The scene lane reports <strong>64,686 triangles across all loaded world meshes</strong>, three non-directional lightmaps, <strong>197/197 static renderers with baked lightmap indices</strong>, and 693 Udon behaviours including static UI handlers, the layout authority with its eight doors, and the editor-only validation fixture. None of those counts establishes Udon CPU cost or frame rate. It also covers the spawn-spot layout (anchor identity, offsets, ground seating, capsule clearance, spacing and refuge containment), the briefing barrier structure with its layer-22 collision row and the descriptor's Interact Passthrough bit, every collected layout site and door, obstacles keeping clear of anchors and the refuge, and baked navigation running through each doorway while its frame stays solid.</p>
+<p>The pressure lane measures patrol and pursuit speeds for all six killers at crew 1 and crew 8 through the real owner loop, the lunge and its cooldown, the recovery after a landed hit, crew and killer door handling with their refusals, eight layout rolls with reachability verification and a clear-field fallback, runtime navigation carving, and the spectator map's obstacle and door markers.</p>
+<p>The extended lane adds the briefing hold: arming with hysteresis, the escape grace and a single direct-teleport pull-back, shopping while held, the ten-second unlock, re-locking after a restart, a silent release on an implausible deadline, the lease shutdown on a halted session, watcher and late-join exemptions, and the barrier staying invisible to killer sight, cargo seating and the interact mask. It drove a held player into a wall through ClientSim's own character controller and the wall stopped them — that is evidence, not proof, and roomscale walking still needs a headset.</p>
+<p>Raw logs remain local/ignored; this public site publishes summaries only.</p>
 <h2 id="successful-sdk-bundles">Successful SDK bundles</h2>
 <div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table"><table>
 <thead>
@@ -74,8 +112,8 @@
 <tbody>
 <tr>
 <td>PC</td>
-<td style="text-align: right;">3,516,298</td>
-<td>2026-09-14 02:43:38</td>
+<td style="text-align: right;">2,923,464</td>
+<td>2026-09-15 23:28:34</td>
 </tr>
 <tr>
 <td>Android / Quest</td>
@@ -89,7 +127,7 @@
 </tr>
 </tbody>
 </table></div>
-<p>These are VRChat world asset bundles, not standalone executables or exact client download/memory measurements. The recorded scene has three lightmaps and 171/171 static renderers assigned baked lightmaps. The count of 653 Udon behaviours includes static handlers and an editor-only fixture; it is not a CPU-cost measurement.</p>
+<p>The PC bundle was rebuilt after the killer pressure, layout and door pass, which also confirms the SDK accepts their carving navigation obstacles and bake-exclusion markers in a world build; it is smaller than the September 14 bundle because the non-directional lightmap fix and the geometry changes both affect it. It predates the briefing-hold pass, and the Android and iOS bundles predate both September 15 passes. These are VRChat world asset bundles, not standalone executables or exact client download/memory measurements.</p>
 <p>Reviewed non-blocking warnings include the mobile quality profile allowing multiple pixel lights (authored lights are baked), and an inapplicable iPhone C++ compiler option for this bundle workflow. Profile actual mobile lighting rather than dismissing the warning permanently.</p>
 <h2 id="uploaded-test-matrix-still-needed">Uploaded test matrix still needed</h2>
 <ul>
@@ -100,13 +138,20 @@
 <li>Rejoin after earning, purchasing, scavenging, swapping, consuming, and using cooldowns; A → B → A; crashes during grants/saves.</li>
 <li>Host offer expiry/decline, Keep Hosting, meaningful activity cancellation, claimant/host departure, and ownership suspension in every phase.</li>
 <li>Non-owner map/model agreement, late snapshots, owner migration during charge/warp/stun, and effects/hits under latency.</li>
+<li>Chase balance at 1, 2, 4, 8 and a full lobby for every killer: whether distance alone still escapes, whether cover, doors and the van read as the answers, and whether any chase feels unavoidable rather than merely hard.</li>
+<li>Interactive doors with at least two clients: opening and closing from both sides, the refusal cases, a door slammed in a pursuing hunter's face breaking for the rest of the stop, agreement for late joiners and after owner migration, and nobody pushed or trapped by a swinging leaf.</li>
+<li>Per-stop layouts: obstacles differ between stops, never block an anchor or trap a player, the hunter paths around them, and a spectator sees the same field as the crew.</li>
 <li>Every direct/button alternative, both hands/wrists, seated/scale differences, menu interruptions, rebinding, profile persistence, and no unintended consumption or cargo drops.</li>
+<li>The VR panel pass: floating mode level and not in the face, tab switching never moving it, the three-metre auto-close, the launcher below the wrist staying clear of Close, Recenter, auto-close on expedition start, cargo grab and a hit, and glance status with alerts still visible.</li>
+<li>The briefing hold in a headset with 2–8 crew: roomscale leaning and walking into the barrier, jumping from the van roof, at most one snap-back with an open shop panel surviving it, the shop pointer passing through the wall, readable countdown and Head out text on every device, spectators and downed crew never held, a restart re-locking, and a stalled or implausible deadline releasing quietly.</li>
+<li>Spread spawns with real crews: no two players on one spot at departure or arrival, spots facing the van, and only the accepted overlaps (over 16 eligible players, a spectator at the plain anchor, a late joiner on an occupied spot).</li>
+<li>Trip resume: return to dispatch mid-stop and depart again, expecting a full attempt with no pre-done objectives and no second payout; End trip only at dispatch or during the countdown. End trip reward replay ships <strong>deliberately unguarded</strong> for testing, so progression pacing must not be read from sessions that used it.</li>
 </ul>
 <h2 id="hardware-and-performance">Hardware and performance</h2>
 <p>Available: Linux PCVR with RTX 3090; Windows AMD Radeon AI PRO R9700; Quest 3; iPhone 16 Pro. Other testers can cover standalone Android phones. Confirm the exact PC headset and refresh rate when scheduling performance acceptance.</p>
 <p>Run 30-minute sessions with one and sixteen controlled lightweight avatars. Targets: <strong>PCVR 90 FPS, Quest 3 72 FPS, iPhone 16 Pro 60 FPS</strong>. Capture CPU/Udon and GPU frame time, batches, memory, textures/lightmaps, and bundle/download cost. Report public-avatar overhead separately. No current count or build result certifies these targets.</p>
 <h2 id="local-commands">Local commands</h2>
-<p>Use the existing Unity editor and fixed-command bridge; do not launch a second editor for the same project. <code>Tools/SpookCo.ps1</code> exposes <code>status</code>, <code>compile</code>, <code>validate</code>, <code>clientsim</code>, <code>stop</code>, <code>hearing</code>, <code>ai-review</code>, <code>replica</code>, <code>remote-map</code>, <code>map-clock</code>, <code>extended</code>, and platform build commands.</p>
+<p>Use the existing Unity editor and fixed-command bridge; do not launch a second editor for the same project. <code>Tools/SpookCo.ps1</code> exposes <code>status</code>, <code>refresh</code>, <code>reload-scene</code>, <code>compile</code>, <code>validate</code>, <code>patch-scene</code>, <code>clientsim</code>, <code>stop</code>, <code>smoke</code>, <code>extended</code>, <code>presentation</code>, <code>pressure</code>, <code>movement</code>, <code>pursuit</code>, <code>ai-review</code>, <code>corners</code>, <code>hearing</code>, <code>map-clock</code>, <code>remote-map</code>, <code>registration</code>, <code>replica</code>, <code>probe</code>, <code>bake</code>, capture commands, and the platform build commands.</p>
 <p>Use a fresh ClientSim run per test lane. An asynchronous command acknowledgment is not completion: require a fresh result log ending in SUCCESS. Do not modify scripts during a build/test. World uploads and contest submission remain manual.</p></article><a class="next-page" href="/internal/publishing/"><span>Continue reading</span><strong>Updating this site →</strong></a></main><aside class="toc"><p class="eyebrow">On this page</p><div class="toc">
 <ul>
 <li><a href="#human-reports">Human reports</a></li>

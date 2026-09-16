@@ -9,7 +9,7 @@
 <header class="header"><div class="header-inner"><a class="brand" href="/" aria-label="SpookCo home"><img src="/assets/lantern.svg" alt="" width="34" height="40"><span>SPOOKCO<small>LAST STOP</small></span></a><nav aria-label="Main"><a href="/guide/">Player guide</a><a href="/guide/controls/">Controls</a><a href="/internal/">Development notes</a></nav><span class="build-tag"><i aria-hidden="true"></i> IN DEVELOPMENT</span></div></header>
 <div class="notice"><span>FIELD TEST NOTICE</span> Work in progress. Art, balance, and features may change. Spectator radar &amp; AI diagnostics may not ship.</div>
 <div class="doc-layout"><aside class="sidebar"><p class="eyebrow">Development notes</p><nav aria-label="Section"><a href="/internal/">Current status</a><a href="/internal/systems/">Systems &amp; architecture</a><a href="/internal/ai/" aria-current="page">Killer baseline</a><a href="/internal/art/">Environment &amp; art</a><a href="/internal/roadmap/">Roadmap &amp; decisions</a><a href="/internal/testing/">Testing &amp; release gates</a><a href="/internal/publishing/">Updating this site</a></nav></aside><details class="mobile-sections"><summary>Development notes · pages</summary><nav aria-label="Section mobile"><a href="/internal/">Current status</a><a href="/internal/systems/">Systems &amp; architecture</a><a href="/internal/ai/" aria-current="page">Killer baseline</a><a href="/internal/art/">Environment &amp; art</a><a href="/internal/roadmap/">Roadmap &amp; decisions</a><a href="/internal/testing/">Testing &amp; release gates</a><a href="/internal/publishing/">Updating this site</a></nav></details><main id="main" tabindex="-1"><div class="page-bar"><a href="/internal/">Development notes</a><span>WORKING BUILD / SEPT 2026</span></div><div class="search"><label for="search">Search these notes</label><input id="search" type="search" placeholder="Try: acceptance" autocomplete="off" aria-controls="search-results"><div id="search-results" role="region" aria-label="Search results" aria-live="polite" hidden></div></div><article class="prose"><p class="eyebrow">Development field notes · AI</p><h1 id="killer-baseline">Killer baseline</h1>
-<p>The creator accepts this as a useful working foundation. Fine tuning is deliberately paused while game and environment design improve. Do not mistake that decision for final AI or difficulty acceptance.</p>
+<p>The creator's verdict after the September 14 near-full-lobby playtest was that the killers were too easy: running away always worked, because pursuit ran at 3.25 m/s against a 4.3 m/s player run. The September 15 pressure pass raises pursuit with the crew, adds a close lunge, makes worksite doors part of the chase and re-rolls field obstacles every stop. The sensing and search behaviour below is unchanged. These are accepted starting values, not measured balance.</p>
 <h2 id="sensing-and-search-tuning">Sensing and search tuning</h2>
 <div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table"><table>
 <thead>
@@ -72,11 +72,47 @@
 <h2 id="turning-corners-and-searching">Turning corners and searching</h2>
 <p>Observed movement can project a short continuation, bounded to five metres. Mode 6 searches alternate nearby reachable NavMesh probes with authored route anchors. Missing route anchors no longer cause instant abandonment. Searches have both time and point budgets, so the configured duration is a ceiling rather than a guaranteed wait.</p>
 <p>Search pauses sweep left/right for 2.2 seconds through a ±100° range. Moving patrol/search adds bounded lateral scanning (±28° patrol, ±45° search) without stopping navigation. Actual facing drives vision and presentation. Synced checkpoint fields preserve probe position, progress, reference heading, and sensing state.</p>
-<p>The hearing pass did not increase speeds. The baseline uses roughly 3.25 m/s pursuit, 3.1 for Rattletrap and 3.65 for a Hitchhiker burst; player walk/run are 2.7/4.3 before modifiers. There is no claim that these values produce fair pressure for every party size.</p>
+<h2 id="speed-lunges-and-the-cost-of-a-hit">Speed, lunges and the cost of a hit</h2>
+<p>Pursuit is a multiple of the players' base run speed and patrol a multiple of their base walk speed (2.7 / 4.3 m/s), and both rise linearly with the crew to +20% at eight or more participants. The crew count is the stop's locked count lowered by departures, so late joiners never speed a hunter up mid-stop.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table"><table>
+<thead>
+<tr>
+<th>Killer</th>
+<th style="text-align: right;">Solo</th>
+<th style="text-align: right;">4 crew</th>
+<th style="text-align: right;">8+ crew</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Groundskeeper, Rattletrap, Usher, Switchboard</td>
+<td style="text-align: right;">4.30</td>
+<td style="text-align: right;">4.67</td>
+<td style="text-align: right;">5.16</td>
+</tr>
+<tr>
+<td>Roadkill (its charge is the threat)</td>
+<td style="text-align: right;">4.09</td>
+<td style="text-align: right;">4.44</td>
+<td style="text-align: right;">4.90</td>
+</tr>
+<tr>
+<td>Hitchhiker burst</td>
+<td style="text-align: right;">4.73</td>
+<td style="text-align: right;">5.14</td>
+<td style="text-align: right;">5.68</td>
+</tr>
+</tbody>
+</table></div>
+<p>Patrol is 2.70 m/s solo and 3.24 m/s at 8+, so an unaware hunter still reads as unhurried. Evidence younger than three seconds is run down at full pursuit pace; older evidence is searched at 85%. Pursuit no longer brakes toward the player's last position and aims at a bounded lead along their observed route. Inside three metres a hunter bursts to 130% for 0.6 seconds with a four-second cooldown. A landed hit costs the hunter a 1.5-second recovery, so two health cannot collapse into a single catch, and Roadkill's 9 m/s charge is unchanged.</p>
+<p>Players run 4.3 m/s, 5.16 on Sprint soda and 3.655 carrying cargo without Courier, so distance alone no longer escapes: cover, doors, the refuge and stuns do.</p>
+<h2 id="doors-and-per-stop-layouts">Doors and per-stop layouts</h2>
+<p>Worksite front openings have hinged doors. Crew open and close them; the owner validates distance, eligibility, a cooldown and whether anyone stands in the doorway or the leaf's swing. Doors deliberately do not carve navigation: a hunter stops at a closed leaf, opens it in 0.8 s when unhurried, and bashes it off its hinge in 1.2 s while pursuing or following fresh evidence — a broken door stays open for the rest of the stop, so a door buys distance once and cannot be looped. Rear openings stay clear as a second exit.</p>
+<p>Every stop attempt also rolls a fresh set of field obstacles (hay bales, stalled vehicles, log piles, crates, drums, a trailer). Solid parts carve the navigation mesh at runtime, and after each roll the owner verifies that all 114 authored patrol, cargo, repair and supply destinations remain reachable, re-rolling twice and then falling back to a clear field. The spectator map draws the active obstacles and closed doors over its baked terrain.</p>
 <h2 id="presentation-and-debug-surfaces">Presentation and debug surfaces</h2>
 <p>The world killer model and spectator map use the same always-active feed. Non-owners wait for a matching pose, snap on the first valid sample/round change, then interpolate nearby updates. Feed data includes warning/hazard/decoy state and hearing ranges.</p>
-<p>The map’s gold vision outline is clipped against cover; blue rings show walking/running hearing. Explicit sorting keeps them above terrain. Only eligible dispatch spectators can view tracking. The map is a horizontal projection, so vertical cover and actual head visibility can differ.</p>
-<p>Host → AI diagnostics is an optional independent reader for owner IDs, heartbeat age, path state, feed receipt, presentation readiness, and movement information. <strong>Radar visibility and diagnostics are development features; decide whether to remove or restrict them before release.</strong></p>
+<p>The map’s gold vision outline is clipped against cover; blue rings show walking/running hearing. The legend also reports the hunter's current speed and crew factor, and the map draws gray blocks for the rolled obstacles and cream bars for closed doors, so a watcher sees the same field the crew is in. Explicit sorting keeps them above terrain. Only eligible dispatch spectators can view tracking. The map is a horizontal projection, so vertical cover and actual head visibility can differ.</p>
+<p>Host → AI diagnostics is an optional independent reader for owner IDs, heartbeat age, path state, feed receipt, presentation readiness, and movement information. It now reports <code>Killer v4</code> with the current speed, landed hits, lunges and doors opened or broken; the owner logs the same line on mode changes and every ten seconds. Mode 7 is “at a door”. <strong>Radar visibility and diagnostics are development features; decide whether to remove or restrict them before release.</strong></p>
 <h2 id="deferred-work-and-acceptance">Deferred work and acceptance</h2>
 <ul>
 <li>Fair search persistence and pressure distribution for solo through 16 participants.</li>
@@ -86,11 +122,15 @@
 <li>Switchboard hazard cover rules, warning/active distinction, and alternate escape routes.</li>
 <li>Unreachable targets with reachable alternatives and owner changes in every mode.</li>
 <li>Cooldown/stun immunity and strong-perk builds without unavoidable chains.</li>
+<li>Whether the new speeds are fair rather than merely hard. <code>crewSpeedBonus</code> and the per-killer <code>chaseSpeedRatios</code> are the first inspector values to lower if a chase reads as unavoidable.</li>
+<li>Door agreement across clients and after owner migration, and the stop-start navigation carve cost on Quest and iPhone.</li>
 </ul>
 <p>The local lanes cover navigation, frozen evidence, hearing boundaries/perks, search expiry, synced metadata, and rendered rings/cones. The fresh uploaded fairness and migration matrix remains open.</p></article><a class="next-page" href="/internal/art/"><span>Continue reading</span><strong>Environment &amp; art →</strong></a></main><aside class="toc"><p class="eyebrow">On this page</p><div class="toc">
 <ul>
 <li><a href="#sensing-and-search-tuning">Sensing and search tuning</a></li>
 <li><a href="#turning-corners-and-searching">Turning corners and searching</a></li>
+<li><a href="#speed-lunges-and-the-cost-of-a-hit">Speed, lunges and the cost of a hit</a></li>
+<li><a href="#doors-and-per-stop-layouts">Doors and per-stop layouts</a></li>
 <li><a href="#presentation-and-debug-surfaces">Presentation and debug surfaces</a></li>
 <li><a href="#deferred-work-and-acceptance">Deferred work and acceptance</a></li>
 </ul>

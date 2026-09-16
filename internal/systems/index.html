@@ -25,7 +25,7 @@
 </tr>
 <tr>
 <td>SpookSession</td>
-<td>Phases, deadlines, crew state, host offers/claims, health/recovery, trip choices</td>
+<td>Phases, deadlines, crew state, host offers/claims, health/recovery, trip choices, authored spawn-spot selection, and the local briefing van hold</td>
 </tr>
 <tr>
 <td>SpookLedger</td>
@@ -41,7 +41,11 @@
 </tr>
 <tr>
 <td>SpookKiller</td>
-<td>One native NavMesh agent, sensing, evidence/search, attacks, durable AI checkpoint</td>
+<td>One native NavMesh agent, sensing, evidence/search, crew-scaled pursuit, attacks, durable AI checkpoint</td>
+</tr>
+<tr>
+<td>SpookLayout</td>
+<td>Per-stop obstacle rolls with reachability verification, and synchronized interactive door state</td>
 </tr>
 <tr>
 <td>SpookMapFeed</td>
@@ -61,18 +65,27 @@
 </tr>
 <tr>
 <td>SpookPanel / SpookFeedback</td>
-<td>Throttled UI, markers, interaction targets, alerts</td>
+<td>Throttled UI, markers, interaction targets, alerts, and the leased briefing barrier and its marker</td>
 </tr>
 <tr>
 <td>SpookTransition</td>
-<td>Local fade/teleport sequencing and replacement of obsolete destinations</td>
+<td>Local fade/teleport sequencing, replacement of obsolete destinations, and the leased black transit hold</td>
 </tr>
 </tbody>
 </table></div>
 <h2 id="authority-and-transactions">Authority and transactions</h2>
 <p>Network entry points validate the actual caller, eligibility, and relevant revisions. A local click never grants an item. The ledger owner commits pouch changes and the shared claim in one synchronized object, with claimant/grant identity and duplicate protection. Full capacity rejects collection without claiming the pickup.</p>
-<p>Loot is rolled once per trip/stop. Restart Current Stop reuses the area, killer, manifest, and claims. Reset Trip rewinds flow while retaining cached history. Normal trip completion allows new rolls. Objective and result reward masks prevent repeated reset awards; once-per-stop abilities and equipment cooldowns are also preserved.</p>
+<p>Loot is rolled once per trip/stop. Restart Current Stop reuses the area, killer, manifest, and claims, but starts a clean objective attempt. Return to Dispatch keeps the trip open and records <code>resumeStop</code>, so the next departure resumes at that stop (or the next one if the stop was finished). Only the stop 3 report and the host's End Trip (phases 0–1) close a trip; the next departure after that is a fresh trip with new rolls. Every stop start bumps <code>attemptSerial</code> and clears that stop's field progress, while the once-per-trip objective and result reward masks prevent repeated payouts. Once-per-stop abilities and equipment cooldowns are also preserved.</p>
+<p>Transit between stops no longer teleports to the old van. Crew stay behind a black hold with locomotion paused, leased every session tick while phase 5 lasts plus a 5-second grace and a 20-second cap. The stop-start teleport runs under black and fades in over one second. Opening menus is refused during the hold.</p>
+<p>Selling the equipped consumable is a ledger transaction allowed in the same windows as buying. Bought supplies refund 50% and scavenged (found) supplies 25%; pouch bits 9–11 carry the per-slot found flag.</p>
+<p>The layout authority follows the simulation owner. Each stop attempt rolls one variant (or nothing) per authored site and an open/closed state per door, then verifies that every authored destination in the area is still reachable once the obstacles have carved navigation; it re-rolls twice before falling back to a clear field. Door toggles are owner-validated requests — able crew, within reach, in a running stop, not broken, past a cooldown, and with nobody in the doorway or the leaf's swing. An attempt first seen mid-stop adopts a clear field rather than dropping obstacles around players.</p>
 <p>Initial quotas and loot counts use the participating-player snapshot. Joins do not increase active quotas or supplies. Departures, withdrawal, and sustained suspension may lower outstanding requirements without erasing finished work. If nobody remains active, return to the lobby without completion rewards.</p>
+<h2 id="briefing-hold-and-spawn-placement">Briefing hold and spawn placement</h2>
+<p>For the first <code>briefingSeconds - briefingLockSeconds</code> (20 − 10) seconds of a briefing, each client keeps <strong>its own</strong> alive crew member inside the van area. Four local invisible walls on <strong>user layer 22</strong> sit .5 m inside the refuge zone edge, enclosing the van, the operations panel and every spawn spot, with a glowing non-static marker while locked.</p>
+<p>This is a courtesy constraint, never authority. Nothing about it is synchronized, nothing scores on it, and a modified client, a station, playspace drift or VRChat's own respawn can bypass it. It fails open on every uncertain input: the wrong phase, a player who is not alive crew, a missing slot, missing rules, a missing safe zone, a halted session, and a deadline that is already past or more than <code>briefingSeconds + 2</code> away — that last case releases silently, with no barrier, no countdown and no "Head out" notice, because the data cannot be trusted. A 1.5-second lease renewed by SpookSession and checked by SpookFeedback drops the walls if the session stops ticking.</p>
+<p>Layer 22 rather than Ignore Raycast: VRChat and ClientSim treat layer 2 as interactable, so a layer-2 wall would block the VR panel pointer whenever a pinned panel landed beyond it. The scene descriptor's Interact Passthrough includes layer 22, so interaction rays pass through while player movement still collides, and no gameplay query uses the layer — killer sight, cargo seating, the spectator map bake and the navmesh all use layer 11. Layer 22 does collide with the Pickup layer, so a carried or dropped case bumps the walls and stays inside the refuge for the ten seconds they stand.</p>
+<p>Walls arm only when the player is at least <code>briefingArmInset</code> (.85 m) inside the zone edge with no travel fade running, and stay armed while at least <code>briefingKeepInset</code> (.55 m) inside; a player pressed against a wall is .7 m inside, so a single threshold would disarm the barrier exactly when it is needed. A player outside the refuge while locked is teleported once to their own spot. The .35 s grace is sampled on the session's .2 s tick, so the effective pull-back delay is .4–.6 s. It is a direct teleport rather than a travel fade, so an open shop or loadout panel is not force-closed and the trip's teleport accounting is unchanged.</p>
+<p>Game-driven moves no longer stack the crew on one point. Sixteen authored, ground-seated spots sit under each van anchor and sixteen at dispatch, 1.5 m apart, clear of solid geometry, inside the barrier ring and facing the anchor's direction. They are used by transit arrival, stop start, restart, resume, late join, manual respawn at the refuge, recovery return, Watch, return to dispatch and the report. The local spot index is the player's rank by ledger slot — among crew for a van, among registered players for dispatch — where rank 0 keeps the original anchor, so solo positions are unchanged, and higher ranks map into spots 1–15 without ever wrapping back onto the anchor. Missing spot data falls back to the anchor, and VRChat's own join spawn still uses the single descriptor spawn. Three overlaps are accepted: more than 16 eligible players re-using spots 1–15, a spectator respawning at the plain refuge anchor, and a late joiner landing on a spot a teammate still occupies.</p>
 <h2 id="persistence">Persistence</h2>
 <p>Wait for <code>OnPlayerRestored</code> before writes, purchases, and grants. The permanent profile holds XP, survival points, perk selection, reusable gear, and player identity token. Separate VR/desktop/touch keys hold controls.</p>
 <p>A synchronized random live-session key survives trips, resets, role changes, and ordinary ownership migration. A bounded 128-record history stores session cash, pouch, cooldowns, inventory revisions, grant identity, and reward masks. The current wallet is updated during play; the history index changes only on session entry/eviction. Old prototype wallet data has a migration path.</p>
@@ -92,6 +105,7 @@
 <ul>
 <li><a href="#runtime-boundaries">Runtime boundaries</a></li>
 <li><a href="#authority-and-transactions">Authority and transactions</a></li>
+<li><a href="#briefing-hold-and-spawn-placement">Briefing hold and spawn placement</a></li>
 <li><a href="#persistence">Persistence</a></li>
 <li><a href="#stable-content-ids">Stable content IDs</a></li>
 <li><a href="#capacity-and-transport-limits">Capacity and transport limits</a></li>
