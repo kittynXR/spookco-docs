@@ -36,13 +36,13 @@
 </tr>
 <tr>
 <td>Cargo, repairs, quotas, late entry</td>
-<td>Implemented; local checks</td>
-<td>Real concurrent work, disconnects, scaling transitions</td>
+<td>Implemented; local checks. Repairs take 10 s of unbroken work and a generator has to be primed with the stop's fuel tank first</td>
+<td>Real concurrent work, disconnects, scaling transitions, and whether one tank per stop is enough traffic or too much</td>
 </tr>
 <tr>
 <td>Damage, rescue, all-down recovery</td>
-<td>Implemented; local checks; capture observed in uploaded play</td>
-<td>Group/solo fairness and interrupted recovery cases</td>
+<td>Implemented; local checks; capture observed in uploaded play. Downed crew crawl in a forced prone pose, get a 20 s first bleed-out window and 10 s after, are revived by a 10 s hold that shortens 25% per extra rescuer and holds their clock, and lose the respawn once a stop is past halfway</td>
+<td>The prone pose on a real avatar in a real client, group/solo fairness, and whether the late-stop lockout is the right pressure</td>
 </tr>
 <tr>
 <td>Six killers and navigation</td>
