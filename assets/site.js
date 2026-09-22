@@ -21,7 +21,7 @@
       const matches = pages.filter(p => terms.every(t => (p.title+' '+p.text).toLowerCase().includes(t)))
         .sort((a,b) => Number(b.title.toLowerCase().includes(query))-Number(a.title.toLowerCase().includes(query))).slice(0,7);
       if (!matches.length) {
-        const p = document.createElement('p');p.textContent='No matching pages. Try a shorter phrase.';results.append(p);
+        const p = document.createElement('p');p.textContent=document.documentElement.lang==='ja'?'一致するページがありません。短い言葉で検索してください。':'No matching pages. Try a shorter phrase.';results.append(p);
       }
       for (const page of matches) {
         const a=document.createElement('a');a.href=page.url;
@@ -33,7 +33,7 @@
       }
     } catch (_) {
       if (token!==revision) return;
-      results.textContent='Search is unavailable. Use the page navigation instead.';
+      results.textContent=document.documentElement.lang==='ja'?'検索を利用できません。ページ一覧からお選びください。':'Search is unavailable. Use the page navigation instead.';
     }
   });
   document.addEventListener('keydown', e => {

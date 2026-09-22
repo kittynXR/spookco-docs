@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>操作とアクセシビリティ | SpookCo</title><meta name="description" content="現在のビルドのデスクトップ用ショートカット、VRの手首インベントリ、タッチ操作を紹介します。">
+<link rel="canonical" href="https://spookco.kittyn.cat/ja/guide/controls/"><meta property="og:url" content="https://spookco.kittyn.cat/ja/guide/controls/"><link rel="alternate" hreflang="en" href="https://spookco.kittyn.cat/guide/controls/"><link rel="alternate" hreflang="ja" href="https://spookco.kittyn.cat/ja/guide/controls/"><link rel="alternate" hreflang="x-default" href="https://spookco.kittyn.cat/guide/controls/"><meta name="theme-color" content="#0b1918">
+<meta property="og:title" content="操作とアクセシビリティ"><meta property="og:description" content="現在のビルドのデスクトップ用ショートカット、VRの手首インベントリ、タッチ操作を紹介します。"><meta property="og:type" content="website">
+<link rel="icon" href="/assets/lantern.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css"><script defer src="/assets/site.js"></script></head>
+<body class="docs" data-search-index="/ja/search.json">
+<a class="skip" href="#main">本文へ移動</a>
+<header class="header"><div class="header-inner"><a class="brand" href="/ja/" aria-label="SpookCo ホーム"><img src="/assets/lantern.svg" alt="" width="34" height="40"><span>SPOOKCO<small>LAST STOP</small></span></a><nav aria-label="メインナビゲーション"><a href="/ja/guide/">プレイヤーガイド</a><a href="/ja/guide/controls/">操作方法</a></nav><div class="language-switch" role="group" aria-label="Language / 言語"><a href="/guide/controls/" lang="en" hreflang="en">English</a><a href="/ja/guide/controls/" lang="ja" hreflang="ja" aria-current="true">日本語</a></div><span class="build-tag"><i aria-hidden="true"></i> 開発中</span></div></header>
+<div class="notice"><span>プレイテストについて</span> SpookCoはまだ開発初期です。ゲームジャム後に大きく変更される可能性があり、ゲーム内容、成長システム、マップ、アートはいずれも変更される場合があります。</div>
+<div class="doc-layout"><aside class="sidebar"><p class="eyebrow">従業員フィールドガイド</p><nav aria-label="このガイドのページ"><a href="/ja/guide/">はじめての勤務</a><a href="/ja/guide/controls/" aria-current="page">操作とアクセシビリティ</a><a href="/ja/guide/equipment/">装備と物資</a><a href="/ja/guide/progression/">成長とセーブ</a><a href="/ja/guide/threats/">殺人鬼への対策</a><a href="/ja/guide/faq/">配車所FAQ</a></nav></aside><details class="mobile-sections"><summary>従業員フィールドガイド · ページ一覧</summary><nav aria-label="このガイドのページ（モバイル）"><a href="/ja/guide/">はじめての勤務</a><a href="/ja/guide/controls/" aria-current="page">操作とアクセシビリティ</a><a href="/ja/guide/equipment/">装備と物資</a><a href="/ja/guide/progression/">成長とセーブ</a><a href="/ja/guide/threats/">殺人鬼への対策</a><a href="/ja/guide/faq/">配車所FAQ</a></nav></details><main id="main" tabindex="-1"><div class="page-bar"><a href="/ja/guide/">プレイヤーガイド</a><span>開発版 / 2026年9月</span></div><div class="search"><label for="search">ガイド内を検索</label><input id="search" type="search" placeholder="検索例：荷物" autocomplete="off" aria-controls="search-results"><div id="search-results" role="region" aria-label="検索結果" aria-live="polite" hidden></div></div><article class="prose"><p class="eyebrow">従業員フィールドガイド · 02</p><h1 id="操作とアクセシビリティ">操作とアクセシビリティ</h1>
+<p>配車所の準備ボード横にある <strong>Controls &amp; Accessibility（操作とアクセシビリティ）</strong> パネルを使います。バンや個人インベントリからも開けます。設定はデスクトップ、VR、タッチ操作ごとに保存されます。このガイドでは、画面上で探しやすいように英語のボタン名も併記しています。</p>
+<h2 id="言語を選ぶ">言語を選ぶ</h2>
+<p>初回は保存済みプロフィールの読み込みを待ち、対応する言語が保存されていなければ英語／日本語の選択画面が表示されます。デスクトップでは最初の選択画面で <strong>1</strong> を押すと英語、<strong>2</strong> で日本語を選べます。Tabを押しながらクリックしても構いません。VRでは正面に浮かぶ選択画面を、個人メニューのポインターで操作します。</p>
+<p>あとから <strong>Controls → i18n / Language</strong> で変更できます。選択は訪問をまたいで保存され、デスクトップとVRで共通です。操作設定をリセットしても言語は変わりません。変わるのは自分の表示だけなので、仲間と違う言語でも遊べます。このサイトの言語リンクはワールド内の設定を変更しません。ブランド表記、法的な告知、開発者向け診断は原文のままです。</p>
+<h2 id="デスクトップ追跡中の操作はキーで">デスクトップ：追跡中の操作はキーで</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="横にスクロールできる表"><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>初期設定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一時的にカーソルメニューを開く</td>
+<td><strong>Tab</strong>を押し続ける。離すとメニュー全体が閉じる</td>
+</tr>
+<tr>
+<td>読むためにメニューを開いたままにする</td>
+<td><strong>I</strong>。もう一度押すと閉じる</td>
+</tr>
+<tr>
+<td>繰り返し使える装備を取り出す</td>
+<td><strong>1</strong></td>
+</tr>
+<tr>
+<td>装備中の消耗品を取り出す</td>
+<td><strong>2</strong></td>
+</tr>
+<tr>
+<td>個人アイテムをしまう</td>
+<td><strong>3</strong></td>
+</tr>
+<tr>
+<td>予備枠1／2を選ぶ</td>
+<td><strong>4／5</strong></td>
+</tr>
+<tr>
+<td>作業用の荷物を落とす</td>
+<td><strong>6</strong></td>
+</tr>
+<tr>
+<td>手に持ったアイテムを使う</td>
+<td>VRChat標準のUse操作／Useボタン</td>
+</tr>
+<tr>
+<td>回収・作業</td>
+<td>対象へのワールド内インタラクト／状況別アクション</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>確認済みのデスクトップクライアントでは、Tabを押すと移動が止まります。</strong> 別のワールドでも同じ動作が確認されています。カーソル操作は立ち止まって、できれば避難所で行いましょう。走りながらのShift+Tabではメニューが開かない場合があるため、先に走る操作を解除してください。Iで読むためのパネルを表示し続けられますが、マウスは解放されません。クリックするときはTabを押し続けます。</p>
+<p>数字キー6つのショートカットはTabなしで使え、Shiftを押していても動作します。キーの変更が可能で、重複した割り当ては通知されます。予備枠を選ぶと、その消耗品が装備枠と入れ替わります。自動で取り出したり消費したりはしません。2で取り出してから、改めてUse操作をしてください。Tabの「押している間だけ表示／開いたまま」の設定も保存できます。</p>
+<h2 id="vr手首パネルと空中パネル">VR：手首パネルと空中パネル</h2>
+<p>右スティックを上か下にはじくと、手ぶら、装備、所持している各消耗品の順に手元のアイテムを切り替えられます。その手のトリガーで使用します。確定操作やメニューを開く必要はありません。配車所では、スティックを上に約0.5秒倒し続けると準備完了／解除、下に倒し続けるとメニューが開きます。スロープ横の床にある準備用ポストでも、触れて準備状態を切り替えられます。表示する手首と装備を持つ手は、それぞれ選べます。メニューはスティックを下に長押しして開く方式で、手首に開くボタンはありません。メニューを開いても移動は止まりません。</p>
+<p><strong>手首モード</strong>では、選んだ手首にパネルが付き、腕と一緒に動きます。<strong>空中モード</strong>では、開いた瞬間に正面の水平な位置へ配置され、その後タブを切り替えても動きません。座った状態やアバターの大きさに合わせて、高さ、距離、サイズを調整できます。</p>
+<p>空中パネルは、設置位置から3メートル以上離れたとき、探索開始時、荷物を拾ったとき、攻撃を受けたとき、ダウンしたときに自動で閉じます。手が届かなくなった場合は、パネル表示中に手首の下に出るランチャーで閉じられます。ランチャーは閉じるボタンと重ならない位置にあります。もう一度操作すると、新しいパネルが正面に出ます。設定の <strong>Recenter（位置をリセット）</strong> でも同じことができます。移動演出中はメニューを開けません。</p>
+<p>VRChat標準操作と重なるボタンは、必要な状況を除いて非表示になり、パネルをコンパクトに保ちます。手首には情報カードがひとつ表示されます。腕が届く範囲でその手を見ると、ラウンド、所持金、体力、レベル、現在の効果（ソーダ、Adrenaline、減速、霧、EMFの方向表示）、手に持っているアイテムを確認できます。警告はメニューの開閉に関係なく表示されます。事務所のボードやメニューの操作タブにある <strong>Wrist HUD +/-</strong> でカードのサイズを変更でき、プロフィールに保存されます。</p>
+<p>個人アイテムは選択した手に追従します。荷物は通常のピックアップ操作、または補助用の <strong>Carry / Drop（運ぶ／落とす）</strong> で扱います。装備を持つ手が標準ピックアップでふさがっている場合は、自分でしまうか持ち替えてください。個人装備が強制的にそれを手放させることはありません。</p>
+<h2 id="スマートフォンとタブレット">スマートフォンとタブレット</h2>
+<p>画面上の <strong>MENU</strong>、<strong>USE ITEM（アイテム使用）</strong>、<strong>COLLECT / WORK（回収／作業）</strong> ボタンを使います。ロビーのワールド内ボードも使えますが、タッチ操作では画面上のボタンが主なショートカットです。インベントリで装備、消耗品、予備枠を選び、別のUse操作で使用します。</p>
+<p>iPhone版は制作者が試しています。タッチ画面の最終的な配置や使いやすさは、より多くの端末での検証が必要です。</p>
+<h2 id="設定と練習">設定と練習</h2>
+<ul>
+<li>修理・救助の操作を、長押しまたは切り替え式に変更。</li>
+<li>予約、ペナルティ、納品、落下のルールはそのままに、荷物を運ぶ補助操作を利用。</li>
+<li>手首表示と装備の左右、空中パネルの位置・サイズ、手首HUDのサイズを設定。</li>
+<li>デスクトップのキー割り当て変更、重複の通知、初期設定へのリセット。</li>
+<li>入力方式ごとの操作プロフィールを個別に保存。</li>
+<li>VRのスティックによるアイテム選択は<strong>初期設定で有効</strong>。ニュートラルのデッドゾーンは0.25、入力しきい値は0.70、保持時間は150ミリ秒です。次の切り替え前にスティックを中央へ戻してください。1回の入力でそのアイテムを直接装備します。</li>
+</ul>
+<p>これらはSpookCoの操作設定で、VRChat標準の移動キーを変更するものではありません。公開プレイテスト中は無料練習エリアが閉鎖され、コンソールと物資は非表示です。アクセスしても案内が表示されます。アイテムを選んだり拾ったりするだけで自動使用されることはありません。ロビーの大きなボード2枚は、スポーン地点の右前方にある配車事務所内です。</p></article><a class="next-page" href="/ja/guide/equipment/"><span>次のページ</span><strong>装備と物資 →</strong></a></main><aside class="toc"><p class="eyebrow">このページの内容</p><div class="toc">
+<ul>
+<li><a href="#言語を選ぶ">言語を選ぶ</a></li>
+<li><a href="#デスクトップ追跡中の操作はキーで">デスクトップ：追跡中の操作はキーで</a></li>
+<li><a href="#vr手首パネルと空中パネル">VR：手首パネルと空中パネル</a></li>
+<li><a href="#スマートフォンとタブレット">スマートフォンとタブレット</a></li>
+<li><a href="#設定と練習">設定と練習</a></li>
+</ul>
+</div>
+</aside></div>
+<footer><div class="footer-project"><a class="footer-wordmark" href="/ja/">SPOOKCO / LAST STOP</a><p>kittyn制作のVRChatワールド。<br>開発版の情報です。公開日をお約束するものではありません。</p></div><a class="footer-studio" href="/ja/credits/" aria-label="Catnet Systems 制作クレジット"><span>a</span><img src="/assets/catnet-systems-white.svg" alt="catnet systems" width="1172" height="503" loading="lazy" decoding="async"><span>production</span></a><nav aria-label="フッターナビゲーション"><a href="/ja/credits/">クレジット</a><a href="/ja/guide/faq/">困ったときは配車所FAQへ →</a></nav></footer>
+</body></html>

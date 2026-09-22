@@ -1,19 +1,19 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Environment &amp; art direction | SpookCo</title><meta name="description" content="Where the next design effort goes, what the grayboxes contain, and what art must preserve."><meta name="robots" content="noindex, nofollow">
-<link rel="canonical" href="https://spookco.kittyn.cat/internal/art/"><meta name="theme-color" content="#0b1918">
-<meta property="og:title" content="Environment &amp; art direction"><meta property="og:description" content="Where the next design effort goes, what the grayboxes contain, and what art must preserve."><meta property="og:type" content="website"><meta property="og:url" content="https://spookco.kittyn.cat/internal/art/">
+<link rel="canonical" href="https://spookco.kittyn.cat/internal/art/"><meta property="og:url" content="https://spookco.kittyn.cat/internal/art/"><meta name="theme-color" content="#0b1918">
+<meta property="og:title" content="Environment &amp; art direction"><meta property="og:description" content="Where the next design effort goes, what the grayboxes contain, and what art must preserve."><meta property="og:type" content="website">
 <link rel="icon" href="/assets/lantern.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css"><script defer src="/assets/site.js"></script></head>
 <body class="docs internal" data-search-index="/internal/search.json">
 <a class="skip" href="#main">Skip to content</a>
 <header class="header"><div class="header-inner"><a class="brand" href="/" aria-label="SpookCo home"><img src="/assets/lantern.svg" alt="" width="34" height="40"><span>SPOOKCO<small>LAST STOP</small></span></a><nav aria-label="Main"><a href="/guide/">Player guide</a><a href="/guide/controls/">Controls</a><a href="/internal/">Development notes</a></nav><span class="build-tag"><i aria-hidden="true"></i> IN DEVELOPMENT</span></div></header>
-<div class="notice"><span>FIELD TEST NOTICE</span> Work in progress. Art, balance, and features may change. Spectator radar &amp; AI diagnostics may not ship.</div>
+<div class="notice"><span>FIELD TEST NOTICE</span> SpookCo is still early in development and may change significantly after the game jam. Gameplay, progression, maps, and art are all subject to change.</div>
 <div class="doc-layout"><aside class="sidebar"><p class="eyebrow">Development notes</p><nav aria-label="Section"><a href="/internal/">Current status</a><a href="/internal/systems/">Systems &amp; architecture</a><a href="/internal/ai/">Killer baseline</a><a href="/internal/art/" aria-current="page">Environment &amp; art</a><a href="/internal/roadmap/">Roadmap &amp; decisions</a><a href="/internal/testing/">Testing &amp; release gates</a><a href="/internal/publishing/">Updating this site</a></nav></aside><details class="mobile-sections"><summary>Development notes · pages</summary><nav aria-label="Section mobile"><a href="/internal/">Current status</a><a href="/internal/systems/">Systems &amp; architecture</a><a href="/internal/ai/">Killer baseline</a><a href="/internal/art/" aria-current="page">Environment &amp; art</a><a href="/internal/roadmap/">Roadmap &amp; decisions</a><a href="/internal/testing/">Testing &amp; release gates</a><a href="/internal/publishing/">Updating this site</a></nav></details><main id="main" tabindex="-1"><div class="page-bar"><a href="/internal/">Development notes</a><span>WORKING BUILD / SEPT 2026</span></div><div class="search"><label for="search">Search these notes</label><input id="search" type="search" placeholder="Try: acceptance" autocomplete="off" aria-controls="search-results"><div id="search-results" role="region" aria-label="Search results" aria-live="polite" hidden></div></div><article class="prose"><p class="eyebrow">Development field notes · Design</p><h1 id="environment-art-direction">Environment &amp; art direction</h1>
-<p>The current worlds are functional grayboxes with original placeholder geometry and synthesized sounds. The next pass should make the trip worth playing repeatedly before investing in fine AI tuning.</p>
+<p>The three destinations and dispatch now contain dressed original environment assets. The September 20 pass adds four original specialist-killer models and warning sounds, darker baked dispatch interiors, faulty fixture glow, distance fog and a lounge CRT with a fake projected beam. Final presentation and mobile performance still need physical-device review.</p>
 <h2 id="campfire-as-a-gameplay-anchor">Campfire as a gameplay anchor</h2>
 <p>The protective lantern and covered van refuge are the dependable destination in every stop. Make their warm silhouette readable from escape routes. Preserve generous access and standing room for the crew; do not turn the entrance into a narrow collision trap.</p>
 <p>The van body is currently <strong>solid</strong> and the protected play space is its covered exterior. A walkable interior is an art/layout decision still to make. Keep exterior capacity even if an interior is added.</p>
-<h2 id="two-locations-to-develop">Two locations to develop</h2>
+<h2 id="three-destinations-to-playtest">Three destinations to playtest</h2>
 <div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table"><table>
 <thead>
 <tr>
@@ -33,11 +33,16 @@
 <td>Pumps, canopy/garage/store and vehicle cover</td>
 <td>How do open forecourt risk and close service corridors differ? Can every job be approached from more than one direction?</td>
 </tr>
+<tr>
+<td>Calder laboratory</td>
+<td>Multilevel industrial laboratory, reactor spaces and tiered routes</td>
+<td>Are vertical travel, distant warnings and escape routes readable in fog and low light?</td>
+</tr>
 </tbody>
 </table></div>
 <p>Aim for roughly 15–25 seconds of travel from the van to ordinary work sites. This is a design target to measure, not a claim that every current route meets it. Compact solo routes should remain interesting; larger crews need additional useful work sites, not just more repeated walking.</p>
 <h2 id="per-stop-layouts-and-doors">Per-stop layouts and doors</h2>
-<p>Each area has a <strong>Randomized layout</strong> root. Its children are sites; each site's children are the mutually exclusive variants one stop can roll — hay rows, stacked bales, stalled vehicles, fallen pines, log stacks, crates and pallets, a tractor, oil drums, a jackknifed trailer, a collapsed sign, tire stacks. The seeded content is graybox: <strong>11 sites with 29 variants across both areas</strong>. Replace their meshes freely and add sites of your own; any geometry works, with solid parts on layer 11.</p>
+<p>Each area has a <strong>Randomized layout</strong> root. Its children are sites; each site's children are the mutually exclusive variants one stop can roll — hay rows, stacked bales, stalled vehicles, fallen pines, log stacks, crates and pallets, a tractor, oil drums, a jackknifed trailer, a collapsed sign, tire stacks. The original outdoor layout seed had 11 sites with 29 variants; that is a historical seed count, not a current whole-scene asset count. Replace their meshes freely and add sites of your own; any geometry works, with solid parts on layer 11.</p>
 <p>Per site, <code>emptyWeight</code> sets how often nothing appears, <code>variantWeights</code> follow child order, and a positive <code>routeGroup</code> keeps at least one site of that group clear so several blockers can cross one corridor without sealing it. Keep obstacles at least 1.2 m clear of anchors and patrol points and 3 m clear of the refuge — the validator enforces it.</p>
 <p>Worksite front openings carry a hinged door: a frame, a leaf that swings inward, and an interaction trigger. Keep the leaf a single solid collider under the hinge and the doorway at least 1.2 m wide; the killer's agent is 0.9 m across. <strong>Rear openings must stay clear</strong> — supply anchors sit in them, and a cabin whose only two exits could both close is a dead end.</p>
 <p>After any of this, run <strong>SpookCo → Apply gameplay scene additions</strong>, which adds carving obstacles, keeps the new geometry out of the navigation bake and the spectator map texture, rebuilds navigation when static geometry changed, and re-collects the layout. Then run <strong>Validate scene and rules</strong>, which fails on a site with no variants, a variant that would block an anchor or the refuge, a mis-wired door, and a doorway the baked mesh cannot pass through. Re-bake lighting after adding static geometry such as door frames.</p>
@@ -46,7 +51,7 @@
 <li>Make cargo destinations, repair states, shared supplies, and extraction unmistakable through shape and feedback, not color alone.</li>
 <li>Retain interrupted repair progress and a soloable path through every mandatory task.</li>
 <li>Give leaving the refuge a reason: visible jobs, optional supplies, and short risk/reward decisions.</li>
-<li>Measure the 20/150/30/10-second phase rhythm with real players before changing timers.</li>
+<li>Measure the 20-second briefing, crew-tier expedition (150–240 seconds), extraction (60–90 seconds) and 10-second transit with real players.</li>
 <li>Test whether three stops produce variety through placement and killer combinations rather than repetitive chores.</li>
 <li>Preserve at least two plausible responses to ordinary pursuit; avoid compulsory dead ends and unavoidable spawn attacks.</li>
 </ul>
@@ -60,7 +65,7 @@
 <p>Do not move protected zones, objective anchors, supply anchors, killer spawn points, patrol routes, the sixteen van and dispatch spawn spots, or the briefing barrier and its glowing marker accidentally when replacing meshes. Structural changes require navigation/lighting rebakes, scene validation, and all three platform builds. Add authors/licenses to credits when importing outside assets.</p></article><a class="next-page" href="/internal/roadmap/"><span>Continue reading</span><strong>Roadmap &amp; decisions →</strong></a></main><aside class="toc"><p class="eyebrow">On this page</p><div class="toc">
 <ul>
 <li><a href="#campfire-as-a-gameplay-anchor">Campfire as a gameplay anchor</a></li>
-<li><a href="#two-locations-to-develop">Two locations to develop</a></li>
+<li><a href="#three-destinations-to-playtest">Three destinations to playtest</a></li>
 <li><a href="#per-stop-layouts-and-doors">Per-stop layouts and doors</a></li>
 <li><a href="#objective-and-round-design">Objective and round design</a></li>
 <li><a href="#art-sessions">Art sessions</a></li>
@@ -68,5 +73,5 @@
 </ul>
 </div>
 </aside></div>
-<footer><a class="footer-wordmark" href="/">SPOOKCO / LAST STOP</a><p>Unlisted public notes · no sensitive information.<br>Prototype information. No release date is promised here.</p><a href="/guide/faq/">Questions? Visit dispatch →</a></footer>
+<footer><div class="footer-project"><a class="footer-wordmark" href="/">SPOOKCO / LAST STOP</a><p>Unlisted public notes · no sensitive information.<br>Prototype information. No release date is promised here.</p></div><a class="footer-studio" href="/credits/" aria-label="Catnet Systems production credits"><span>a</span><img src="/assets/catnet-systems-white.svg" alt="catnet systems" width="1172" height="503" loading="lazy" decoding="async"><span>production</span></a><nav aria-label="Footer"><a href="/credits/">Credits</a><a href="/guide/faq/">Questions? Visit dispatch →</a></nav></footer>
 </body></html>

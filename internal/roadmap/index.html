@@ -1,27 +1,27 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Roadmap &amp; open decisions | SpookCo</title><meta name="description" content="A design-first next pass and the remaining release work."><meta name="robots" content="noindex, nofollow">
-<link rel="canonical" href="https://spookco.kittyn.cat/internal/roadmap/"><meta name="theme-color" content="#0b1918">
-<meta property="og:title" content="Roadmap &amp; open decisions"><meta property="og:description" content="A design-first next pass and the remaining release work."><meta property="og:type" content="website"><meta property="og:url" content="https://spookco.kittyn.cat/internal/roadmap/">
+<link rel="canonical" href="https://spookco.kittyn.cat/internal/roadmap/"><meta property="og:url" content="https://spookco.kittyn.cat/internal/roadmap/"><meta name="theme-color" content="#0b1918">
+<meta property="og:title" content="Roadmap &amp; open decisions"><meta property="og:description" content="A design-first next pass and the remaining release work."><meta property="og:type" content="website">
 <link rel="icon" href="/assets/lantern.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css"><script defer src="/assets/site.js"></script></head>
 <body class="docs internal" data-search-index="/internal/search.json">
 <a class="skip" href="#main">Skip to content</a>
 <header class="header"><div class="header-inner"><a class="brand" href="/" aria-label="SpookCo home"><img src="/assets/lantern.svg" alt="" width="34" height="40"><span>SPOOKCO<small>LAST STOP</small></span></a><nav aria-label="Main"><a href="/guide/">Player guide</a><a href="/guide/controls/">Controls</a><a href="/internal/">Development notes</a></nav><span class="build-tag"><i aria-hidden="true"></i> IN DEVELOPMENT</span></div></header>
-<div class="notice"><span>FIELD TEST NOTICE</span> Work in progress. Art, balance, and features may change. Spectator radar &amp; AI diagnostics may not ship.</div>
+<div class="notice"><span>FIELD TEST NOTICE</span> SpookCo is still early in development and may change significantly after the game jam. Gameplay, progression, maps, and art are all subject to change.</div>
 <div class="doc-layout"><aside class="sidebar"><p class="eyebrow">Development notes</p><nav aria-label="Section"><a href="/internal/">Current status</a><a href="/internal/systems/">Systems &amp; architecture</a><a href="/internal/ai/">Killer baseline</a><a href="/internal/art/">Environment &amp; art</a><a href="/internal/roadmap/" aria-current="page">Roadmap &amp; decisions</a><a href="/internal/testing/">Testing &amp; release gates</a><a href="/internal/publishing/">Updating this site</a></nav></aside><details class="mobile-sections"><summary>Development notes · pages</summary><nav aria-label="Section mobile"><a href="/internal/">Current status</a><a href="/internal/systems/">Systems &amp; architecture</a><a href="/internal/ai/">Killer baseline</a><a href="/internal/art/">Environment &amp; art</a><a href="/internal/roadmap/" aria-current="page">Roadmap &amp; decisions</a><a href="/internal/testing/">Testing &amp; release gates</a><a href="/internal/publishing/">Updating this site</a></nav></details><main id="main" tabindex="-1"><div class="page-bar"><a href="/internal/">Development notes</a><span>WORKING BUILD / SEPT 2026</span></div><div class="search"><label for="search">Search these notes</label><input id="search" type="search" placeholder="Try: acceptance" autocomplete="off" aria-controls="search-results"><div id="search-results" role="region" aria-label="Search results" aria-live="polite" hidden></div></div><article class="prose"><p class="eyebrow">Development field notes · Planning</p><h1 id="roadmap-open-decisions">Roadmap &amp; open decisions</h1>
-<p>The original two-week plan remains a delivery framework. The current implementation moved ahead of final content, but not all acceptance gates are closed. September 15 raised killer pressure, gave the map per-stop obstacles and interactive doors, and added the briefing van hold with spread spawn spots. What all of it needs now is play data, not another local pass.</p>
+<p>The September 20 gameplay and atmosphere expansion is implemented locally. Its remaining release work is uploaded multiplayer acceptance, physical input and presentation review, economy tuning and target-device profiling. Preserve the distinction between completed implementation and unmeasured human play.</p>
 <h2 id="next-make-the-stops-distinct">Next: make the stops distinct</h2>
 <ul>
-<li>Review solo and group routes in both areas and the readability of safe refuge access.</li>
+<li>Review solo and group routes in all three destinations and the readability of safe refuge access.</li>
 <li>Define the van/campfire visual identity and decide whether the van needs a walkable interior.</li>
-<li>Improve objective feedback and meaningful scavenging decisions.</li>
+<li>Measure whether completed-generator recharge, optional extraction salvage and mastery goals make work feel rewarding.</li>
 <li>Watch whether the ten-second briefing hold actually produces shared planning or just reads as a cage, and whether the spread spawn spots land people somewhere useful.</li>
-<li>Choose a cohesive palette, lighting mood, modular environment kit, and six killer silhouettes.</li>
-<li>Measure short-loop fun and pacing with ordinary players. Killers now match a running player and reach +20% at eight or more crew, with cover, doors and re-rolled field obstacles as the counterplay; tune from that play data rather than from another local pass.</li>
+<li>Choose a cohesive palette, lighting mood, modular environment kit, and the ten killer silhouettes.</li>
+<li>Measure short-loop fun and pacing with ordinary players. Movement pressure now varies by killer and crew size; cover, doors, quiet movement, stale trails and committed firing lanes provide different responses. Tune from real play data.</li>
 </ul>
 <h2 id="then-finish-integration-and-scale">Then: finish integration and scale</h2>
 <ul>
-<li>Implement the accepted 18-person instance overflow policy while keeping gameplay tuned for 1–16 participants.</li>
+<li>Keep capacity at sixteen; the creator deferred expansion to twenty or twenty-four players.</li>
 <li>Complete actual concurrent loot/purchase/cargo tests and reconnect A → B → A testing.</li>
 <li>Exercise ready countdown races, late entry, withdrawal, and quota reductions.</li>
 <li>Extend host-control testing beyond the user-confirmed Pass Host/AFK claim path to departures, cancellation, and suspension.</li>
@@ -29,8 +29,8 @@
 </ul>
 <h2 id="then-balance-content-freeze-and-profiling">Then: balance, content freeze, and profiling</h2>
 <ul>
-<li>Tune rewards toward a meaningful upgrade around the first half-hour and 20+ hours to full perk capacity; neither timing is yet measured.</li>
-<li>Test all six killers with starter solo loadouts in both areas and with larger groups.</li>
+<li>Measure the revised early perk-point gains and longer-term mastery pacing before adopting an hours-to-unlock target.</li>
+<li>Test all ten killers with starter solo loadouts in all three destinations and with larger groups.</li>
 <li>Review charge/warp/hazard fairness, repeated stuns, and strong perk combinations.</li>
 <li>Complete art/audio, warning clarity, credits, dawn report polish, and the final status of spectator radar/AI diagnostics.</li>
 <li>Run 30-minute 1/16-player performance sessions, report world and public-avatar costs separately, and fix measured bottlenecks.</li>
@@ -48,8 +48,8 @@
 </thead>
 <tbody>
 <tr>
-<td>18-person overflow behavior</td>
-<td>Creator exceptions can exceed a 16-person instance cap; runtime admission still needs handling.</td>
+<td>Future capacity expansion</td>
+<td>Deferred; any increase beyond sixteen needs explicit scope, admission rules and performance evidence.</td>
 </tr>
 <tr>
 <td>Final spectator information</td>
@@ -65,7 +65,7 @@
 </tr>
 <tr>
 <td>Solo/group pressure and economy</td>
-<td>Current numbers are initial tuning; measure fun and progression. The accepted chase values (player run speed solo, +20% at 8+, a 130% lunge inside 3 m, a 1.5 s pause after a landed hit) are unmeasured against human evasion.</td>
+<td>Current numbers are initial tuning; measure fun and progression. The current per-killer pursuit ratios, crew scaling, warned lethal attacks, quiet-movement threshold and reward pacing need measurement against human evasion and ordinary play.</td>
 </tr>
 <tr>
 <td>End trip reward policy</td>
@@ -77,7 +77,7 @@
 </tr>
 <tr>
 <td>Final art/audio scope</td>
-<td>Keep two areas and six identities achievable without increasing mobile cost excessively.</td>
+<td>Keep three areas and ten identities achievable without increasing mobile cost excessively.</td>
 </tr>
 </tbody>
 </table></div></article><a class="next-page" href="/internal/testing/"><span>Continue reading</span><strong>Testing &amp; release gates →</strong></a></main><aside class="toc"><p class="eyebrow">On this page</p><div class="toc">
@@ -90,5 +90,5 @@
 </ul>
 </div>
 </aside></div>
-<footer><a class="footer-wordmark" href="/">SPOOKCO / LAST STOP</a><p>Unlisted public notes · no sensitive information.<br>Prototype information. No release date is promised here.</p><a href="/guide/faq/">Questions? Visit dispatch →</a></footer>
+<footer><div class="footer-project"><a class="footer-wordmark" href="/">SPOOKCO / LAST STOP</a><p>Unlisted public notes · no sensitive information.<br>Prototype information. No release date is promised here.</p></div><a class="footer-studio" href="/credits/" aria-label="Catnet Systems production credits"><span>a</span><img src="/assets/catnet-systems-white.svg" alt="catnet systems" width="1172" height="503" loading="lazy" decoding="async"><span>production</span></a><nav aria-label="Footer"><a href="/credits/">Credits</a><a href="/guide/faq/">Questions? Visit dispatch →</a></nav></footer>
 </body></html>
