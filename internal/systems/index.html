@@ -3,8 +3,8 @@
 <title>Systems &amp; architecture | SpookCo</title><meta name="description" content="Runtime responsibilities, network state, inventory transactions, and save boundaries."><meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://spookco.kittyn.cat/internal/systems/"><meta property="og:url" content="https://spookco.kittyn.cat/internal/systems/"><meta name="theme-color" content="#0b1918">
 <meta property="og:title" content="Systems &amp; architecture"><meta property="og:description" content="Runtime responsibilities, network state, inventory transactions, and save boundaries."><meta property="og:type" content="website">
-<link rel="icon" href="/assets/lantern.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css?v=f7bc1b727ce7e863"><script defer src="/assets/site.js?v=f7bc1b727ce7e863"></script></head>
-<body class="docs internal" data-search-index="/internal/search.json?v=f7bc1b727ce7e863">
+<link rel="icon" href="/assets/lantern.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css?v=2b9f01d51c011f9c"><script defer src="/assets/site.js?v=2b9f01d51c011f9c"></script></head>
+<body class="docs internal" data-search-index="/internal/search.json?v=2b9f01d51c011f9c">
 <a class="skip" href="#main">Skip to content</a>
 <header class="header"><div class="header-inner"><a class="brand" href="/" aria-label="SpookCo home"><img src="/assets/lantern.svg" alt="" width="34" height="40"><span>SPOOKCO<small>LAST STOP</small></span></a><nav aria-label="Main"><a href="/guide/">Player guide</a><a href="/guide/controls/">Controls</a><a href="/internal/">Development notes</a></nav><span class="build-tag"><i aria-hidden="true"></i> IN DEVELOPMENT</span></div></header>
 <div class="notice"><span>FIELD TEST NOTICE</span> SpookCo is still early in development and may change significantly after the game jam. Gameplay, progression, maps, and art are all subject to change.</div>
@@ -25,7 +25,7 @@
 </tr>
 <tr>
 <td>SpookSession</td>
-<td>Phases, deadlines, crew state, host offers/claims, health/recovery, trip choices, authored spawn-spot selection, and the local briefing van hold</td>
+<td>Phases, deadlines, crew state, host offers/claims, health/recovery, trip choices, authored spawn-spot selection, and the briefing countdown</td>
 </tr>
 <tr>
 <td>SpookLedger</td>
@@ -53,7 +53,11 @@
 </tr>
 <tr>
 <td>SpookSpectatorMap</td>
-<td>Local spectator map, vision/hearing presentation and tracking age</td>
+<td>Local map boards (dispatch and van), vision/hearing presentation, tracking age, crew names from the synced ledger slots, and the marker/roster picks</td>
+</tr>
+<tr>
+<td>SpookMapCamera</td>
+<td>Local click-to-watch camera: one disabled camera rendered by hand at 15 Hz into a render texture on the screen beside the picking board (the office window at dispatch; the CRT bezel on each field van's driver-side wall since batch 5), with fog/sky, killer-renderer and in-view screen brackets around each render (PC only for now)</td>
 </tr>
 <tr>
 <td>SpookControls</td>
@@ -69,7 +73,7 @@
 </tr>
 <tr>
 <td>SpookPanel / SpookFeedback</td>
-<td>Throttled UI, markers, interaction targets, alerts, and the leased briefing barrier and its marker</td>
+<td>Throttled UI, markers, interaction targets and alerts</td>
 </tr>
 <tr>
 <td>SpookTransition</td>
@@ -87,12 +91,11 @@
 <h2 id="temporary-equipment-effects">Temporary equipment effects</h2>
 <p>The equipment authority follows the session owner and checkpoints 32 shared effect slots, source player IDs, absolute expiry times and the attempt serial. Oil also records the owner identity per crew slot. A new attempt invalidates old effects, and reused crew slots cannot inherit oil. Receivers reconstruct local pooled visuals and positional alarm audio from synchronized state; no new networked objects are spawned per use.</p>
 <p>Smoke intersects both head and torso visibility segments, including close contact, without suppressing hearing or physical attack resolution. Braces add one four-second normal door-breach delay; crew opening and charge destruction clear them. Flash bulbs and alarms share the camera stun immunity; bolts share decoy resistance. Battery use requires an active gear cooldown and cannot stack armed alarms. Invalid effects return false before the ledger spends an item. Useful interruption rewards reuse the existing bounded support grant.</p>
-<h2 id="briefing-hold-and-spawn-placement">Briefing hold and spawn placement</h2>
-<p>For the first <code>briefingSeconds - briefingLockSeconds</code> (20 − 10) seconds of a briefing, each client keeps <strong>its own</strong> alive crew member inside the van area. Four local invisible walls on <strong>user layer 22</strong> sit .5 m inside the refuge zone edge, enclosing the van, the operations panel and every spawn spot, with a glowing non-static marker while locked.</p>
-<p>This is a courtesy constraint, never authority. Nothing about it is synchronized, nothing scores on it, and a modified client, a station, playspace drift or VRChat's own respawn can bypass it. It fails open on every uncertain input: the wrong phase, a player who is not alive crew, a missing slot, missing rules, a missing safe zone, a halted session, and a deadline that is already past or more than <code>briefingSeconds + 2</code> away — that last case releases silently, with no barrier, no countdown and no "Head out" notice, because the data cannot be trusted. A 1.5-second lease renewed by SpookSession and checked by SpookFeedback drops the walls if the session stops ticking.</p>
-<p>Layer 22 rather than Ignore Raycast: VRChat and ClientSim treat layer 2 as interactable, so a layer-2 wall would block the VR panel pointer whenever a pinned panel landed beyond it. The scene descriptor's Interact Passthrough includes layer 22, so interaction rays pass through while player movement still collides, and no gameplay query uses the layer — killer sight, cargo seating, the spectator map bake and the navmesh all use layer 11. Layer 22 does collide with the Pickup layer, so a carried or dropped case bumps the walls and stays inside the refuge for the ten seconds they stand.</p>
-<p>Walls arm only when the player is at least <code>briefingArmInset</code> (.85 m) inside the zone edge with no travel fade running, and stay armed while at least <code>briefingKeepInset</code> (.55 m) inside; a player pressed against a wall is .7 m inside, so a single threshold would disarm the barrier exactly when it is needed. A player outside the refuge while locked is teleported once to their own spot. The .35 s grace is sampled on the session's .2 s tick, so the effective pull-back delay is .4–.6 s. It is a direct teleport rather than a travel fade, so an open shop or loadout panel is not force-closed and the trip's teleport accounting is unchanged.</p>
-<p>Game-driven moves no longer stack the crew on one point. Sixteen authored, ground-seated spots sit under each van anchor and sixteen at dispatch, 1.5 m apart, clear of solid geometry, inside the barrier ring and facing the anchor's direction. They are used by transit arrival, stop start, restart, resume, late join, manual respawn at the refuge, recovery return, Watch, return to dispatch and the report. The local spot index is the player's rank by ledger slot — among crew for a van, among registered players for dispatch — where rank 0 keeps the original anchor, so solo positions are unchanged, and higher ranks map into spots 1–15 without ever wrapping back onto the anchor. Missing spot data falls back to the anchor, and VRChat's own join spawn still uses the single descriptor spawn. Three overlaps are accepted: more than 16 eligible players re-using spots 1–15, a spectator respawning at the plain refuge anchor, and a late joiner landing on a spot a teammate still occupies.</p>
+<h2 id="briefing-countdown-and-spawn-placement">Briefing countdown and spawn placement</h2>
+<p>The 20-second briefing is free: the van hold that kept each client's own crew member inside the refuge for the first ten seconds was retired on 2026-09-24 (see <code>Docs/BriefingHoldRemoval-2026-09-24.md</code>). No walls, marker, pull-back or lease remain; crew may leave at any second.</p>
+<p><code>_BriefingCountdown()</code> shows the countdown only while the phase is briefing, the local slot is alive crew and the synced deadline is plausible (0 &lt; remaining &lt;= <code>briefingSeconds + 2</code>); a stale or absurd deadline shows nothing. The HUD and status read "BRIEFING — shop at the van or head out (Ns)" and the wrist "BRIEFING Ns". Shopping and selling are gated by <code>_Shopping</code> (briefing inside the refuge, or dispatch); pickups are open through the briefing while delivery, priming and generator work wait for the expedition.</p>
+<p>User layer 22 stays reserved as <code>SpookWorldBuilder.GuardLayer</code> (players collide, the descriptor's Interact Passthrough bit 0 is set) for invisible walkway guards; world visuals live on <code>DecorLayer</code> (0) and only eye-locked veils, banners and prone seats on <code>OverlayLayer</code> (2).</p>
+<p>Game-driven moves no longer stack the crew on one point. Sixteen authored, ground-seated spots sit under each van anchor and sixteen at dispatch, 1.5 m apart, clear of solid geometry, inside the refuge's .85 m spawn inset and facing the anchor's direction. They are used by transit arrival, stop start, restart, resume, late join, manual respawn at the refuge, recovery return, Watch, return to dispatch and the report. The local spot index is the player's rank by ledger slot — among crew for a van, among registered players for dispatch — where rank 0 keeps the original anchor, so solo positions are unchanged, and higher ranks map into spots 1–15 without ever wrapping back onto the anchor. Missing spot data falls back to the anchor, and VRChat's own join spawn still uses the single descriptor spawn. Two overlaps are accepted: more than 16 eligible players re-using spots 1–15 and a late joiner landing on a spot a teammate still occupies. A spectator who respawns during a trip stays on the world spawn at dispatch and is never moved to the van. A first-half recovery lands instead at the nearest recovery stone inside the stop's tier when one is nearer than the van (<code>Docs/RecoveryStones-2026-09-24.md</code>); the stones are shown only in phases 2–3 of the current area, inside the tier and before halfway (<code>_LateInStop</code>), and <code>_RecoveryPost</code> returns -1 after halfway so a vanished stone never receives anyone.</p>
 <h2 id="persistence">Persistence</h2>
 <p>Wait for <code>OnPlayerRestored</code> before writes, purchases, and grants. The permanent profile holds XP, commendations, perk selection, reusable gear, and player identity token. Separate VR/desktop/touch keys hold controls.</p>
 <p>A synchronized random live-session key survives trips, resets, role changes, and ordinary ownership migration. A bounded 128-record history stores session cash, pouch, cooldowns, inventory revisions, grant identity, and reward masks. The current wallet is updated during play; the history index changes only on session entry/eviction. Old prototype wallet data has a migration path.</p>
@@ -103,7 +106,7 @@
 <li>Killers: 0 Groundskeeper, 1 Rattletrap, 2 Roadkill, 3 Hitchhiker, 4 Usher, 5 Switchboard.</li>
 <li>Consumables: 0 empty, 1 ration, 2 soda, 3 flare, 4 tape, 5 smoke, 6 bolts, 7 brace, 8 oil, 9 flash bulb, 10 battery.</li>
 <li>Reusable gear: 0 decoy, 1 camera, 2 EMF pager, 3 track shoes, 4 trip alarm. Display order follows unlock thresholds without changing stable IDs.</li>
-<li>Perk bits 0–17: Spotter, Courier, Mechanic, Field Medic, Scrapper, Soft Soles, Adrenaline, Quickdraw, Hardhat, Second Wind, Silent Tools, Ear Defenders, Escape Artist, Braced, Clear Lenses, Sixth Sense, Trailbreaker, Inspector. The ten legacy indices and costs are unchanged. <code>_SanitizePerks</code> validates levels and budget while retaining affordable selections.</li>
+<li>Perk bits 0–18: Spotter, Courier, Mechanic, Field Medic, Scrapper, Soft Soles, Adrenaline, Quickdraw, Hardhat, Second Wind, Silent Tools, Ear Defenders, Escape Artist, Braced, Clear Lenses, Sixth Sense, Trailbreaker, Inspector, Focused Beam (level 15, added 2026-09-23). The perk pages size themselves from the catalogue, nine rows each, and the career mastery pages follow them. The ten legacy indices and costs are unchanged. <code>_SanitizePerks</code> validates levels and budget while retaining affordable selections.</li>
 </ul>
 <p>Preserve IDs when replacing art or changing display names. Three consumable slots allow duplicates. Old three-bit IDs migrate to the marked four-bit format on mutation. XP to the next level is <code>150 + 35 × (current level − 1)</code> through level 40; 31,785 total XP. Final reward pacing has not been measured.</p>
 <h2 id="capacity-and-transport-limits">Capacity and transport limits</h2>
@@ -127,7 +130,7 @@
 <li><a href="#runtime-boundaries">Runtime boundaries</a></li>
 <li><a href="#authority-and-transactions">Authority and transactions</a></li>
 <li><a href="#temporary-equipment-effects">Temporary equipment effects</a></li>
-<li><a href="#briefing-hold-and-spawn-placement">Briefing hold and spawn placement</a></li>
+<li><a href="#briefing-countdown-and-spawn-placement">Briefing countdown and spawn placement</a></li>
 <li><a href="#persistence">Persistence</a></li>
 <li><a href="#stable-content-ids">Stable content IDs</a></li>
 <li><a href="#capacity-and-transport-limits">Capacity and transport limits</a></li>

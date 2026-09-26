@@ -3,8 +3,8 @@
 <title>Roadmap &amp; open decisions | SpookCo</title><meta name="description" content="A design-first next pass and the remaining release work."><meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://spookco.kittyn.cat/internal/roadmap/"><meta property="og:url" content="https://spookco.kittyn.cat/internal/roadmap/"><meta name="theme-color" content="#0b1918">
 <meta property="og:title" content="Roadmap &amp; open decisions"><meta property="og:description" content="A design-first next pass and the remaining release work."><meta property="og:type" content="website">
-<link rel="icon" href="/assets/lantern.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css?v=f7bc1b727ce7e863"><script defer src="/assets/site.js?v=f7bc1b727ce7e863"></script></head>
-<body class="docs internal" data-search-index="/internal/search.json?v=f7bc1b727ce7e863">
+<link rel="icon" href="/assets/lantern.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css?v=2b9f01d51c011f9c"><script defer src="/assets/site.js?v=2b9f01d51c011f9c"></script></head>
+<body class="docs internal" data-search-index="/internal/search.json?v=2b9f01d51c011f9c">
 <a class="skip" href="#main">Skip to content</a>
 <header class="header"><div class="header-inner"><a class="brand" href="/" aria-label="SpookCo home"><img src="/assets/lantern.svg" alt="" width="34" height="40"><span>SPOOKCO<small>LAST STOP</small></span></a><nav aria-label="Main"><a href="/guide/">Player guide</a><a href="/guide/controls/">Controls</a><a href="/internal/">Development notes</a></nav><span class="build-tag"><i aria-hidden="true"></i> IN DEVELOPMENT</span></div></header>
 <div class="notice"><span>FIELD TEST NOTICE</span> SpookCo is still early in development and may change significantly after the game jam. Gameplay, progression, maps, and art are all subject to change.</div>
@@ -13,9 +13,9 @@
 <h2 id="next-make-the-stops-distinct">Next: make the stops distinct</h2>
 <ul>
 <li>Review solo and group routes in all three destinations and the readability of safe refuge access.</li>
-<li>Define the van/campfire visual identity and decide whether the van needs a walkable interior.</li>
+<li>Paint the revamped van's livery, rust and stencils (paint brief in Docs/VanRevamp-2026-09-24.md); the walkable interior shipped on 2026-09-24.</li>
 <li>Measure whether completed-generator recharge, optional extraction salvage and mastery goals make work feel rewarding.</li>
-<li>Watch whether the ten-second briefing hold actually produces shared planning or just reads as a cage, and whether the spread spawn spots land people somewhere useful.</li>
+<li>The ten-second briefing hold read as a cage in playtests and was retired on 2026-09-24; watch whether the free 20-second briefing still produces shared planning, and whether the spread spawn spots land people somewhere useful.</li>
 <li>Choose a cohesive palette, lighting mood, modular environment kit, and the ten killer silhouettes.</li>
 <li>Measure short-loop fun and pacing with ordinary players. Movement pressure now varies by killer and crew size; cover, doors, quiet movement, stale trails and committed firing lanes provide different responses. Tune from real play data.</li>
 </ul>
@@ -61,7 +61,7 @@
 </tr>
 <tr>
 <td>Van interior versus exterior refuge</td>
-<td>Changes art effort, collision, capacity, and navigation.</td>
+<td>Decided 2026-09-24: a walk-through interior (floor, roof, outer walls solid) inside the protected refuge; the covered exterior keeps the capacity.</td>
 </tr>
 <tr>
 <td>Solo/group pressure and economy</td>
@@ -72,8 +72,8 @@
 <td>End trip deliberately ships unguarded for testing: play stop 1, return to dispatch, End trip, depart again, and that stop's objective, contract, extraction and rescue rewards pay again with freshly rolled supplies. The per-stop rate resembles a full run, so the gain is skipping stops 2–3 and the trip bonus rather than a rate exploit. Options: carry the ended trip's paid and claim masks forward for visited stops, put a cooldown on End trip, or accept it. Decide before release, and do not read progression pacing from sessions that used it.</td>
 </tr>
 <tr>
-<td>Briefing hold strength</td>
-<td>It is a courtesy constraint with no authority: a station, playspace drift or a modified client bypasses it, and roomscale walking against the barrier is still untested in a headset. Decide whether that is enough or whether the briefing needs a real gate.</td>
+<td>Free briefing</td>
+<td>The van hold was retired on 2026-09-24 (<code>Docs/BriefingHoldRemoval-2026-09-24.md</code>). Crew can now roam and pre-carry cargo and fuel for all 20 s while the killer is dormant, reach the killer's fixed spawn before it appears, and the layout's re-roll window overlaps free crew. Decide from playtests whether the briefing needs a gate again or a shorter clock.</td>
 </tr>
 <tr>
 <td>Final art/audio scope</td>

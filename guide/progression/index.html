@@ -3,12 +3,12 @@
 <title>Progression &amp; saving | SpookCo</title><meta name="description" content="What carries between visits, what belongs to a live session, and how perks work.">
 <link rel="canonical" href="https://spookco.kittyn.cat/guide/progression/"><meta property="og:url" content="https://spookco.kittyn.cat/guide/progression/"><link rel="alternate" hreflang="en" href="https://spookco.kittyn.cat/guide/progression/"><link rel="alternate" hreflang="ja" href="https://spookco.kittyn.cat/ja/guide/progression/"><link rel="alternate" hreflang="x-default" href="https://spookco.kittyn.cat/guide/progression/"><meta name="theme-color" content="#0b1918">
 <meta property="og:title" content="Progression &amp; saving"><meta property="og:description" content="What carries between visits, what belongs to a live session, and how perks work."><meta property="og:type" content="website">
-<link rel="icon" href="/assets/lantern.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css?v=f7bc1b727ce7e863"><script defer src="/assets/site.js?v=f7bc1b727ce7e863"></script></head>
-<body class="docs" data-search-index="/search.json?v=f7bc1b727ce7e863">
+<link rel="icon" href="/assets/lantern.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css?v=2b9f01d51c011f9c"><script defer src="/assets/site.js?v=2b9f01d51c011f9c"></script></head>
+<body class="docs" data-search-index="/search.json?v=2b9f01d51c011f9c">
 <a class="skip" href="#main">Skip to content</a>
 <header class="header"><div class="header-inner"><a class="brand" href="/" aria-label="SpookCo home"><img src="/assets/lantern.svg" alt="" width="34" height="40"><span>SPOOKCO<small>LAST STOP</small></span></a><nav aria-label="Main"><a href="/guide/">Player guide</a><a href="/guide/controls/">Controls</a></nav><div class="language-switch" role="group" aria-label="Language / 言語"><a href="/guide/progression/" lang="en" hreflang="en" aria-current="true">English</a><a href="/ja/guide/progression/" lang="ja" hreflang="ja">日本語</a></div><span class="build-tag"><i aria-hidden="true"></i> IN DEVELOPMENT</span></div></header>
 <div class="notice"><span>FIELD TEST NOTICE</span> SpookCo is still early in development and may change significantly after the game jam. Gameplay, progression, maps, and art are all subject to change.</div>
-<div class="doc-layout"><aside class="sidebar"><p class="eyebrow">Employee field guide</p><nav aria-label="Section"><a href="/guide/">Your first shift</a><a href="/guide/controls/">Controls &amp; accessibility</a><a href="/guide/equipment/">Equipment &amp; supplies</a><a href="/guide/progression/" aria-current="page">Progression &amp; saving</a><a href="/guide/threats/">Know the threats</a><a href="/guide/faq/">Dispatch FAQ</a></nav></aside><details class="mobile-sections"><summary>Employee field guide · pages</summary><nav aria-label="Section mobile"><a href="/guide/">Your first shift</a><a href="/guide/controls/">Controls &amp; accessibility</a><a href="/guide/equipment/">Equipment &amp; supplies</a><a href="/guide/progression/" aria-current="page">Progression &amp; saving</a><a href="/guide/threats/">Know the threats</a><a href="/guide/faq/">Dispatch FAQ</a></nav></details><main id="main" tabindex="-1"><div class="page-bar"><a href="/guide/">Player guide</a><span>WORKING BUILD / SEPT 2026</span></div><div class="search"><label for="search">Search these guides</label><input id="search" type="search" placeholder="Try: cargo" autocomplete="off" aria-controls="search-results"><div id="search-results" role="region" aria-label="Search results" aria-live="polite" hidden></div></div><article class="prose"><p class="eyebrow">Employee field guide · 04</p><h1 id="progression-saving">Progression &amp; saving</h1>
+<div class="doc-layout"><aside class="sidebar"><p class="eyebrow">Employee field guide</p><nav aria-label="Section"><a href="/guide/">Your first shift</a><a href="/guide/controls/">Controls &amp; accessibility</a><a href="/guide/equipment/">Equipment &amp; supplies</a><a href="/guide/progression/" aria-current="page">Progression &amp; saving</a><a href="/guide/threats/">Know the spooks</a><a href="/guide/faq/">Dispatch FAQ</a><a href="/guide/company/">About SpookCo</a></nav></aside><details class="mobile-sections"><summary>Employee field guide · pages</summary><nav aria-label="Section mobile"><a href="/guide/">Your first shift</a><a href="/guide/controls/">Controls &amp; accessibility</a><a href="/guide/equipment/">Equipment &amp; supplies</a><a href="/guide/progression/" aria-current="page">Progression &amp; saving</a><a href="/guide/threats/">Know the spooks</a><a href="/guide/faq/">Dispatch FAQ</a><a href="/guide/company/">About SpookCo</a></nav></details><main id="main" tabindex="-1"><div class="page-bar"><a href="/guide/">Player guide</a><span>WORKING BUILD / SEPT 2026</span></div><div class="search"><label for="search">Search these guides</label><input id="search" type="search" placeholder="Try: cargo" autocomplete="off" aria-controls="search-results"><div id="search-results" role="region" aria-label="Search results" aria-live="polite" hidden></div></div><article class="prose"><p class="eyebrow">Employee field guide · 04</p><h1 id="progression-saving">Progression &amp; saving</h1>
 <p>The save system is implemented, but reconnect and multi-instance edge cases still need expanded uploaded testing. Do not treat a development build as a permanent economy guarantee.</p>
 <h2 id="what-stays-with-you">What stays with you</h2>
 <div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table"><table>
@@ -32,7 +32,7 @@
 </tr>
 <tr>
 <td>Career mastery</td>
-<td>Job and killer ranks; cosmetic crew titles</td>
+<td>Job and spook ranks; cosmetic crew titles</td>
 <td>Permanent across visits</td>
 </tr>
 <tr>
@@ -97,11 +97,11 @@
 <p>Cargo and repair finishers earn 10 / 12 / 20 / 30 XP for an initial crew of 1–2 / 3–4 / 5–8 / 9+ respectively. Cargo pays $8, repair pays $12, and fully fueling a generator pays $4 with the same crew-scaled XP. A player who supplies the first can to a two-can generator receives helper credit when a teammate supplies the second. Scrapper increases objective cash by 20%.</p>
 <p>Optional bonus salvage unlocks only after the required contract is complete. Its finisher earns <strong>20 / 24 / 40 / 60 XP</strong> for the same initial-crew brackets and <strong>$24</strong> per case. Qualified handoff helpers receive half; Scrapper applies normally. Cash is awarded on delivery; the XP remains subject to extraction penalties. There are only one to three bonus cases per stop, and each pays once per trip, including restarts.</p>
 <p>A cargo helper must carry the case at least three metres before handing it off. A repair helper must supply at least 10% of the completed repair. Qualified helpers receive half the objective XP and cash when someone finishes the task. Picking up and dropping a case or tapping a generator is not enough. Restarting a stop does not pay the same objective again.</p>
-<p>Rescue credit is bounded to 10 XP / $3 per rescuer per stop. Gear that successfully interrupts an active threat can grant 8 XP / $3 once per stop; repeatedly distracting an idle killer grants nothing.</p>
+<p>Rescue credit is bounded to 10 XP / $3 per rescuer per stop. Gear that successfully interrupts an active threat can grant 8 XP / $3 once per stop; repeatedly distracting an idle spook grants nothing.</p>
 <p>Each round ends after one contract. There is no additional three-stop shift payout. Contribute to a completed contract and extract alive to earn <strong>40 base XP, $15 and 2 commendations</strong>, on top of your completed work rewards. The XP total still receives any crew extraction penalty.</p>
 <p>The result screen shows your outcome, total cash, XP and commendations, then the return-to-dispatch countdown. Each reward line explains its use. The menu keeps the work, contract and extraction breakdown and next equipment unlock. <strong>Commendations</strong> is the current name for survival points; existing balances retain their value and are never spent.</p>
 <h2 id="career-mastery-and-titles">Career mastery and titles</h2>
-<p>Open <strong>Perks</strong>, advance past Specialist perks, then choose <strong>Career mastery</strong>. Two career pages show your counts, next rank and title choices. Select an earned title to display it beside your name in the crew roster, or choose <strong>No title</strong> to hide it. Titles automatically show your current rank, I, II or III. They are cosmetic and give no combat advantage.</p>
+<p>Open <strong>Perks</strong>, page past <strong>Specialist perks</strong> and <strong>More perks</strong>, then choose <strong>Career mastery</strong>. Two career pages show your counts, next rank and title choices. Select an earned title to display it beside your name in the crew roster, or choose <strong>No title</strong> to hide it. Titles automatically show your current rank, I, II or III. They are cosmetic and give no combat advantage.</p>
 <div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table"><table>
 <thead>
 <tr>
@@ -127,14 +127,14 @@
 <td>5 / 25 / 100</td>
 </tr>
 <tr>
-<td>Each of the ten killers</td>
-<td>Contribute to a completed contract and extract alive from that killer</td>
+<td>Each of the ten spooks</td>
+<td>Contribute to a completed contract and extract alive from that spook</td>
 <td>3 / 10 / 25</td>
 </tr>
 </tbody>
 </table></div>
-<p>Finishing work and meaningfully helping earn equal mastery credit, even though helper XP and cash are smaller. Merely surviving, failing the contract or missing extraction gives no killer mastery. Restarting the same stop cannot repeat its paid mastery. Job progress already earned survives a failed stop.</p>
-<p>Older records that remember surviving a killer begin with one proven escape for that killer. They cannot reconstruct old job counts. Mastery and title selection save with your permanent profile.</p>
+<p>Finishing work and meaningfully helping earn equal mastery credit, even though helper XP and cash are smaller. Merely surviving, failing the contract or missing extraction gives no spook mastery. Restarting the same stop cannot repeat its paid mastery. Job progress already earned survives a failed stop.</p>
+<p>Older records that remember surviving a spook begin with one proven escape for that spook. They cannot reconstruct old job counts. Mastery and title selection save with your permanent profile.</p>
 <h2 id="levels-and-perk-points">Levels and perk points</h2>
 <p>Start at <strong>level 1 with 2 points</strong>. Gain a point at levels <strong>2, 3, 6, 9, 12, 15, 18, 21, 24, 28, 32, 36 and 40</strong>, reaching <strong>15 points at level 40</strong>. The early gains let you afford a four-point perk at level 3. Choose any combination of unique perks within your budget and respec freely during briefings.</p>
 <div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table"><table>
@@ -224,7 +224,7 @@
 <tr>
 <td>Sixth Sense</td>
 <td style="text-align: right;">3</td>
-<td>Level 9: HUD warning when a nearby killer winds up an attack, within 25 m</td>
+<td>Level 9: HUD warning when a nearby spook winds up an attack, within 25 m</td>
 </tr>
 <tr>
 <td>Trailbreaker</td>
@@ -236,9 +236,14 @@
 <td style="text-align: right;">2</td>
 <td>Level 3: identifies the nearest visible, unclaimed field supply within 8 m</td>
 </tr>
+<tr>
+<td>Focused Beam</td>
+<td style="text-align: right;">3</td>
+<td>Level 15: a narrower flashlight beam that reaches about two thirds farther; its switch is quiet and spooks never hear it. The Usher and Deadeye can still see the beam</td>
+</tr>
 </tbody>
 </table></div>
-<p>The two-page perk menu shows cost, required level and equipped state. The original ten perks have no extra level requirement. Saved affordable builds keep their selections.</p>
+<p>The three-page perk menu shows cost, required level and equipped state. The original ten perks have no extra level requirement. Saved affordable builds keep their selections.</p>
 <p>Combined general movement bonuses are capped at 20%; Braced separately improves sideways movement by 15%. Perks support different roles; required tasks remain possible with the starter loadout.</p>
 <p>XP comes from completed work, bounded rescue/support credit, contributed contract and extraction results. Idle waiting, movement alone, and supply collection do not generate XP. The early level curve stays unchanged through level 10. Each subsequent level costs the base amount (<code>150 + 35 × (current level − 1)</code>) multiplied by the current band:</p>
 <div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table"><table>
@@ -279,7 +284,7 @@
 </tr>
 </tbody>
 </table></div>
-<p>Level 10 requires <strong>2,610</strong> banked XP, level 15 <strong>7,960</strong>, level 20 <strong>25,710</strong>, and level 40 <strong>456,310</strong>. Perk-point milestones stay spaced across those levels; the budget still caps at 15. Later permanent equipment requires both a level and commendation milestone. Actual days or hours to reach these milestones depend on contributions and extraction success and need live balance data.</p></article><a class="next-page" href="/guide/threats/"><span>Continue reading</span><strong>Know the threats →</strong></a></main><aside class="toc"><p class="eyebrow">On this page</p><div class="toc">
+<p>Level 10 requires <strong>2,610</strong> banked XP, level 15 <strong>7,960</strong>, level 20 <strong>25,710</strong>, and level 40 <strong>456,310</strong>. Perk-point milestones stay spaced across those levels; the budget still caps at 15. Later permanent equipment requires both a level and commendation milestone. Actual days or hours to reach these milestones depend on contributions and extraction success and need live balance data.</p></article><a class="next-page" href="/guide/threats/"><span>Continue reading</span><strong>Know the spooks →</strong></a></main><aside class="toc"><p class="eyebrow">On this page</p><div class="toc">
 <ul>
 <li><a href="#what-stays-with-you">What stays with you</a></li>
 <li><a href="#earn-your-contract-bonus">Earn your contract bonus</a></li>

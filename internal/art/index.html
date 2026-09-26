@@ -3,8 +3,8 @@
 <title>Environment &amp; art direction | SpookCo</title><meta name="description" content="Where the next design effort goes, what the grayboxes contain, and what art must preserve."><meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://spookco.kittyn.cat/internal/art/"><meta property="og:url" content="https://spookco.kittyn.cat/internal/art/"><meta name="theme-color" content="#0b1918">
 <meta property="og:title" content="Environment &amp; art direction"><meta property="og:description" content="Where the next design effort goes, what the grayboxes contain, and what art must preserve."><meta property="og:type" content="website">
-<link rel="icon" href="/assets/lantern.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css?v=f7bc1b727ce7e863"><script defer src="/assets/site.js?v=f7bc1b727ce7e863"></script></head>
-<body class="docs internal" data-search-index="/internal/search.json?v=f7bc1b727ce7e863">
+<link rel="icon" href="/assets/lantern.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css?v=2b9f01d51c011f9c"><script defer src="/assets/site.js?v=2b9f01d51c011f9c"></script></head>
+<body class="docs internal" data-search-index="/internal/search.json?v=2b9f01d51c011f9c">
 <a class="skip" href="#main">Skip to content</a>
 <header class="header"><div class="header-inner"><a class="brand" href="/" aria-label="SpookCo home"><img src="/assets/lantern.svg" alt="" width="34" height="40"><span>SPOOKCO<small>LAST STOP</small></span></a><nav aria-label="Main"><a href="/guide/">Player guide</a><a href="/guide/controls/">Controls</a><a href="/internal/">Development notes</a></nav><span class="build-tag"><i aria-hidden="true"></i> IN DEVELOPMENT</span></div></header>
 <div class="notice"><span>FIELD TEST NOTICE</span> SpookCo is still early in development and may change significantly after the game jam. Gameplay, progression, maps, and art are all subject to change.</div>
@@ -12,7 +12,7 @@
 <p>The three destinations and dispatch now contain dressed original environment assets. The September 20 pass adds four original specialist-killer models and warning sounds, darker baked dispatch interiors, faulty fixture glow, distance fog and a lounge CRT with a fake projected beam. Final presentation and mobile performance still need physical-device review.</p>
 <h2 id="campfire-as-a-gameplay-anchor">Campfire as a gameplay anchor</h2>
 <p>The protective lantern and covered van refuge are the dependable destination in every stop. Make their warm silhouette readable from escape routes. Preserve generous access and standing room for the crew; do not turn the entrance into a narrow collision trap.</p>
-<p>The van body is currently <strong>solid</strong> and the protected play space is its covered exterior. A walkable interior is an art/layout decision still to make. Keep exterior capacity even if an interior is added.</p>
+<p>Since the 2026-09-24 revamp the van has a <strong>walkable interior</strong>: its floor, roof and outer walls are solid (simple box colliders), while the bench, locker, chairs, monitor console, bulkhead and every door leaf are walk-through, and the two cab doors open on a click for everyone. Steps under the barn doors, the cab doors and the rear bumper lead in. The covered exterior under the camp tent stays the main protected space, so keep its capacity. The model is unpainted starter paint for now; the livery, rust and stencils follow the paint brief in <code>Docs/VanRevamp-2026-09-24.md</code>.</p>
 <h2 id="three-destinations-to-playtest">Three destinations to playtest</h2>
 <div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table"><table>
 <thead>
@@ -62,7 +62,7 @@
 <h2 id="asset-budgets-and-authoring-guardrails">Asset budgets and authoring guardrails</h2>
 <p>Current recorded geometry is <strong>64,686 triangles across all loaded meshes</strong>, which includes the graybox layout variants and door frames. Initial mobile targets are below 70 MB download and about 250,000 visible world triangles; these are provisional, not frame-rate evidence.</p>
 <p>Start with a shared 1024-pixel atlas and simple materials. Prefer baked lighting, few transparent layers, limited particles/rigs/physics, and pooled supplies. There are 24 authored supply anchors per area; preserve compact solo eligibility and distinct reachable locations.</p>
-<p>Do not move protected zones, objective anchors, supply anchors, killer spawn points, patrol routes, the sixteen van and dispatch spawn spots, or the briefing barrier and its glowing marker accidentally when replacing meshes. Structural changes require navigation/lighting rebakes, scene validation, and all three platform builds. Add authors/licenses to credits when importing outside assets.</p></article><a class="next-page" href="/internal/roadmap/"><span>Continue reading</span><strong>Roadmap &amp; decisions →</strong></a></main><aside class="toc"><p class="eyebrow">On this page</p><div class="toc">
+<p>Do not move protected zones, objective anchors, supply anchors, killer spawn points, patrol routes or the sixteen van and dispatch spawn spots accidentally when replacing meshes. Structural changes require navigation/lighting rebakes, scene validation, and all three platform builds. Add authors/licenses to credits when importing outside assets.</p></article><a class="next-page" href="/internal/roadmap/"><span>Continue reading</span><strong>Roadmap &amp; decisions →</strong></a></main><aside class="toc"><p class="eyebrow">On this page</p><div class="toc">
 <ul>
 <li><a href="#campfire-as-a-gameplay-anchor">Campfire as a gameplay anchor</a></li>
 <li><a href="#three-destinations-to-playtest">Three destinations to playtest</a></li>

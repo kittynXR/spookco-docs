@@ -3,8 +3,8 @@
 <title>Killer baseline | SpookCo</title><meta name="description" content="Current sensing, search personalities, spectator presentation, and deferred AI work."><meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://spookco.kittyn.cat/internal/ai/"><meta property="og:url" content="https://spookco.kittyn.cat/internal/ai/"><meta name="theme-color" content="#0b1918">
 <meta property="og:title" content="Killer baseline"><meta property="og:description" content="Current sensing, search personalities, spectator presentation, and deferred AI work."><meta property="og:type" content="website">
-<link rel="icon" href="/assets/lantern.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css?v=f7bc1b727ce7e863"><script defer src="/assets/site.js?v=f7bc1b727ce7e863"></script></head>
-<body class="docs internal" data-search-index="/internal/search.json?v=f7bc1b727ce7e863">
+<link rel="icon" href="/assets/lantern.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css?v=2b9f01d51c011f9c"><script defer src="/assets/site.js?v=2b9f01d51c011f9c"></script></head>
+<body class="docs internal" data-search-index="/internal/search.json?v=2b9f01d51c011f9c">
 <a class="skip" href="#main">Skip to content</a>
 <header class="header"><div class="header-inner"><a class="brand" href="/" aria-label="SpookCo home"><img src="/assets/lantern.svg" alt="" width="34" height="40"><span>SPOOKCO<small>LAST STOP</small></span></a><nav aria-label="Main"><a href="/guide/">Player guide</a><a href="/guide/controls/">Controls</a><a href="/internal/">Development notes</a></nav><span class="build-tag"><i aria-hidden="true"></i> IN DEVELOPMENT</span></div></header>
 <div class="notice"><span>FIELD TEST NOTICE</span> SpookCo is still early in development and may change significantly after the game jam. Gameplay, progression, maps, and art are all subject to change.</div>
@@ -19,6 +19,7 @@
 <th style="text-align: right;">Run hearing</th>
 <th style="text-align: right;">Search budget</th>
 <th style="text-align: right;">Search points</th>
+<th style="text-align: right;">Chase fatigue</th>
 </tr>
 </thead>
 <tbody>
@@ -26,74 +27,85 @@
 <td>Groundskeeper</td>
 <td style="text-align: right;">5 m</td>
 <td style="text-align: right;">12 m</td>
-<td style="text-align: right;">18 s</td>
-<td style="text-align: right;">4</td>
+<td style="text-align: right;">22 s</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">30 s</td>
 </tr>
 <tr>
 <td>Rattletrap</td>
 <td style="text-align: right;">12 m</td>
 <td style="text-align: right;">26 m</td>
-<td style="text-align: right;">22 s</td>
-<td style="text-align: right;">5</td>
+<td style="text-align: right;">26 s</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">32 s</td>
 </tr>
 <tr>
 <td>Roadkill</td>
 <td style="text-align: right;">2 m</td>
 <td style="text-align: right;">8 m</td>
-<td style="text-align: right;">14 s</td>
-<td style="text-align: right;">3</td>
+<td style="text-align: right;">18 s</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">26 s</td>
 </tr>
 <tr>
 <td>Hitchhiker</td>
 <td style="text-align: right;">3 m</td>
 <td style="text-align: right;">10 m</td>
-<td style="text-align: right;">12 s</td>
-<td style="text-align: right;">3</td>
+<td style="text-align: right;">16 s</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">24 s</td>
 </tr>
 <tr>
 <td>Usher</td>
 <td style="text-align: right;">1 m</td>
 <td style="text-align: right;">6 m</td>
-<td style="text-align: right;">18 s</td>
-<td style="text-align: right;">4</td>
+<td style="text-align: right;">22 s</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">30 s</td>
 </tr>
 <tr>
 <td>Switchboard</td>
 <td style="text-align: right;">4 m</td>
 <td style="text-align: right;">11 m</td>
-<td style="text-align: right;">20 s</td>
-<td style="text-align: right;">4</td>
+<td style="text-align: right;">24 s</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">32 s</td>
 </tr>
 <tr>
 <td>Hound</td>
 <td style="text-align: right;">2 m</td>
 <td style="text-align: right;">8 m</td>
-<td style="text-align: right;">12 s shared search; separate trail expiry</td>
-<td style="text-align: right;">3</td>
+<td style="text-align: right;">16 s, capped by the trail's expiry</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">24 s</td>
 </tr>
 <tr>
 <td>Mimic</td>
 <td style="text-align: right;">1 m</td>
 <td style="text-align: right;">6 m</td>
-<td style="text-align: right;">10 s</td>
-<td style="text-align: right;">2</td>
+<td style="text-align: right;">14 s</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">20 s</td>
 </tr>
 <tr>
 <td>Warden</td>
 <td style="text-align: right;">2 m</td>
 <td style="text-align: right;">9 m</td>
-<td style="text-align: right;">6 s specialist evidence search</td>
-<td style="text-align: right;">Bounded last-evidence position</td>
+<td style="text-align: right;">14 s shared search from the last evidence</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">20 s</td>
 </tr>
 <tr>
 <td>Deadeye</td>
 <td style="text-align: right;">1 m</td>
 <td style="text-align: right;">7 m</td>
-<td style="text-align: right;">6 s specialist evidence search</td>
-<td style="text-align: right;">Bounded last-evidence position</td>
+<td style="text-align: right;">12 s shared search from the last evidence</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">18 s</td>
 </tr>
 </tbody>
 </table></div>
+<p>Values are the code's (<code>SpookKiller._ConfigureRoster</code>, <code>_ConfigurePursuit</code>, <code>_ConfigureCommitment</code>, 2026-09-24). The search budget is an ordinary, uncommitted search; the chase fatigue is how long a hunter that has confirmed you keeps its commitment after its last sighting (below).</p>
 <p>Movement sensing uses horizontal speed. Ordinary killers ignore speeds up to 0.9 m/s; Rattletrap starts above 0.55 m/s. Radius interpolates from zero to the walking value at 2.7 m/s, then to the running value at 4.3 m/s. Cover multiplies the radius by 0.25 for ordinary hearing and 0.65 for Rattletrap. Detection distance is spherical. Soft Soles multiplies movement ranges by 0.75. Safe, downed/ineligible, and suspended players are excluded. This does not inspect microphone input.</p>
 <p>Visible and audible candidates are distinct. Vision takes priority; sound behind cover starts investigation without granting sight-only warnings/attacks. New sound evidence refreshes at most every 0.8 seconds. When a player becomes quiet or leaves hearing range, the last evidence and deadline stop following them.</p>
 <p>Rattletrap remains blind, with the largest movement ranges and separate task-noise investigation. Usher investigates after a broken warning and must warn afresh when it visually reacquires.</p>
@@ -101,7 +113,11 @@
 <p>Roadkill charges execute. Hitchhiker and Usher warn for two seconds before a six-second lethal commitment against the warned player; breaking sight cancels it. Expiry gives two seconds of recovery and requires a new warning. Session elimination uses synced identities to survive re-registration and leaves the quota seat intact. Actual Udon tests cover these paths; uploaded migration and physical input acceptance remain separate.</p>
 <h2 id="turning-corners-and-searching">Turning corners and searching</h2>
 <p>Observed movement can project a short continuation, bounded to five metres. Mode 6 searches alternate nearby reachable NavMesh probes with authored route anchors. Missing route anchors no longer cause instant abandonment. Searches have both time and point budgets, so the configured duration is a ceiling rather than a guaranteed wait.</p>
-<p>Search pauses sweep left/right for 2.2 seconds through a ±100° range. Moving patrol/search adds bounded lateral scanning (±28° patrol, ±45° search) without stopping navigation. Actual facing drives vision and presentation. Synced checkpoint fields preserve probe position, progress, reference heading, and sensing state.</p>
+<p>A search pause is a 1.5-second look (0.8 s while committed) in which the body holds its route heading and only the head turns, within each killer's look limit (18-52°); the head, not a sweep oscillator, drives vision and presentation. Synced checkpoint fields preserve probe position, progress, reference heading, and sensing state.</p>
+<h2 id="chase-commitment-2026-09-24">Chase commitment (2026-09-24)</h2>
+<p>A confirmed sighting locks the hunter onto that player until it tires. For that player only: sight range x1.5 and the half-cone +25°, movement and click hearing x1.6 (Rattletrap x1.2) with cover muffling 0.6 instead of 0.25 (Rattletrap 0.85), a 4-second peek grace, and 6 m of priority over a nearer stranger. On losing sight the hunter runs the hidden leg its observed heading predicts: seven navmesh probes 8 m past the last seen point, a candidate hidden from the hunter's eye yet in clear sight of that point, with a route no longer than the way there plus 11 m; to the last seen point, around the corner, once more along the leg (6 s per leg, two legs; a further turn is a point hidden from the last seen point yet in sight of the corner just rounded; open ground predicts no corner and goes straight to the search), then a search that lasts until the fatigue above, at chase pace, with 0.8-second looks and four extra sites centred on the corner. The quarry's own footsteps, click, lit lamp or scent re-aim it and push the deadline to at least 8 s ahead; a stranger's evidence counts only when nearer than the quarry's latest point or within 6 m of the hunter. The hidden player's live position is never read: the corner is inferred and hearing reports a 2 m grid. The refuge, a decoy, the end of the round and an ownership handoff clear the lock; a stun or flash only interrupts it, and Hitchhiker and Usher warn again for a full 2 s on every reacquire, and only from plain sight: a quarry reacquired through the longer locked reach is closed on first. Escape Artist and Trailbreaker scale the commitment as they do a search. Rattletrap locks by hearing; Hound rounds corners by scent; Warden and Deadeye commit through the gun loop. See <code>Docs/ChaseCommitment-2026-09-24.md</code>.</p>
+<h2 id="leaving-camp-after-an-escape-2026-09-24">Leaving camp after an escape (2026-09-24)</h2>
+<p>A locked quarry who makes the refuge while the hunter or its last known point is within 30 m of the refuge box (every distance here is measured flat from the box's edge, in the zone's own frame, so yawed Calder and School sites read correctly) sends the hunter back out. The check runs once a think ahead of both brains, so Warden and Deadeye get it too; a warning, a charge or a disguise finishes first and reaches it through its recovery, and a Usher or Mimic whose warned target makes it drops the warning the same way. The hunter clears the lock and runs an ordinary search centred on an open patrol anchor at least 35 m out, the one nearest a point 45 m from the refuge centre along its field axis leaning toward the side the hunter came from (10 m of jitter, at most three path checks, a 30 m fallback), at search pace with no fresh evidence, for 30 s (<code>lastSense</code> 5). Its senses stay on: anyone it sees or hears outside the step-out ring is hunted as usual, which ends the withdrawal. For 15 s anyone within 12 m of the refuge is sheltered from its senses, its lock and its blows; for 60 s patrol points and Hitchhiker warps keep 30 m away. Always, whatever happened: no patrol point, search probe, lead, anchor or final hold, disguise, Deadeye reposition, Switchboard hazard or recovery bind lands within 12 m of the refuge (a search that would hold there ends instead). The Hound only follows scent laid after the escape, and a pending Deadeye reposition is dropped. The windows travel in the synced <code>campTimes</code> array; the hidden player's position is never read beyond the same refuge test the lock already uses. See <code>Docs/CampWithdraw-2026-09-24.md</code>.</p>
 <h2 id="speed-lunges-and-the-cost-of-a-hit">Speed, lunges and the cost of a hit</h2>
 <p>Pursuit is a multiple of the players' base run speed and patrol a multiple of their base walk speed (2.7 / 4.3 m/s), and both rise linearly with the crew to +20% at eight or more participants. The crew count is the stop's locked count lowered by departures, so late joiners never speed a hunter up mid-stop.</p>
 <div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table"><table>
@@ -169,12 +185,12 @@
 <li>Warden confirms sight for 0.45 seconds, warns for 1.8 seconds and locks the last 0.55 seconds. Its 14-metre shotgun fan is lethal and followed by a 3.2-second reload.</li>
 <li>Deadeye confirms for 0.8 seconds, warns for 2.5 seconds and locks the last 0.7 seconds. Its 38-metre rifle is lethal, reloads for four seconds and selects a reachable lateral firing position when available.</li>
 </ul>
-<p>Gun searches use frozen sight/sound positions with a six-second budget. Escape Artist and Trailbreaker shorten the corresponding search by 35 percent. Expiry releases the old navigation path. Decoys and successful stuns clear continuous visual confirmation; accepted repair noise is consumed once. Cover blocks actual shot rays; smoke blocks acquisition and pre-commit aim only. Ownership recovery cancels pending shots instead of replaying them.</p>
+<p>Gun searches use frozen sight/sound positions with the shared search budget (14 s Warden, 12 s Deadeye), or the chase fatigue after a sighting. Escape Artist and Trailbreaker shorten the corresponding search or commitment by 35 percent. Expiry releases the old navigation path. Decoys and successful stuns clear continuous visual confirmation; accepted repair noise is consumed once. Cover blocks actual shot rays; smoke blocks acquisition and pre-commit aim only. Ownership recovery cancels pending shots instead of replaying them.</p>
 <p>Specialist presentation uses attempt-keyed synced arrays for stage, deadlines, muzzle/aim points, shot serial and trails. The receiving-client fixture decodes those arrays through the ClientSim SDK codec, alongside the normal pose feed; uploaded transport and device acceptance are still separate gates.</p>
 <h2 id="deferred-work-and-acceptance">Deferred work and acceptance</h2>
 <ul>
-<li>Fair search persistence and pressure distribution for solo through 16 participants.</li>
-<li>Human evasion across multiple corners, noisy work, decoys, and changing routes.</li>
+<li>Fair search persistence and pressure distribution for solo through 16 participants; whether the 20-32 s chase commitment and its boosted senses read as fair solo (<code>chaseFatigueSeconds</code>, <code>chaseSightScale</code>, <code>chaseHearingScale</code> are the first values to lower).</li>
+<li>Human evasion across multiple corners, noisy work, decoys, and changing routes; a second hidden turn or a double-back must stay counterplay.</li>
 <li>Roadkill charge visibility versus actual hits under latency.</li>
 <li>Hitchhiker warp presentation and safe relocation tells.</li>
 <li>Switchboard hazard cover rules, warning/active distinction, and alternate escape routes.</li>
@@ -187,6 +203,8 @@
 <ul>
 <li><a href="#sensing-and-search-tuning">Sensing and search tuning</a></li>
 <li><a href="#turning-corners-and-searching">Turning corners and searching</a></li>
+<li><a href="#chase-commitment-2026-09-24">Chase commitment (2026-09-24)</a></li>
+<li><a href="#leaving-camp-after-an-escape-2026-09-24">Leaving camp after an escape (2026-09-24)</a></li>
 <li><a href="#speed-lunges-and-the-cost-of-a-hit">Speed, lunges and the cost of a hit</a></li>
 <li><a href="#doors-and-per-stop-layouts">Doors and per-stop layouts</a></li>
 <li><a href="#presentation-and-debug-surfaces">Presentation and debug surfaces</a></li>
