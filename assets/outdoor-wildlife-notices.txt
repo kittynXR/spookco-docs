@@ -1,0 +1,47 @@
+OUTDOOR WILDLIFE AND SOFT SPECTRAL AIR
+
+Crows singing by IgnasD
+https://opengameart.org/content/crows-singing
+Used in CrowDistant01 and CrowDistant02.
+Source: creator-uploaded Ogg/Vorbis file, Crows_0.ogg.
+
+Owl Hoot by Breviceps
+https://freesound.org/people/Breviceps/sounds/465697/
+Used in OwlDistant01 and OwlDistant02.
+Source: the publicly accessible high-quality MP3 preview linked by the creator
+page, 465697_9159316-hq.mp3. This is not the lossless original upload.
+
+Dog barking mono by Brandon Morris (submitted by HaelDB)
+https://opengameart.org/content/dog-barking-mono
+Used in DogDistant01 and DogDistant02.
+Source: creator-uploaded mono PCM WAV, dog_barking_mono.wav.
+The CC0 option is selected from the licenses offered on the source page.
+
+Black Capped Chickadee bird call by nfrae
+https://freesound.org/people/nfrae/sounds/703254/
+Used in WinterBird01.
+Source: the publicly accessible high-quality MP3 preview linked by the creator
+page, 703254_1540717-hq.mp3. This is not the lossless original upload.
+WinterBird01 is an artistic scheduling label; the source recording is not
+claimed to have been made in winter.
+
+All four wildlife sources are used under CC0 1.0:
+https://creativecommons.org/publicdomain/zero/1.0/
+Attribution is not required; these credits are voluntary acknowledgments.
+The source authors do not endorse SpookCo.
+
+SpookCo modifications: short excerpts, mono conversion, resampling, gentle
+endpoint fades, distance filtering, quiet gain calibration, and two restrained
+original early reflections. No pitch shifting or synthetic animal replacement
+was used. The two owl clips excerpt distinct hoots from one recording. Dog
+clips contain isolated single barks from a source distinct from Hound gameplay
+vocals. No fox scream, repeated bark chorus, or Hound sample is used here.
+
+SpectralAirSoft is original seeded SpookCo synthesis and processing: four
+lower, slower spectral grains in an exact 20-second loop. It contains no
+third-party recordings, samples, or room impulse responses. Existing rain,
+wind, footstep and gameplay vocal sources are preserved.
+
+Original bytes, creator-page snapshots, CC0 evidence, hashes, and editable
+recipes are retained locally in AudioWork/OutdoorAmbienceV2. The two MP3
+preview sources remain explicitly identified throughout that provenance.

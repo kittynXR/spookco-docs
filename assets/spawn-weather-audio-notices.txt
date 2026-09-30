@@ -1,0 +1,29 @@
+SPAWN WEATHER AUDIO
+
+Rain (loopable) by Ylmir
+https://opengameart.org/content/rain-loopable
+Used in RainOutdoor.
+
+Rain in the Gutter Loop by Ogrebane
+https://opengameart.org/content/rain-gutter-loop
+Used in RainRoofWarehouse and RainDoorway.
+
+wind1 by Luke.RUSTLTD (synthesized wind)
+https://opengameart.org/content/wind1
+Used in WindLeavesOutdoor and WindWarehouse.
+
+These three current weather sources are CC0 1.0:
+https://creativecommons.org/publicdomain/zero/1.0/
+Attribution is not required; these credits are voluntary acknowledgments.
+Sources were excerpted, filtered, resampled, gain-adjusted, looped and layered
+for SpookCo. Warehouse reflections are original SpookCo processing;
+SpectralAir is original SpookCo synthesis. No third-party room impulse
+response is used. The source authors do not endorse SpookCo.
+
+HISTORICAL WEATHER SOURCE / CURRENT FOOTSTEP SOURCE
+
+Different steps on wood, stone, leaves, gravel and mud by TinyWorlds
+https://opengameart.org/content/different-steps-on-wood-stone-leaves-gravel-and-mud
+CC0 1.0. Leaf-impact grains were removed from the weather after V1; the
+archived source and courtesy credit remain. Separate player footstep banks
+still use TinyWorlds. The current weather wind contains no leaf recordings.

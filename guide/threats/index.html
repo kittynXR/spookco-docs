@@ -3,8 +3,8 @@
 <title>Know the spooks | SpookCo</title><meta name="description" content="Ten hunting patterns, distinct senses, and ways to escape.">
 <link rel="canonical" href="https://spookco.kittyn.cat/guide/threats/"><meta property="og:url" content="https://spookco.kittyn.cat/guide/threats/"><link rel="alternate" hreflang="en" href="https://spookco.kittyn.cat/guide/threats/"><link rel="alternate" hreflang="ja" href="https://spookco.kittyn.cat/ja/guide/threats/"><link rel="alternate" hreflang="x-default" href="https://spookco.kittyn.cat/guide/threats/"><meta name="theme-color" content="#0b1918">
 <meta property="og:title" content="Know the spooks"><meta property="og:description" content="Ten hunting patterns, distinct senses, and ways to escape."><meta property="og:type" content="website">
-<link rel="icon" href="/assets/lantern.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css?v=2b9f01d51c011f9c"><script defer src="/assets/site.js?v=2b9f01d51c011f9c"></script></head>
-<body class="docs" data-search-index="/search.json?v=2b9f01d51c011f9c">
+<link rel="icon" href="/assets/lantern.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css?v=946f59547a36cf33"><script defer src="/assets/site.js?v=946f59547a36cf33"></script></head>
+<body class="docs" data-search-index="/search.json?v=946f59547a36cf33">
 <a class="skip" href="#main">Skip to content</a>
 <header class="header"><div class="header-inner"><a class="brand" href="/" aria-label="SpookCo home"><img src="/assets/lantern.svg" alt="" width="34" height="40"><span>SPOOKCO<small>LAST STOP</small></span></a><nav aria-label="Main"><a href="/guide/">Player guide</a><a href="/guide/controls/">Controls</a></nav><div class="language-switch" role="group" aria-label="Language / 言語"><a href="/guide/threats/" lang="en" hreflang="en" aria-current="true">English</a><a href="/ja/guide/threats/" lang="ja" hreflang="ja">日本語</a></div><span class="build-tag"><i aria-hidden="true"></i> IN DEVELOPMENT</span></div></header>
 <div class="notice"><span>FIELD TEST NOTICE</span> SpookCo is still early in development and may change significantly after the game jam. Gameplay, progression, maps, and art are all subject to change.</div>
@@ -66,8 +66,8 @@
 </tr>
 <tr>
 <td>Deadeye</td>
-<td>Confirms sight, warns with a rifle line, commits and fires; spots flashlight beams from far away</td>
-<td>Break sight before the red lock or sidestep afterward. It changes position between shots. Keep your beam out of its view.</td>
+<td>Quickly confirms sight, raises its rifle with a warning sound, commits and fires; spots flashlight beams from far away</td>
+<td>Break sight immediately or sidestep before the shot. It changes position between shots. Keep your beam out of its view.</td>
 </tr>
 </tbody>
 </table></div>
@@ -79,7 +79,9 @@
 <p>Switching a flashlight makes a click that a spook within earshot hears, much like a footstep, and solid cover muffles it. Switch in cover or away from the spook. The <strong>Usher</strong> and <strong>Deadeye</strong> also notice a lit beam they can see: the patch of wall or floor it lights, or the lamp itself pointed their way. They come for whoever holds it. A passing glimpse is not enough, but a beam that stays in their view for a moment is. <strong>Focused Beam</strong>'s switch is silent to spooks, but its beam is still light.</p>
 <h2 id="hiding-in-shrubs">Hiding in shrubs</h2>
 <p>Dense shrubs conceal you from ordinary spook vision and reduce your walking, running and sideways movement speed by <strong>50%</strong> while your body is inside. Leaving restores your normal speed. The slowdown stacks with carried cargo, perks and temporary effects.</p>
-<p><strong>Break sight before entering.</strong> A spook actively chasing or aiming at you can keep tracking you if it watches you enter. If you break its view, it can still search the last place it saw you, but cannot simply reacquire you through the shrub. Standing on top of foliage does not count as hiding.</p>
+<p><strong>Break sight before entering.</strong> A spook actively chasing or aiming at you can keep tracking you if it watches you enter. If you break its view, the shrub conceals you until you expose yourself or it comes over to inspect your hiding place. Standing on top of foliage does not count as hiding.</p>
+<p><strong>Keep your flashlight off or pointed away from the spook.</strong> A head lamp or hand light shining directly at a sighted spook reveals you through foliage when you are within its view and range. Once it sees you, switching the light off alone does not hide you again: break its sight. Solid cover and smoke still conceal you, and Rattletrap remains blind.</p>
+<p><strong>A bush can be searched.</strong> After losing you in a chase, a spook checks nearby bushes around the route or open area it reached. It walks over and pauses to inspect them; a sighted spook can discover you when it looks into your bush at close range. It can check empty bushes too, and still gives up when its search expires. Watch where it goes and quietly move away before it checks your hiding place.</p>
 <p>Bushes do not suppress hearing, erase Hound trails, stop committed bullets or charges, or make you invulnerable. Rattletrap remains a hearing specialist. Quiet movement and a route change still matter.</p>
 <p>Cars, trailers, equipment and wooden fences provide solid cover. Chain-link fencing blocks passage while allowing sight through it; plan around its openings.</p>
 <h2 id="one-corner-is-not-a-guaranteed-escape">One corner is not a guaranteed escape</h2>
@@ -94,7 +96,7 @@
 <p>Roadkill's charge, a warned catch from Hitchhiker or Usher, and a hit from Warden or Deadeye eliminate you for the rest of the round. <strong>Hardhat and Second Wind cannot save you from these attacks.</strong> Spawn and rescue immunity still protect you. Hitchhiker and Usher must warn before committing; breaking sight cancels their lethal chase, and they must warn again for a full two seconds when they find you again, even mid-chase. A missed commitment gives you a recovery window. Solid cover stops contact through walls.</p>
 <p>You can spectate from dispatch, and you join the next host-started round if you remain ready. If the whole crew is eliminated, the stop ends promptly. Eliminated players do not reduce the required task quota, and reconnecting or toggling readiness does not undo elimination.</p>
 <h2 id="reading-a-gun-warning">Reading a gun warning</h2>
-<p>Amber aim follows you during the warning. Red aim is committed to a fixed line or fan: a late sidestep can avoid it. Solid cover blocks the actual shot, including after commitment. Smoke can break acquisition or an uncommitted aim, but it cannot stop a bullet already aimed at your position.</p>
+<p>React to the raised weapon and warning sound immediately. Both gun spooks now acquire and fire quickly, with no visible aiming rays or shot tracers. Their aim follows you briefly, then fixes before firing: a late sidestep can still avoid the shot. Solid cover blocks the actual shot, including after commitment. Smoke can break acquisition or an uncommitted aim, but it cannot stop a bullet already aimed at your position.</p>
 <p>Decoys redirect an uncommitted armed spook; they cannot cancel its warning once aiming starts. A successful flash or trip alarm interrupts it and makes it confirm you again. Warden must reload after its shotgun blast. Deadeye reloads and looks for a new firing position. Neither deals melee contact damage.</p>
 <h2 id="false-cargo-and-old-trails">False cargo and old trails</h2>
 <p>Mimic cargo is separate from real objectives. It never takes away delivered work. Its breathing, eyes and twitch are clues before the reveal; Inspector identifies a nearby visible disguise. Smoke can conceal your approach, and the reveal warning gives you time to back away.</p>

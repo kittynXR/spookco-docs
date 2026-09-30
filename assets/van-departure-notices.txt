@@ -1,0 +1,16 @@
+SpookCo van departure sound effects
+
+VanDieselStart.wav
+Derived from "Big diesel engine" (#0967) by Joseph SARDIN / BigSoundBank.
+Source: https://bigsoundbank.com/big-diesel-engine-s0967.html
+License: CC0 1.0 Universal (public-domain dedication).
+License statement: https://bigsoundbank.com/licenses.html
+Source and license pages retrieved 2026-09-28 UTC and retained under
+AudioWork/VanDepartureV1/Licenses. Original WAV and its SHA-256 are retained
+under AudioWork/VanDepartureV1/Originals and manifest.json.
+Edits: start/idle excerpt, 0.88 playback speed, DC removal, gain, fades,
+and a quieter idle under the countdown beeps.
+
+DepartureBeep.wav
+Original synthesized warning pulse; no third-party samples.
+Editable synthesis and diesel processing: AudioWork/VanDepartureV1/build_audio.py.

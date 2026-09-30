@@ -1,0 +1,97 @@
+SPOOKCO SOUND EFFECTS
+13 AMBIENT MACHINE SOUNDS
+
+13 Ambient Machine Sounds by Michael Brigida and students; Richard Boulanger; Diane Douglas; Colman O'Reilly — https://opengameart.org/content/13-ambient-machine-sounds — CC-BY-3.0 (https://creativecommons.org/licenses/by/3.0/). See source record and archive notices for credit requirements; see manifest.json for modifications.
+
+Recorded in The Berklee Studios and around Boston, 1999-2007, under Associate Professor Michael Brigida by over 250 Music Synthesis majors in his Advanced Sampling Class at The Berklee College of Music. Selected, organized and prepared for OLPC by Dr. Richard Boulanger (Dr.B.); edited and trimmed by Diane Douglas and Colman O'Reilly.
+
+FOOTSTEPS ON DIFFERENT SURFACES
+
+Footsteps on different surfaces by congusbongus and original authors listed in the archive notices — https://opengameart.org/content/footsteps-on-different-surfaces — CC-BY-3.0 (https://creativecommons.org/licenses/by/3.0/). See source record and archive notices for credit requirements; see manifest.json for modifications.
+
+Keep source-specific authors, URLs and licenses from the archive text files with all selected derivatives.
+
+Derived from Wolf run.wav by sabotovat
+https://freesound.org/people/sabotovat/sounds/414350/
+
+http://creativecommons.org/licenses/by/3.0/
+
+
+Derived from Pack: Gravel Footsteps by Ali_6868
+https://freesound.org/people/Ali_6868/packs/21608/
+
+https://creativecommons.org/publicdomain/zero/1.0/
+
+
+Derived from fboots on aluminum ladder 01 by Eelke
+https://freesound.org/people/Eelke/sounds/462598/
+
+http://creativecommons.org/licenses/by/3.0/
+
+
+Derived from footstep-concrete.wav by swuing
+http://www.freesound.org/people/swuing/sounds/38873/
+
+And Squeaky footstep.wav from ceberation
+https://freesound.org/people/ceberation/sounds/235524/
+
+http://creativecommons.org/licenses/by/3.0/
+
+
+IMPACT SOUNDS
+
+Impact Sounds by Kenney — https://kenney.nl/assets/impact-sounds — CC0 1.0. Credit retained voluntarily.
+
+
+
+INTERFACE SOUNDS
+
+Interface Sounds by Kenney — https://kenney.nl/assets/interface-sounds — CC0 1.0. Credit retained voluntarily.
+
+
+
+WIND1 (SYNTHESIZED WIND, NOT A FIELD RECORDING)
+
+wind1 (synthesized wind, not a field recording) by Luke.RUSTLTD — https://opengameart.org/content/wind1 — CC0-1.0 (https://creativecommons.org/publicdomain/zero/1.0/). See source record and archive notices for credit requirements; see manifest.json for modifications.
+
+
+
+FIREPLACE SOUND LOOP
+
+Fireplace Sound loop by PagDev — https://opengameart.org/content/fireplace-sound-loop — CC0-1.0 (https://creativecommons.org/publicdomain/zero/1.0/). See source record and archive notices for credit requirements; see manifest.json for modifications.
+
+
+
+HORROR BREATHING
+
+horror breathing by primbal — https://opengameart.org/content/horror-breathing — CC0-1.0 (https://creativecommons.org/publicdomain/zero/1.0/). See source record and archive notices for credit requirements; see manifest.json for modifications.
+
+
+
+GHOST BREATH
+
+Ghost breath by qubodup — https://opengameart.org/content/ghost-breath — CC0-1.0 (https://creativecommons.org/publicdomain/zero/1.0/). See source record and archive notices for credit requirements; see manifest.json for modifications.
+
+
+
+80 CC0 CREATURE SFX
+
+80 CC0 creature SFX by rubberduck — https://opengameart.org/content/80-cc0-creature-sfx — CC0 1.0. Credit retained voluntarily.
+
+
+
+DIFFERENT STEPS ON WOOD, STONE, LEAVES, GRAVEL AND MUD
+
+Different steps on wood, stone, leaves, gravel and mud by TinyWorlds — https://opengameart.org/content/different-steps-on-wood-stone-leaves-gravel-and-mud — CC0 1.0. Credit retained voluntarily.
+
+
+
+CRICKETS AMBIENT NOISE - LOOPABLE
+
+Crickets Ambient Noise - loopable by Wolfgang_ / Ted Kerr — https://opengameart.org/content/crickets-ambient-noise-loopable — CC0-1.0 (https://creativecommons.org/publicdomain/zero/1.0/). See source record and archive notices for credit requirements; see manifest.json for modifications.
+
+
+
+MODIFICATIONS
+
+Recordings were trimmed, resampled, filtered, layered, gain-adjusted and faded or crossfaded. Some use rate changes, saturation, amplitude modulation or short resonances. The original authors do not endorse SpookCo. Each recording retains its stated license.

@@ -3,8 +3,8 @@
 <title>Credits · Catnet Systems | SpookCo</title><meta name="description" content="A catnet systems production. SpookCo: Last Stop is created by kittyn, Creator &amp; Creative Director.">
 <link rel="canonical" href="https://spookco.kittyn.cat/credits/"><meta property="og:url" content="https://spookco.kittyn.cat/credits/"><link rel="alternate" hreflang="en" href="https://spookco.kittyn.cat/credits/"><link rel="alternate" hreflang="ja" href="https://spookco.kittyn.cat/ja/credits/"><link rel="alternate" hreflang="x-default" href="https://spookco.kittyn.cat/credits/"><meta name="theme-color" content="#0b1918">
 <meta property="og:title" content="Credits · Catnet Systems"><meta property="og:description" content="A catnet systems production. SpookCo: Last Stop is created by kittyn, Creator &amp; Creative Director."><meta property="og:type" content="website">
-<link rel="icon" href="/assets/lantern.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css?v=2b9f01d51c011f9c"><script defer src="/assets/site.js?v=2b9f01d51c011f9c"></script></head>
-<body class="docs" data-search-index="/search.json?v=2b9f01d51c011f9c">
+<link rel="icon" href="/assets/lantern.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css?v=946f59547a36cf33"><script defer src="/assets/site.js?v=946f59547a36cf33"></script></head>
+<body class="docs" data-search-index="/search.json?v=946f59547a36cf33">
 <a class="skip" href="#main">Skip to content</a>
 <header class="header"><div class="header-inner"><a class="brand" href="/" aria-label="SpookCo home"><img src="/assets/lantern.svg" alt="" width="34" height="40"><span>SPOOKCO<small>LAST STOP</small></span></a><nav aria-label="Main"><a href="/guide/">Player guide</a><a href="/guide/controls/">Controls</a></nav><div class="language-switch" role="group" aria-label="Language / 言語"><a href="/credits/" lang="en" hreflang="en" aria-current="true">English</a><a href="/ja/credits/" lang="ja" hreflang="ja">日本語</a></div><span class="build-tag"><i aria-hidden="true"></i> IN DEVELOPMENT</span></div></header>
 <div class="notice"><span>FIELD TEST NOTICE</span> SpookCo is still early in development and may change significantly after the game jam. Gameplay, progression, maps, and art are all subject to change.</div>
@@ -18,11 +18,21 @@
 <h2 id="kittyn">kittyn</h2>
 <p><strong>Creator &amp; Creative Director</strong></p>
 <p>Game design, world direction, and production of <strong>SpookCo: Last Stop</strong> — a cooperative horror world for VRChat.</p>
+<p>Music composition &amp; production.</p>
+<h2 id="how-spookco-is-made">How SpookCo is made</h2>
+<p>Our original props, environment kits and characters are modeled procedurally in Blender using Python. UVs are unwrapped and packed into texture atlases, with baked ambient occlusion, edge highlights and color gradients forming the base of SpookCo's signature hand-painted style.</p>
+<p>All ten spook characters have editable Rigify rigs and skinned meshes, using biped rigs for the humanoid cast and a quadruped rig for the Hound. Character-specific animations are baked for Unity and driven by a shared animation controller.</p>
+<p>Unity C# editor build scripts generate world geometry, place assets and wire up gameplay interactions. The game's logic is written in UdonSharp for VRChat.</p>
+<p>Our original art assets and editable Blender sources, together with texture atlases, UV layouts and painting guides, are currently under review for release on the official SpookCo website, for artists and anyone interested in learning how the world is made.</p>
+<h2 id="shopkeeper-character">Shopkeeper character</h2>
+<p>The warehouse shopkeeper uses <strong>Rusk (Quest version)</strong> by <strong><a href="https://komado.booth.pm/">komado / こまど</a></strong>, from <strong>あまとうさぎ</strong>. <a href="https://komado.booth.pm/items/2559783">Original model on BOOTH</a>.</p>
+<p>The shopkeeper's local animations and world integration were created for SpookCo.</p>
 <h2 id="platform-development-tools">Platform &amp; development tools</h2>
 <ul>
 <li><strong>Platform:</strong> VRChat SDK and UdonSharp.</li>
-<li><strong>Development tools:</strong> Blender, Clip Studio Paint, Affinity, and Codex.</li>
+<li><strong>Development tools:</strong> Blender, Clip Studio Paint, Affinity, Codex, and Ableton Live.</li>
 <li><strong>Lighting:</strong> VRC Light Volumes by RED_SIM (MIT) carries the crew's flashlight beams through the world's surface shaders.</li>
+<li><strong>Particles and grass:</strong> GPU Particle Volumes, GPU Snow, and <a href="https://redsim.booth.pm/items/7997362">GPU Infinite Grass</a> by <a href="https://redsim.booth.pm/">RED_SIM</a>; GPU Rain Particle by <a href="https://booth.pm/ja/items/7813930">nekochanfood / ちゃんふー堂</a>. Autumn leaves, motes, ground weather, and gathering behavior use original SpookCo shaders and models.</li>
 <li><strong>In-world fonts:</strong> Noto Sans JP from the Noto CJK project supports English and Japanese UI under the SIL Open Font License; its license ships with the world. Liberation Sans, supplied through TextMesh Pro, is also credited in the world's Credits page with its complete font license.</li>
 </ul>
 <p>The website uses system fonts. Its night-shift illustration is original SVG artwork, not a gameplay screenshot.</p>
@@ -34,6 +44,18 @@
 <li><strong>David Hoskins and David A. Roberts:</strong> The Depot Surface grain helper uses Hash without Sine, with an HLSL adaptation based on Roberts's MIT-licensed publication.</li>
 </ul>
 <p><a href="/assets/shader-notices.txt">Read the complete shader copyright and license notices</a>.</p>
+<h2 id="music">Music</h2>
+<p>The SpookCo soundtrack uses original compositions, arrangements, and synthesized sounds, together with samples from <strong>Ableton's Core Library</strong>. Thanks to Ableton and its sound-content licensors. Ableton Live is used for music development and auditioning. Core Library content retains Ableton's proprietary terms; it is not CC0.</p>
+<p>Earlier, uninstalled palette studies used <strong>Retro Synths by Puremagnetik</strong> and <strong>Mood Reel by Ableton and its contributing sound designers</strong>. These are development acknowledgments; those Packs are not sources in the currently installed soundtrack.</p>
+<p><a href="/assets/music-notices.txt">Read the music source acknowledgments and license references</a>.</p>
+<h2 id="weather-audio">Weather audio</h2>
+<p>Spawn weather uses <a href="https://opengameart.org/content/rain-loopable">Rain (loopable) by Ylmir</a>, <a href="https://opengameart.org/content/rain-gutter-loop">Rain in the Gutter Loop by Ogrebane</a>, and <a href="https://opengameart.org/content/wind1">wind1 by Luke.RUSTLTD</a>. These sources are <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a>; credit is retained voluntarily. The sounds are edited and layered for the world. Warehouse reflections use original SpookCo processing, and spectral air is original SpookCo synthesis.</p>
+<p><a href="https://opengameart.org/content/different-steps-on-wood-stone-leaves-gravel-and-mud">TinyWorlds' recordings</a> are still used in player footsteps. Their leaf sounds were removed from the weather mix; this courtesy acknowledgment also preserves that earlier contribution.</p>
+<p><a href="/assets/spawn-weather-audio-notices.txt">Read the complete weather sound notices</a>.</p>
+<p>Outdoor wildlife uses crow recordings by IgnasD, owl recordings by Breviceps, distant dog recordings by Brandon Morris (submitted by HaelDB), and a black-capped chickadee recording by nfrae. These sources use CC0 1.0, with voluntary creator credit retained. The recordings are trimmed, filtered, softened and placed at a distance for the world; the softer spectral air is original SpookCo synthesis. <a href="/assets/outdoor-wildlife-notices.txt">Read the wildlife source links and modification details</a>.</p>
+<h2 id="other-sound-effects">Other sound effects</h2>
+<p>The world also includes third-party ambient, footstep, creature, and interface sounds. The <a href="/assets/audio-notices.txt">complete sound-effect notices</a> retain the individual authors, source links, CC BY attribution, CC0 acknowledgments, and modification details.</p>
+<p>The van departure uses <a href="https://bigsoundbank.com/big-diesel-engine-s0967.html">Big diesel engine (#0967)</a> by Joseph SARDIN / BigSoundBank. The source is <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a>; credit is retained voluntarily. The recording is edited for the world, and the departure beep is original SpookCo synthesis. <a href="/assets/van-departure-notices.txt">Read the van departure sound notices</a>.</p>
 <h2 id="inspiration">Inspiration</h2>
 <p>SpookCo draws on short-round horror and scavenging games. No characters, models, audio, or code from Terrors of Nowhere or SlashCo are included.</p>
 <p>Ready to clock in? Start with the <a href="/guide/">player guide</a> or return to <a href="/">SpookCo: Last Stop</a>.</p></article></main></div>

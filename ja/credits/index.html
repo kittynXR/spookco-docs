@@ -3,8 +3,8 @@
 <title>クレジット · Catnet Systems | SpookCo</title><meta name="description" content="catnet systems制作。SpookCo: Last Stopのクリエイター兼クリエイティブディレクターはkittynです。">
 <link rel="canonical" href="https://spookco.kittyn.cat/ja/credits/"><meta property="og:url" content="https://spookco.kittyn.cat/ja/credits/"><link rel="alternate" hreflang="en" href="https://spookco.kittyn.cat/credits/"><link rel="alternate" hreflang="ja" href="https://spookco.kittyn.cat/ja/credits/"><link rel="alternate" hreflang="x-default" href="https://spookco.kittyn.cat/credits/"><meta name="theme-color" content="#0b1918">
 <meta property="og:title" content="クレジット · Catnet Systems"><meta property="og:description" content="catnet systems制作。SpookCo: Last Stopのクリエイター兼クリエイティブディレクターはkittynです。"><meta property="og:type" content="website">
-<link rel="icon" href="/assets/lantern.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css?v=2b9f01d51c011f9c"><script defer src="/assets/site.js?v=2b9f01d51c011f9c"></script></head>
-<body class="docs" data-search-index="/ja/search.json?v=2b9f01d51c011f9c">
+<link rel="icon" href="/assets/lantern.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css?v=946f59547a36cf33"><script defer src="/assets/site.js?v=946f59547a36cf33"></script></head>
+<body class="docs" data-search-index="/ja/search.json?v=946f59547a36cf33">
 <a class="skip" href="#main">本文へ移動</a>
 <header class="header"><div class="header-inner"><a class="brand" href="/ja/" aria-label="SpookCo ホーム"><img src="/assets/lantern.svg" alt="" width="34" height="40"><span>SPOOKCO<small>LAST STOP</small></span></a><nav aria-label="メインナビゲーション"><a href="/ja/guide/">プレイヤーガイド</a><a href="/ja/guide/controls/">操作方法</a></nav><div class="language-switch" role="group" aria-label="Language / 言語"><a href="/credits/" lang="en" hreflang="en">English</a><a href="/ja/credits/" lang="ja" hreflang="ja" aria-current="true">日本語</a></div><span class="build-tag"><i aria-hidden="true"></i> 開発中</span></div></header>
 <div class="notice"><span>プレイテストについて</span> SpookCoはまだ開発初期です。ゲームジャム後に大きく変更される可能性があり、ゲーム内容、成長システム、マップ、アートはいずれも変更される場合があります。</div>
@@ -18,10 +18,21 @@
 <h2 id="kittyn">kittyn</h2>
 <p><strong>クリエイター兼クリエイティブディレクター</strong></p>
 <p>VRChatの協力型ホラーワールド <strong>SpookCo: Last Stop</strong> のゲームデザイン、ワールドのディレクション、制作を担当。</p>
+<p>音楽の作曲・プロダクションも担当。</p>
+<h2 id="spookcoの制作方法">SpookCoの制作方法</h2>
+<p>オリジナルの小道具、環境用のモデルキット、キャラクターは、BlenderのPythonスクリプトでプロシージャルに制作しています。UVを展開してテクスチャアトラスに配置し、アンビエントオクルージョン、エッジのハイライト、色のグラデーションをベイクして、SpookCoならではの手描き風スタイルの土台を作っています。</p>
+<p>10体すべてのスプークに、編集可能なRigifyリグとスキニング済みのメッシュを用意しています。人型のキャラクターには二足歩行用、Houndには四足歩行用のリグを使用しています。各キャラクター専用のアニメーションをUnity向けにベイクし、共通のアニメーションコントローラーで再生しています。</p>
+<p>ワールドのジオメトリ生成、アセット配置、ゲーム内インタラクションの設定には、UnityのC#エディタービルドスクリプトを使用しています。ゲームロジックはVRChat向けにUdonSharpで記述しています。</p>
+<p>アーティストやワールド制作を学びたい方に役立てていただけるよう、オリジナルのアートアセットと編集可能なBlenderソースに加え、テクスチャアトラス、UVレイアウト、ペイントガイドをSpookCo公式サイトで公開するためのレビューを現在進めています。</p>
+<h2 id="ショップの店員キャラクター">ショップの店員キャラクター</h2>
+<p>倉庫ショップの店員には、<strong><a href="https://komado.booth.pm/">こまど / komado</a>（あまとうさぎ）</strong>制作の <strong>「ラスク -Rusk-」Quest対応版</strong> を使用しています。<a href="https://komado.booth.pm/items/2559783">オリジナルモデル（BOOTH）</a>。</p>
+<p>店員のローカルアニメーションとワールドへの組み込みは、SpookCo向けに制作しました。</p>
 <h2 id="プラットフォームと開発ツール">プラットフォームと開発ツール</h2>
 <ul>
 <li><strong>プラットフォーム：</strong> VRChat SDK、UdonSharp。</li>
-<li><strong>開発ツール：</strong> Blender、Clip Studio Paint、Affinity、Codex。</li>
+<li><strong>開発ツール：</strong> Blender、Clip Studio Paint、Affinity、Codex、Ableton Live。</li>
+<li><strong>ライティング：</strong> RED_SIMのVRC Light Volumes（MIT）を使用し、ワールドの表面シェーダーで懐中電灯や点滅する照明を描画しています。</li>
+<li><strong>パーティクルと草：</strong> <a href="https://redsim.booth.pm/">RED_SIM</a>のGPU Particle Volumes、GPU Snow、<a href="https://redsim.booth.pm/items/7997362">GPU Infinite Grass</a>、<a href="https://booth.pm/ja/items/7813930">nekochanfood / ちゃんふー堂</a>のGPU Rain Particleを使用しています。落ち葉、光の粒、地面の天候表現、集合する動きにはSpookCo独自のシェーダーとモデルを使用しています。</li>
 <li><strong>ワールド内フォント：</strong> 英語・日本語UIにはNoto CJKプロジェクトのNoto Sans JPを使用しています。SIL Open Font Licenseに基づき、ライセンスをワールドに同梱しています。TextMesh Proに付属するLiberation Sansも、ワールド内のクレジットページにライセンス全文とともに記載しています。</li>
 </ul>
 <p>このウェブサイトはシステムフォントを使用しています。夜勤のイラストはオリジナルのSVGアートで、ゲーム画面のスクリーンショットではありません。</p>
@@ -32,6 +43,18 @@
 <li><strong>David Hoskins、David A. Roberts：</strong> Depot Surfaceの粒状感を生成する補助関数にはHash without Sineを使用しています。HLSL版はRobertsがMITライセンスで公開した実装を基にしています。</li>
 </ul>
 <p><a href="/assets/shader-notices.txt">シェーダーの著作権表示とライセンス全文を読む（原文）</a>。</p>
+<h2 id="音楽">音楽</h2>
+<p>SpookCoのサウンドトラックは、独自の楽曲・編曲・合成音と、<strong>Ableton Core Library</strong>のサンプルを組み合わせています。Abletonおよび音源の権利者の皆さまに感謝します。音楽の制作検討と試聴にはAbleton Liveを使用しています。Core Libraryの音源にはAbleton独自の利用規約が適用され、CC0ではありません。</p>
+<p>ゲーム未収録の初期音色スケッチでは、<strong>PuremagnetikのRetro Synths</strong>と、<strong>Abletonおよび参加サウンドデザイナーによるMood Reel</strong>も使用しました。これらは開発時の謝辞であり、現在ゲームに収録されているサウンドトラックの音源ではありません。</p>
+<p><a href="/assets/music-notices.txt">音楽の音源クレジットとライセンス参照先を読む（原文）</a>。</p>
+<h2 id="天候の環境音">天候の環境音</h2>
+<p>スポーンエリアの天候には、<a href="https://opengameart.org/content/rain-loopable">YlmirのRain (loopable)</a>、<a href="https://opengameart.org/content/rain-gutter-loop">OgrebaneのRain in the Gutter Loop</a>、<a href="https://opengameart.org/content/wind1">Luke.RUSTLTDのwind1</a>を使用しています。いずれも<a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a>で公開されており、クレジットは任意で記載しています。音源はワールド用に編集・合成しています。倉庫の反響にはSpookCo独自の音声処理を使用し、幻想的な空気音は独自に合成しています。</p>
+<p><a href="https://opengameart.org/content/different-steps-on-wood-stone-leaves-gravel-and-mud">TinyWorldsの録音</a>は、現在もプレイヤーの足音に使用しています。落ち葉の音は天候のミックスから取り除きましたが、初期版での使用についても任意の謝辞を残しています。</p>
+<p><a href="/assets/spawn-weather-audio-notices.txt">天候の音源に関する表示全文を読む（原文）</a>。</p>
+<p>屋外の野生動物の環境音には、IgnasDのカラス、Brevicepsのフクロウ、Brandon Morris（HaelDB投稿）の遠くの犬、nfraeのアメリカコガラの録音を使用しています。これらの音源にはCC0 1.0を適用し、作者名を任意で記載しています。ワールド用に切り出し、フィルター処理、音量と立ち上がりの調整を行い、遠くから聞こえる音として配置しています。柔らかな幻想的な空気音はSpookCo独自の合成です。<a href="/assets/outdoor-wildlife-notices.txt">野生動物の音源と改変内容に関する表示全文を読む（原文）</a>。</p>
+<h2 id="その他の効果音">その他の効果音</h2>
+<p>環境音、足音、クリーチャーの声、インターフェース音にも外部の音源を使用しています。<a href="/assets/audio-notices.txt">効果音の表示全文（原文）</a>には、各作者、出典リンク、CC BYの帰属表示、CC0の謝辞、改変内容を記載しています。</p>
+<p>バンの出発音には、Joseph SARDIN / BigSoundBankの<a href="https://bigsoundbank.com/big-diesel-engine-s0967.html">Big diesel engine (#0967)</a>を使用しています。この音源は<a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a>で公開されており、クレジットは任意で記載しています。録音はワールド用に編集しており、出発時の警告音はSpookCo独自の合成です。<a href="/assets/van-departure-notices.txt">バンの出発音に関する表示全文を読む（原文）</a>。</p>
 <h2 id="インスピレーション">インスピレーション</h2>
 <p>SpookCoは、短いラウンドで遊ぶホラーゲームや物資回収ゲームから着想を得ています。Terrors of NowhereやSlashCoのキャラクター、モデル、音声、コードは含まれていません。</p>
 <p>出勤の準備はできましたか？ <a href="/ja/guide/">プレイヤーガイド</a>へ進むか、<a href="/ja/">SpookCo: Last Stopのホーム</a>に戻りましょう。</p></article></main></div>

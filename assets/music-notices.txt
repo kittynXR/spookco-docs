@@ -1,0 +1,33 @@
+SPOOKCO SOUNDTRACK
+
+Original SpookCo compositions, arrangements and synthesized sounds.
+Music development and auditioning tool: Ableton Live by Ableton AG.
+
+ABLETON CORE LIBRARY
+
+The soundtrack also uses sound samples supplied in Ableton's Core Library,
+combined with original musical material and processing for SpookCo.
+Courtesy acknowledgment: Ableton and its sound-content licensors.
+
+Source samples: Kick DMX; Hihat Closed DMX; Hihat Open DMX; Tom 707 Mid;
+Crash DMX; Snare 707; Clap DMX; Strings Orch C4; Upright Home Piano C2;
+Guitar Strat Palm Mute C2; Tom 80s Low.
+
+Core Library content remains subject to Ableton's proprietary terms; it is
+not CC0 or an independently redistributable sample library. This notice does
+not grant rights to extract or reuse the underlying samples.
+https://www.ableton.com/en/eula/
+https://help.ableton.com/hc/en-us/articles/209768885-Commercial-Use-rights-for-Live-content
+
+DEVELOPMENT STUDIES
+
+Earlier, uninstalled palette studies also used these Live Packs:
+Retro Synths by Puremagnetik
+https://www.ableton.com/en/packs/retro-synths/
+Mood Reel by Ableton and its contributing sound designers
+https://www.ableton.com/en/packs/mood-reel/
+These Packs are acknowledged for development work, not as sources in the
+currently installed game soundtrack. Their content retains its own terms.
+
+No recordings or melodies from the reference artists, and no Ableton demo
+songs, were sampled. These acknowledgments do not imply endorsement.
